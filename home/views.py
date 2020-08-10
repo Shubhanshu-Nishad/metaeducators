@@ -1,4 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render 
+from home.models import Cont
+from django.contrib import messages
+from datetime import datetime
+
+
 
 # Create your views here.
 
