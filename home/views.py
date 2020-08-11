@@ -12,10 +12,12 @@ def home(request):
 
 
 def about(request):
+    messages.success(request,"This is About Page1 ")
     return render(request,'home/about.html')
 
 
 def contact(request):
+    messages.success(request,"Can I help you Sir ji ? ")
     if(request.method=='POST'):
         name=request.POST['name']
         email=request.POST['email']
