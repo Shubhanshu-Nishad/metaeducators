@@ -1,14 +1,13 @@
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path,include,re_path
 
 from . import views
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    
-    # path('db', views.db, name='db'),
-    path('blogpost/', views.blogpost, name='blogpost'),    
-    path('blogread/', views.blogread, name='blogread'),    
-
+    # path('', views.home, name='home'),
+    path('bloghome/',views.bloghome,name='bloghome'),
+    path('blogpost/', views.blogpost, name='blogpost'), 
+    path('blogread/<str:slug>', views.blogread, name='blogread'), 
 ]
 
+# <str:slug_text>
