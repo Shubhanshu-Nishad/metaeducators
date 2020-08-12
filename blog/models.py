@@ -12,4 +12,4 @@ class Post(models.Model):
     timeStamp=models.DateTimeField(blank=True)
 
     def __str__(self):
-        return self.title +'by'+ self.author
+        return self.title +' by '+ self.author
