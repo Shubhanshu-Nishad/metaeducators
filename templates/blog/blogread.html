@@ -1,16 +1,48 @@
 {%  extends 'base.html' %}
 
-{% block title %} Blogreading {% endblock title %}
-{% block blogactive %}  active {% endblock blogactive %}
+{% block title %} META blog Reading {% endblock title %}
+{% block blogactive %} active {% endblock blogactive %}
 
 {% block body %}
-<main role="main" class="container">
+<div class="container">
+<div role="main" class="container">
   <div class="blog-post">
-  <h2 class="blog-post-title">{{readpost.title}} </h2>
-    <p class="col-md-8 blog-main" >{{readpost.timeStamp}} by {{readpost.author}}</p>
-      <h3 class="pb-4 mb-4 font-italic border-bottom" >
-        {{readpost.content}}
-      </h3>
+    <h2 class="blog-post-title">{{readpost.title}} </h2>
+    <p class="col-md-8 blog-main">{{readpost.timeStamp}} by {{readpost.author}}</p>
+    <h3 class="pb-4 mb-4 font-italic border-bottom">
+      {{readpost.content}}
+    </h3>
+    
+  </div>
+  <!-- <div class="container">
+    <h2>Comments:</h2>
+    <div class="row">
+      <div class="col md-2 bg-success"> Image here</div>
+      <div class="col md-10 bg-danger"> comment here</div>
+  </div>
+</div> -->
+<form action="/postcomment/" method="POST">
+<div class="media">
+  <img src="..." class="mr-3" alt="...">
+  <div class="media-body">
+    <h2>Comments:</h2>
+      <input type="text" name="comment" placeholder="Enter your comment here.">
+      <input type="hidden" name="PostSno" value="{{readpost.sno}}">
+      {% csrf_token %}
+      <input type="submit" value="submit">
+    <!-- <div class="media mt-3">
+      <a class="mr-3" href="#">
+        <img src="..." class="mr-3" alt="...">
+      </a>
+      <div class="media-body">
+        <h5 class="mt-0">Media heading</h5>
+        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+      </div> -->
+    </div>
+  </div>
+</div>
+</div>
+</form>
+</div>
 
-</main>
 {% endblock body %}

@@ -12,3 +12,12 @@ class Cont(models.Model):
 
     def __str__(self):
         return 'Message from ' +self.name+ ' with email '+ self.email
+
+
+# class handlesignup(models.Model):
+#     uname= models.AutoField(primary_key=True)
+#     fname= models.CharField(max_length=100)
+#     lname= models.CharField(max_length=100)
+#     email = models.CharField(max_length=90)
+#     password = models.CharField(max_length=20)
+   

@@ -1,21 +1,64 @@
-from django.shortcuts import render,HttpResponse
-from blog.models import Post
-
+from django.shortcuts import render,HttpResponse,redirect
+from blog.models import Post, blogcomment
+from django.contrib import messages
 # from . models import Post
 
 # Create your views here.
 
+# Managing HTML PAGES....................................................................................................................
+
 def bloghome(request ):
     return render(request,'blog/bloghome.html')
 
-def blogpost(request ):
-    allPosts=Post.objects.all()
+
+def blogpost(request):
+    allposts=Post.objects.all()
     context={'allPosts': allPosts}
     return render(request,'blog/blogpost.html',context)
 
+
 def blogread(request,slug):
+    # readpost=Post.objects.filter(slug=slug).first()
     readpost=Post.objects.filter(slug=slug).first()
-    context={'readpost':readpost}
+    comments=blogcomment.objects.filter(post=readpost)
+    
+    context={'readpost':readpost,comments:'comments'}
     return render(request,'blog/blogread.html',context)
+
+# Managing MOdels........................................................................................................................
+
+def blogsearch(request ):
+    
+    query=request.GET['query']
+    if len(query)>78:
+        allposts=Post.objects.none()
+    else:
+        allpostscontent=Post.objects.filter(content__icontains=query)
+        allpoststitle=Post.objects.filter(title__icontains=query) 
+        allposts=allpoststitle.union(allpostscontent)
+    if allposts.count() == 0:
+        messages.warning(request,'No search result found. Please refine  your query')
+    params={'allposts':allposts,'query':query}
+    return render(request,'blog/blogsearch.html',params)
+
+
+def postcomment(request ):
+    if request.method=='POST':
+        comment =request.POST.get('comment')
+        user = request.user
+        postSno =request.POST.get('PostSno')
+        post=Post.objects.get(sno=postSno)
+        # parant=request
+    
+        comment = blogcomment(comment=comment,user=user,post=post)
+        comment.save()
+        messages.success(request,' Your comment has been  posted successfully.')
+
+
+    return redirect(f"/blogread/{post.slug}")
+
+
+
+
 # def db(request):
 #     return render(request,'blog/db.html')
