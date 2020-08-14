@@ -12,8 +12,8 @@ def bloghome(request ):
 
 
 def blogpost(request):
-    allposts=Post.objects.all()
-    context={'allPosts': allPosts}
+    allposts = Post.objects.all()
+    context={'allposts':allposts}
     return render(request,'blog/blogpost.html',context)
 
 
@@ -22,7 +22,7 @@ def blogread(request,slug):
     readpost=Post.objects.filter(slug=slug).first()
     comments=blogcomment.objects.filter(post=readpost)
     
-    context={'readpost':readpost,comments:'comments'}
+    context={'readpost':readpost,'comments':comments,'user':request.user}
     return render(request,'blog/blogread.html',context)
 
 # Managing MOdels........................................................................................................................
@@ -46,13 +46,18 @@ def postcomment(request ):
     if request.method=='POST':
         comment =request.POST.get('comment')
         user = request.user
-        postSno =request.POST.get('PostSno')
-        post=Post.objects.get(sno=postSno)
-        # parant=request
-    
-        comment = blogcomment(comment=comment,user=user,post=post)
-        comment.save()
-        messages.success(request,' Your comment has been  posted successfully.')
+        PostSno =request.POST.get("PostSno")
+        post=Post.objects.get(sno=PostSno)
+        parantSno=request.POST.get("parantSno")
+        if parantSno=="":
+            comment = blogcomment(comment=comment,user=user,post=post)
+            comment.save()
+            messages.success(request,' Your comment has been  posted successfully.')
+        else:
+            parant = blogcomment.objects.get(sno=parantSno)
+            comment = blogcomment(comment=comment,user=user,post=post,parant=parant)
+            comment.save()
+            messages.success(request,' Your reply  has been  posted successfully.')
 
 
     return redirect(f"/blogread/{post.slug}")
