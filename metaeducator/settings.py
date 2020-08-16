@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 
 from django.contrib.messages import constants as messages
+from django.core.mail import send_mail
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -68,6 +69,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+             'libraries':{
+            'extras': 'blog.templatestags.extras',
+
+            }
         },
     },
 ]
@@ -135,3 +140,17 @@ MESSAGE_TAGS = {
 STATICFILES_DIRS=[
     os.path.join(BASE_DIR,"static")
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_PORT = 587
+EMAIL_HOST_USER =os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD =os.environ.get('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL =os.environ.get('EMAIL_HOST_USER')
+EMAIL_USE_TLS = True
+
+# EMAIL_USE_SSL = False
+
+# STATICFILES_DIRS=[
+#     "static/"
+# ]

@@ -1,6 +1,8 @@
 from django.shortcuts import render,HttpResponse,redirect
 from blog.models import Post, blogcomment
 from django.contrib import messages
+from blog.templatestags import extras
+
 # from . models import Post
 
 # Create your views here.
@@ -20,9 +22,16 @@ def blogpost(request):
 def blogread(request,slug):
     # readpost=Post.objects.filter(slug=slug).first()
     readpost=Post.objects.filter(slug=slug).first()
-    comments=blogcomment.objects.filter(post=readpost)
-    
-    context={'readpost':readpost,'comments':comments,'user':request.user}
+    comments=blogcomment.objects.filter(post=readpost , parant=None)
+    # Managing replies...................................................................................................................
+    replies=blogcomment.objects.filter(post=readpost).exclude(parant=None)
+    replyDict = { }
+    for reply in replies:
+        if reply.parant.sno not in replyDict.keys():
+            replyDict[reply.parant.sno] = [reply]
+        else:
+            replyDict[reply.parant.sno].append(reply) 
+    context={'readpost':readpost,'comments':comments,'user':request.user, 'replyDict':replyDict}
     return render(request,'blog/blogread.html',context)
 
 # Managing MOdels........................................................................................................................
@@ -50,12 +59,13 @@ def postcomment(request ):
         post=Post.objects.get(sno=PostSno)
         parantSno=request.POST.get("parantSno")
         if parantSno=="":
+            
             comment = blogcomment(comment=comment,user=user,post=post)
             comment.save()
             messages.success(request,' Your comment has been  posted successfully.')
         else:
             parant = blogcomment.objects.get(sno=parantSno)
-            comment = blogcomment(comment=comment,user=user,post=post,parant=parant)
+            comment = blogcomment(comment=comment,user=user,post=post , parant=parant)
             comment.save()
             messages.success(request,' Your reply  has been  posted successfully.')
 

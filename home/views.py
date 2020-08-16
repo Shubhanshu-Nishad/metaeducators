@@ -4,6 +4,9 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from datetime import datetime
 from django.contrib.auth import authenticate, login,logout
+from django.core import mail
+from django.conf import settings
+from django.core.mail import BadHeaderError, EmailMessage
 
 # Create your views here.
 
@@ -30,7 +33,7 @@ def contact(request):
         else:
             contact=Cont(name=name,email=email,phone=phone,desc=content)
             contact.save()
-            messages.success(request, 'Form submitted successfully')
+            messages.success(request, ' metaeducator : Thanks a lot for connecting with us.')
 
     return render(request,'home/contact.html')
 
@@ -38,6 +41,15 @@ def contact(request):
 
 
 def handlesignup(request):
+
+    # if request.method=='POST':
+        
+        # message= '56952'
+        # try:
+        #     send_mail('Contact Form',message, settings.EMAIL_HOST_USER,['email'], fail_silently=False )
+        # except BadHeaderError:
+        #     return HttpResponse('Invalid header found.')
+
     if request.method=='POST':
         #Get the signup parameters 
         username=request.POST['username']
@@ -47,12 +59,18 @@ def handlesignup(request):
         password=request.POST['password']
         password2=request.POST['password2']
         # check for errorness
+       
+         
+        if User.objects.filter(username=username).exists():
+            messages.error(request,'metaeducator : Sorry! This username is taken by any another meta user.Please, Sign up with other username.')
+            return render(request,'home/home.html')
+
         if len(username) >15:
-            messages.error(request,'Please Enter username less that 15 characters .')
+            messages.error(request,'metaeducator say, Choose your username with  less that 15 characters .')
             return render(request,'home/home.html')
 
         if not username.isalnum():
-            messages.error(request, 'Username should contanis alphabet and number only. ')
+            messages.error(request, 'metaeducator say , Username should contanis alphabet and number only. ')
             return render(request,'home/home.html')
 
         if password != password2:
@@ -65,7 +83,17 @@ def handlesignup(request):
         myuser.first_name= fname
         myuser.last_name= lname
         myuser.save()
-        messages.success(request,'Your META account has been successfull created ')
+        # email_subject='Activate your account'
+        # email_body='Test body'
+
+        # email = EmailMessage(
+        # email_subject,
+        # email_body,
+        # 'metaeducatorshubu@gmail.com',
+        # ['email'],
+        # )
+        # email.send(fail_silently=False)
+        messages.success(request,'Your metaeducator account has been successfull created ')
         # render redirect('home')
         return render(request,'home/home.html')
 
@@ -91,5 +119,5 @@ def handlelogin(request):
 
 def handlelogout(request):
     logout(request)
-    messages.success(request,'Successfully logged out  META')
+    messages.success(request,'Successfully logged out your metaeducator')
     return render(request,'home/home.html')

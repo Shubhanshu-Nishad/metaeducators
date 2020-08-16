@@ -1,5 +1,14 @@
 from django.contrib import admin
 from blog.models import Post,blogcomment
+# admin.site.register((Post,blogcomment) )
 
 # Register your models here.
-admin.site.register((Post,blogcomment))
+
+@admin.register(Post)
+
+class Postadmin(admin.ModelAdmin):
+    class Media:
+         js= ("js/tiny.js",)
+        
+
+admin.site.register(blogcomment,Postadmin)
