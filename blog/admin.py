@@ -8,7 +8,10 @@ from blog.models import Post,blogcomment
 
 class Postadmin(admin.ModelAdmin):
     class Media:
-         js= ("js/tiny.js",)
+        css={
+            'all':("css/tiny.css",)
+        }
+        js= ("js/tiny.js",)
         
 
 admin.site.register(blogcomment,Postadmin)

@@ -16,9 +16,9 @@ def home(request):
     return render(request,'home/home.html')
 
 
-def about(request):
+def donate(request):
     messages.success(request,"This is About Page1 ")
-    return render(request,'home/about.html')
+    return render(request,'home/donate.html')
 
 
 def contact(request):

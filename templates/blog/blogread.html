@@ -11,9 +11,11 @@
 
 <div class="container">
   <div role="main" class="container">
+  <br>
     <div class="blog-post">
-      <h2 class="blog-post-title">{{readpost.title}} </h2>
-      <p class="col-md-8 blog-main">{{readpost.timeStamp}} by {{readpost.author}}</p>
+      <h3 class="blog-post-title">{{readpost.title}} </h3>
+      <p class=" badge badge-secondary">{{readpost.timeStamp}} </p>
+      <h6>by {{readpost.author}}</h6> 
       <div class="pb-4 mb-4 font-italic border-bottom"> {{readpost.content| safe}} </div>
     </div>
   </div>
@@ -26,7 +28,7 @@
   <form action="/blogread/postcomment/" method="POST">
     <div class="col-sm-3 col-lg-1 col-xl-1">
 
-      <img class="w-100 d-block mx-auto rounded-circle" src="/static/image/user.png">
+      <img class="w-100 d-block mx-auto rounded-circle" src="/static/image/users.png">
     </div>
     <div class="col-md-8 col-lg-10 col-xl-10 commentContainer">
       <div class="my-2 mx-2">
@@ -52,7 +54,7 @@
     <button type="submit" class="btn btn-danger" disabled>Post</button>
   </div> -->
   <div class="col-sm-3 col-lg-1 col-xl-1">
-    <img class="w-100 d-block mx-auto rounded-circle" src="/static/image/user.png">
+    <img class="w-100 d-block mx-auto rounded-circle " src="/static/image/user.png">
   </div>
   <div class="col-md-8 col-lg-10 col-xl-10 commentContainer">
     <div class="my-2 mx-2">
@@ -107,7 +109,6 @@
             </form>
           </div>
         </div>
-        <h5>Replies ({{.count}})</h5>
         <div class="reply my-2 ">
           {% for reply in replyDict|get_val:comment.sno%}
           <div class="row mt-4">

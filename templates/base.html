@@ -9,9 +9,28 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <title> {% block title %} {% endblock title %} </title>
+{% comment %} 
+<style>
+    .commentReplies {
+        background-color: rgb(231, 231, 233);
+        margin: 18px 3px;
+    }
+
+    .commentReplies img {
+        margin: 8px 14px;
+    }
+
+
+    .commentContainer {
+        overflow-x: auto;
+    }
+</style> {% endcomment %}
+
   {% block css %}
+
 
 {% endblock css %}
 </head>
@@ -23,7 +42,7 @@
       {% comment %} {%  load static  %} {% endcomment %}
       <img class="rounded "  alt="META " src="/static/image/shubhanshu.jpg" style="border-radius: 30.25rem!important;; height:70px ;"></a>
     {% comment %} <a class="navbar-brand" href="/">META</a> {% endcomment %}
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    <button class="navbar-toggler bg-danger " type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -33,11 +52,11 @@
         <li class="nav-item {% block homeactive %} {% endblock homeactive %}">
           <a class="nav-link text-white" href="/">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item {% block aboutactive %} {% endblock aboutactive %}">
-          <a class="nav-link text-white" href="/about">About</a>
-        </li>
-        <li class="nav-item {% block blogactive %} {% endblock blogactive %}">
+         <li class="nav-item {% block blogactive %} {% endblock blogactive %}">
           <a class="nav-link text-white" href="/bloghome">Blog</a>
+        </li>
+        <li class="nav-item {% block aboutactive %} {% endblock aboutactive %}">
+          <a class="nav-link text-white" href="/donate">Donate</a>
         </li>
         <li class="nav-item {% block contactactive %} {% endblock contactactive %}">
           <a class="nav-link text-white" href="/contact">Contact Me</a>
@@ -45,15 +64,15 @@
 
       </ul>
       <form method=get class="form-inline my-2 my-lg-0 " action="/blogsearch">
-        <input class="form-control mr-sm-2 " type="search" placeholder="Search" aria-expanded="false"
-          aria-label="Search" name="query" id="query">
+        <input class="form-control mr-sm-2 " type="search" placeholder="Search" aria-expanded="false" 
+          aria-label="Search" name="query" id="query" >
         <button class="btn btn-danger my-2 my-sm-0 ml-2 mx-3">Search</button>
       </form>
       <div>
       {% if user.is_authenticated %}
       <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Welcome {{request.user}}
+    Welc. {{request.user}}
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a class="dropdown-item" href="/logout/">logout</a>
@@ -282,7 +301,6 @@
   {% block body %}
 
   {% endblock body %}
-  <P>          <span>                                       <span>          </P>
 
 <!-- #footer section................................................................................................................ -->
 <footer>
@@ -290,7 +308,7 @@
             <div class="container text-white ">  
               <div class="row">
                 <div class="col-lg-4 col-sm-12 mb-3">
-                  <h4 class="text-danger">metaeducator.com</h4>
+                  <h5 class="text-danger">metaeducator.com</h5>
                   <p>
                     I heartily like to 
                     educate the people with all 
@@ -302,7 +320,7 @@
                   <p class="d-inline ">metaeducator@gmail.com</p>
                 </div>
                 <div class="col-lg-3 col-sm-4 d-inline " style="width: 50%;">
-                  <h4 class="text-danger">Quick links</h4>
+                  <h5 class="text-danger">Quick links</h5>
                   <ul id="quick" class="list-unstyled" >
                     <li>
                       <a class="text-white"  href="/">Home</a>
@@ -328,7 +346,7 @@
                   </ul>
                 </div>
                 <div class="col-lg-2 col-sm-4 "  style="width: 50%;">
-                  <h4 class="text-danger">Follow Us</h4>
+                  <h5 class="text-danger">Follow Us</h5>
                   <a class="text-white"  href="https://www.facebook.com/https:/Metaeducator-109055404234838" target="_blank" class="fa fa-facebook p-2"></a>
                   <a class="text-white"  href="https://www.facebook.com/https:/Metaeducator-109055404234838"  target="_blank" class="d-inline">Facebook</a>
                   <br>
@@ -344,9 +362,9 @@
                   <a class="text-white"  href="https://t.me/metaeducator" target="_blank" class="fa fa-telegram p-2"></a>
                   <a class="text-white"  href="https://t.me/metaeducator" target="_blank" class="d-inline">Telegram</a>
                 </div>
-                <!-- <div class="col-lg-3">
-                  <img id="footer-logo" src="img/logo.png" class="float-right" style="height: 10rem;">
-                </div> -->
+                 {% comment %} <div class="col-lg-3">
+                  <img id="footer-logo" src="/static/image/log.jpeg" class="float-right" style="height: 10rem;">
+                </div>  {% endcomment %}
                 </div>
                 <div class="center opacity-10 py-3">
                 <p class="text-center" >© Copyright 2020  metaeducator . All Rights Reserved</p>
