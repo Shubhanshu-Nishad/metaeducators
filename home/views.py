@@ -1,5 +1,5 @@
 from django.shortcuts import render ,HttpResponse,redirect
-from home.models import Cont
+from home.models import Cont,Donar
 from django.contrib import messages
 from django.contrib.auth.models import User
 from datetime import datetime
@@ -17,8 +17,11 @@ def home(request):
 
 
 def donate(request):
-    messages.success(request,"This is About Page1 ")
-    return render(request,'home/donate.html')
+    Donars = Donar.objects.all()
+    nSlides=len(Donars)
+    params={'no_of_slides':nSlides, 'range':range(1,nSlides),'Donar': Donars}
+    messages.success(request,"मौका मिले किसी को मदद करने का,तो बनना सारथी  ना कि स्वार्थी ... ")
+    return render(request,'home/donate.html',params)
 
 
 def contact(request):
