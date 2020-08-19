@@ -10,13 +10,9 @@ from blog.templatestags import extras
 # Managing HTML PAGES....................................................................................................................
 
 def bloghome(request ):
-    return render(request,'blog/bloghome.html')
-
-
-def blogpost(request):
     allposts = Post.objects.all()
     context={'allposts':allposts}
-    return render(request,'blog/blogpost.html',context)
+    return render(request,'blog/bloghome.html',context)
 
 
 def blogread(request,slug):

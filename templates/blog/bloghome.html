@@ -1,35 +1,272 @@
 {%  extends 'base.html' %}
 
-{% block title %} META blog  {% endblock title %}
-{% block blogactive %}  active {% endblock blogactive %}
+{% block title %} META blog {% endblock title %}
+{% block blogactive %} active {% endblock blogactive %}
 
+{% block css %}
+<style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    <title>Blog Template for Bootstrap</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/blog/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/blogpost/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <link href="/static/css/blogpost/blog.css" rel="stylesheet">
+    {% endblock css %}
 {% block body %}
 
-<div class="container my-3 mr-15 ml-15">
-<div class="jumbotron">
-  <h1 class="display-4">META blog</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-  <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-  <a class="btn btn-primary btn-lg" href="/blogpost" role="button">Meta Blog post</a>
-</div>
-</div>
-<div class="container my-3 ">
-     <h2>Popular Blogpost:</h2>
-     <div class="col-md-6">
-       <div class="card flex-md-row mb-4 shadow-sm h-md-250">
-            <div class="card-body d-flex flex-column align-items-start">
-              <strong class="d-inline-block mb-2 text-success">Design</strong>
-              <h3 class="mb-0">
-                <a class="text-dark" href="#">Post title</a>
-              </h3>
-              <div class="mb-1 text-muted">Nov 11</div>
-              <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" role="button" class="btn btn-primary"> Continue reading</a>
-            </div>
-            <img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22250%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20250%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_173dd3637b5%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A13pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_173dd3637b5%22%3E%3Crect%20width%3D%22200%22%20height%3D%22250%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2256.1875%22%20y%3D%22131%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="width: 200px; height: 250px;">
-        </div>
+
+<div class="container my-3 mr-15 ml-15 rounded bg-dark ">
+ <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+    <div class="col-md-6 px-0">
+      <h1 class="display-4 font-italic">The Main Objective of Metaeducator</h1>
+      <p class="lead my-3">I heartily like to educate the people with all aspects of coding to compete with the present scenario in HINDI language.</p>
     </div>
+  </div>
+  </div>
+
+
+<div class="container my-3 mr ">
+  <h2>Coding Articles by Meta</h2>
+</div>
+<div class="container">
+  <div class="row mb-2">
+    {% for Post in allposts reversed %}
+    <div class="col-md-6">
+      <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+        <div class="card-body d-flex flex-column align-items-start">
+          <strong class="d-inline-block mb-2 text-success">Article by {{Post.author}}</strong>
+          <h5 class="mb-0"> <a class="text-dark" href="/blogread/{{Post.slug}}">{{Post.title}} </a></h5>
+          <p class="mb-1 text-muted"><b><i>{{Post.timeStamp}}</i></b></p>
+          <p class="preview">{{Post.content |safe| truncatechars:80}}</p>
+          <a href="/blogread/{{Post.slug}}"><b> <i>Continue reading</i></b> </a>
+        </div>
+        <img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb"
+          alt="Thumbnail [200x200]" src="/media/{{Post.image}}" data-holder-rendered="true"
+          style="width: 200px; height: 250px;">
+      </div>
+    </div>
+    {% endfor %}
+  </div>
 </div>
 
+
+
+
+
+<div class="container" >
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8 blog-main">
+      <h3 class="pb-4 mb-4 font-italic border-bottom">
+        From New Education System
+      </h3>
+
+      <div class="blog-post">
+        <h2 class="blog-post-title">New Education Policy: Students To Learn Coding From Class 6</h2>
+        <p class=" badge badge-secondary">July 30, 2020 </p>
+        <h5>by <b>Metaeducator</b></h5>
+        <p>The New Education Policy allows students to choose coding from class 6th onwards..</p>
+        <hr>
+         <img class="rounded "  alt="Coding students "style="height:auto; max-width:100%; border:none;
+        display:block;" src="/static/homeimg/Students_Coding.jpg"></a>
+        <br>
+        <p>According to the New Education Policy that has been approved by the Narendra Modi-led National Democratic Alliance (NDA) government, students will be taught Coding as a subject from as early as class 6th.</p>
+        <blockquote>
+          <p>School Education secretary Anita Karwal said students of class 6 and onwards will be taught coding in schools as a part of 21st-century skills.</p>
+        </blockquote>
+        <p>The announcement was made in by Education Ministry officials at a press conference in the presence of <b>Union Minister Prakash Javadekar.</b> </p>
+        <h5>Through coding, students can learn to create games and applications for multiple platforms such as Android, Windows and iOS.</h6>
+      </div><!-- /.blog-post -->
+      <div class="blog-post">
+        <h2 class="blog-post-title">What Providers Need to Know About COVID-19 Coding and Billing</h2>
+        <p class=" badge badge-secondary">Aug 02, 2020 </p>
+        <h5>by <b>Metaeducator</b></h5>
+        <p>The healthcare system is facing an unprecedented crisis, but accurate COVID-19 coding and billing can help providers weather the storm and prepare for future outbreaks.</p>
+        <hr>
+         <img class="rounded "  alt="COrona virus "style="height:auto; max-width:100%; border:none;
+        display:block;" src="/static/homeimg/2020-03-02_coronavirus.jpg"></a>
+        <br>
+        <p><time datetime="2020-4-17">April 17, 2020</time> -&nbsp;The COVID-19 pandemic is putting strain on the healthcare system, but accurately capturing data and documenting cases of the novel coronavirus can help ease the burden on providers.</p>
+
+
+
+<p>COVID-19 coding and billing allows providers to track the spread of the novel coronavirus and get paid for testing and treating the sudden surge of patients presenting with symptoms of the highly contagious disease. And effective processes will help providers overcome the challenges of COVID-19 now and in the future.</p>
+
+<p>&ldquo;Equipping a health care workforce to accurately code medical procedures, streamlines communication across the health system, reducing administrative and rework costs at a time when resources are stretched by the COVID-19 pandemic,&rdquo;says Patrice A. Harris, MD, MA, president of the American Medical Association (AMA).</p>
+
+<p>However, a lack of resources and oftentimes know-how is preventing many providers from realizing the benefits of effective COVID-19 coding and billing.</p>
+<p>It is not business as usual at this time. Many healthcare organizations have had to cancel or postpone their normal services to prevent the spread of COVID-19, while many more are now treating and having to document patients with a completely novel condition. Meanwhile, increasing unemployment rates are bringing in a new mix of patients to organizations, creating more coding and documentation challenges than usual.</p>
+
+<p>The healthcare industry is quickly adapting to world in which COVID-19 exists and that includes creating new codes for the novel coronavirus. Using these codes and new documentation guidelines that come with them will be critical to tackling COVID-19 and the challenges associated with it.</p>
+
+<p>In the following article, <em>RevCycleIntelligence </em>breaks down what providers need to know about COVID-19 coding and billing and best practices organizations can implement to ease the burden now and when the dust settles.</p>
+
+<h3><strong>New codes enable COVID-19 tracking and billing</strong></h3>
+
+<p>Providers use a variety of medical code sets to document and bill for patient encounters. The primary sets used by providers have all recently created new codes to capture COVID-19 testing and care.</p>
+
+<h3><strong><em>ICD-10-CM</em></strong></h3>
+
+<p>Spurred by the urgent need to capture COVID-19 diagnoses on claims and surveillance data, the CDC <a href="https://www.cdc.gov/nchs/data/icd/Announcement-New-ICD-code-for-coronavirus-3-18-2020.pdf">announced</a> in March that is has added the new International Classification of Diseases, Tenth Revision, Clinical Modification (ICD-10-CM) emergency code created by the World Health Organization earlier this year. The code to document the diagnosis of COVID-19 is U07.1, 2019-nCoV acute respiratory disease.</p>
+.</p>
+
+<p>According to <a href="https://www.cdc.gov/nchs/data/icd/COVID-19-guidelines-final.pdf">official guidance</a> from the CDC, providers should only use U07.1 to document a confirmed diagnosis of COVID-19 as documented by the provider, per documentation of a positive COVID-19 test result, or a presumptive positive COVID-19 test result. This also applies to asymptomatic patients who test positive for coronavirus.</p>
+
+<p>CDC notes that this is an exception to the hospital inpatient guideline. In this case, &ldquo;confirmation&rdquo; does not require documentation of the type of test performed, rather provider documentation is sufficient.</p>
+
+<p>The new ICD-10-CM code is a principal or first-listed diagnosis code, so providers should sequence it first then use appropriate codes for associated manifestations, except in obstetric patients.</p>
+
+<p>CMS has also recognized the code for Medicare Severity-Diagnosis Related Group (MS-DRG) Grouper purposes effective April 1, 2020 at which time the ICD-10 MS-DRG Grouper software package accommodated the new code.</p>
+<p><p>Suspected, possible, probable, or inconclusive cases of COVID-19 should not be assigned U07.1, CDC emphasizes in the guidance. Instead, providers should assign codes explaining the reason for the encounter, such as a fever or Z20.828, Contact with and (suspected) exposure to other viral communicable diseases.</p>
+
+<p>Providers should also code for exposure to COVID-19 using code Z03.818, Encounter for observation for suspected exposure to other biological agents ruled out and screening, CDC states.</p>
+
+<h3><strong><em>CPT</em></strong></h3>
+
+<p>Since the COVID-19 outbreak, AMA has also been updating its Current Procedural Terminology (CPT) code set to enable providers to code and bill for coronavirus testing.</p>
+
+<p>AMA announced on March 13 the addition of CPT code 87635 for novel coronavirus testing through infectious agent detection by nucleic acid. The code should be used, for example, if a provider or other healthcare professional collects respiratory swabs and sends them to the lab after suspecting a 47-year-old male presenting to the emergency department with fever, cough, and shortness of breath has COVID-19.</p>
+
+<p>More recently, the association unveiled the addition of codes 86328 and 86769 for COVID-19 antibody tests and the revision for SARS-CoV-2 nucleic acid tests (86318).</p>
+
+<p>Code 86328 was created for antibody tests using a single step method immunoassay, AMA stated in the announcement. The testing method usually includes a strip with all of the critical components for the assay and is appropriate for a point-of care platform. Code 86769 was established for antibody tests using a multiple step method, the association reported.</p>
+
+<h3><em><strong>HCPCS</strong></em></h3>
+
+<p>As COVID-19 testing ramps up, CMS has created Healthcare Common Procedure Coding System (HCPCS) codes so providers can get reimbursed for diagnosing patients and stopping the spread of coronavirus.</p>
+
+<img class="rounded "  alt="COrona virus "style="height:auto; max-width:100%; border:none;
+        display:block;" src="/static/homeimg/coding.jfif"></a>
+        <br>
+
+<p>Earlier this year, CMS announced the addition of two codes &ndash; U0001 and U0002 &ndash; for COVID-19 tests. The first code can be used to document and bill for tests performed specifically at CDC testing laboratories, while the second code supports the agency&rsquo;s efforts to allow clinical laboratories outside of the CDC to create and bill for their own COVID-19 tests.</p>
+
+<p>Medicare started accepting the codes on April 1, 2020, and the codes will be retroactive to account for testing done on or after Feb. 4, 2020.</p>
+
+<p>According to a pricing list from March 12, 2020, Medicare will reimburse providers about $35 for claims coded with U0001 and approximately $51 for claims with U0002.</p>
+
+<h3><strong>Telehealth coding and billing</strong></h3>
+
+<p>In addition to caring for patients with a novel virus, many providers are also engaging in unchartered territory: telehealth.</p>
+
+<p>Hospitals are using telehealth services when possible to triage patients, a recent report from the Office of the Inspector at HHS showed. Ambulatory organizations are following suit as elective and non-urgent services decline.</p>
+
+<p>But for many providers, telehealth is a new service emerging from the COVID-19 crisis and it is presenting new coding and billing challenges for organizations.</p>
+
+<p>Fortunately, HHS has relaxed a wide range of rules and regulations to enable providers to leverage telehealth during the crisis and get paid the same amount for treating patients virtually. Some of the services include telehealth visits, virtual check-ins, and e-visits. The department also continues to add new services to the list as the crisis continues.</p>
+
+<p>To document telehealth services and other virtual visits, CMS has provided a <a href="https://www.cms.gov/Medicare/Medicare-General-Information/Telehealth/Telehealth-Codes">list of HCPCS codes</a> that will be paid for under the Physician Fee Schedule during the national emergency.</p>
+
+<p>AMA has also provided guidance on telehealth coding and billing using CPT codes. The guidance covers coding for telehealth visits, online digital visits, remote patient monitoring, and telephone evaluation and management services. The association&rsquo;s 11 scenarios for CPT coding during the crisis also includes examples of how to code for telehealth services.</p>
+
+<h3><strong>Best practices for COVID-19 coding and billing</strong></h3>
+
+<p>Rules and regulations are seemingly changing every day as new information emerges regarding COVID-19, and with that coding and billing policies shift to account for the latest information. With that in mind, providers need to be diligently following coding and billing guidance from the CDC, CMS, AMA, and other official organizations, says Maria Noelle Ward, MEd, RHIA, CCS, CCS-P, director of HIM practice excellence at AHIMA.</p>
+
+<p>&ldquo;Most importantly, they need to be sure that they&#39;re following the coding guidelines, those provided from a visit perspective and the telehealth and the CPT codes, but also the guidelines that have been provided by the CDC for actually coding patients who have COVID,&rdquo; she told <em>RevCycleIntelligence</em>.</p>
+
+<p>This is especially important as hospitals shift services to outpatient in preparation for greater inpatient demand, Ward stressed.</p>
+
+<p>Providers should also be assessing documentation guidelines in their EHRs to make sure providers are accurately documenting services at this time. CDI query templates are a key resource for providers, Ward stated.</p>
+
+<p>&ldquo;All of the coded data is going to provide information that contributes to patient care, public policy, reimbursement determination, and any of the statistics related to the spread of COVID,&rdquo; Ward concluded. &ldquo;Researchers looking at how to treat this and future coronavirus outbreaks are going to need this information. So, it has to be correct on the front end.&rdquo;</p>
+
+<p>&ldquo;In order to do that, we have to have complete, precise, accurate documentation and it needs to reflect all of the related conditions. That&rsquo;s going to lead to higher quality data that will affect patient outcomes in the future.&rdquo;</p>
+							
+      </div><!-- /.blog-post -->
+
+
+    </div><!-- /.blog-main -->
+
+    <aside class="col-md-4 blog-sidebar">
+      <div class="p-4 mb-3 bg-light rounded">
+        <h4 class="font-italic">About</h4>
+        <p class="mb-0">I heartily like to educate the people with all aspects of coding to compete with the present scenario in HINDI language..</p>
+      </div>
+
+      <div class="p-4">
+        <h4 class="font-italic">Quick Links </h4>
+        <ol class="list-unstyled mb-0">
+          <li> <a   href="/">Home</a> </li>
+          <li> <a  href="/playlist/">Video</a> </li>
+          <li> <a  href="/contact/">Contact us</a>  </li>
+          <li>  <a  href="/bloghome/">Blog</a> </li>  
+          <li> <a  href="/donate/">Donate </a> </li>
+        </ol>
+      </div>
+
+      <div class="p-4">
+        <h4 class="font-italic">Follow Me </h4>
+        <ol class="list-unstyled">
+        <li><a href="https://www.facebook.com/https:/Metaeducator-109055404234838"  target="_blank" class="d-inline">Facebook</a></li>
+        <li><a  href="https://www.linkedin.com/in/shubhanshu-nishad-a5511b1b2" target="_blank" class="d-inline">LinkedIn</a></li>
+        <li><a  href="https://www.instagram.com/metaeducator/" target="_blank" class="d-inline">Instagram</a></li>
+        <li><a href="https://www.twitter.com/metaeducator?s=09" target="_blank" class="d-inline">Twitter</a></li>
+        <li><a  href="https://t.me/metaeducator" target="_blank" class="d-inline">Telegram</a></li>
+        <li><a  href="https://github.com/Shubhanshu-Nishad" target="_blank" class="d-inline">GitHub</a></li>
+        <li><a href="https://github.com/Shubhanshu-Nishad" target="_blank ">GitHub</a></li>
+        </ol>
+      </div>
+    </aside><!-- /.blog-sidebar -->
+
+  </div><!-- /.row -->
+  </div>
+
+
+
+
+
+
+
+
+
+
+
 {% endblock body %}
+
+{% block js %}
+
+<script>
+  let previews = document.getElementsByClassName('preview');
+  Array.from(previews).forEach((element) => {
+    element.innerHTML = element.innerText;
+  })
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <script>
+      Holder.addTheme('thumb', {
+        bg: '#55595c',
+        fg: '#eceeef',
+        text: 'Thumbnail'
+      });
+    </script>
+</script>
+
+{% endblock js %}
