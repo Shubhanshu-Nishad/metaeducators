@@ -1,7 +1,7 @@
 {%  extends 'base.html' %}
 
 {% block title %} META About {% endblock title %}
-{% block aboutactive %} active {% endblock aboutactive %}
+{% block donateactive %} active {% endblock donateactive %}
 
 {% block css %}
 
@@ -161,7 +161,7 @@
                         <img class="m-3" src="/media/{{i.image}}"
                           style="width: 15rem; height: 15rem; border-radius: 150px;border: 2px solid #dc3545;">
                         <h4 class="text-danger">{{i.donar_name}}</h4>
-                        <small>{{i.donar_professional}}a</small>
+                        <small>{{i.donar_professional}}</small>
                         <h3><span class="badge badge-secondary">{{i.donar_amount}}</span></h3>
 
                         <p class="my-3 text-white"><i>"{{i.donar_desc}}."</i></p>
@@ -169,29 +169,7 @@
                     </div>
                   </div>
                   {%endfor%}
-                  <!-- <div class="carousel-item">
-                                  <div id="events-update" class="card jumbotron jumbotron-expand-md  mx-5 py-0 px-5 " style="border: none;">
-                                    <div class="card-body text-center text-white  bg-dark ">
-                                      <img class="m-3" src="/static/image/photo.jpg" style="width: 15rem; height: 15rem; border-radius: 150px;border: 2px solid #dc3545;">
-                                      <h4 class="text-danger">Haeshit Singh </h4>
-                                      <small>Student, B.Tech</small>
-                                      <p class="my-3 text-white"><i>"Very informative notes and easy to understand Sample papers have a huge variety of question which help us to face the exams.
-                                        "</i></p>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div id="events-update" class="card jumbotron jumbotron-expand-md  mx-5 py-0 px-5 " style="border: none;">
-                                      <div class="card-body text-center text-white  bg-dark ">
-                                        <img class="m-3" src="/static/image/photo.jpg" style="width: 15rem; height: 15rem; border-radius: 150px;border: 2px solid #dc3545;">
-                                        <h4 class="text-danger">shubhanshu </h4>
-                                        <small>Student, B.Tech</small>
-                                        <p class="my-3 text-white"><i>"Very informative notes and easy to understand Sample papers have a huge variety of question which help us to face the exams.
-                                          "</i></p>
-                                      </div>
-                                    </div>
-                                  </div>
-                              </div>  -->
+
 
                   <!-- CONTROLS -->
                   <a href="#slider4" class="carousel-control-prev" data-slide="prev">

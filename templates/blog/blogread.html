@@ -4,140 +4,161 @@
 {% block blogactive %} active {% endblock blogactive %}
 {% block body %}
 {% load extras  %}
-  {% block css %}
-  
+{% block css %}
+<style>
+  .commentContainer pre {
+    font-size: 14pt;
+    font-family: helvetica;
+
+  }
+
+  @media only screen and (max-width: 575px) {
+    img.rounded-circle {
+      height: 0px;
+      visibility: hidden;
+    }
+  }
+</style>
+
 {% endblock css %}
 
 <!-- #for rendering post............................................................................................................. -->
 
 
-<div class="container">
-  <div role="main" class="container">
+
+<div role="main" class="container">
   <br>
-    <div class="blog-post">
-      <h3 class="blog-post-title">{{readpost.title}} </h3>
-      <p class=" badge badge-secondary">{{readpost.timeStamp}} </p>
-      <h6>by {{readpost.author}}</h6> 
-      <div class="pb-4 mb-4 font-italic border-bottom"> {{readpost.content| safe}} </div>
-    </div>
+  <div class="blog-post">
+    <h3 class="blog-post-title">{{readpost.title}} </h3>
+    <p class=" badge badge-secondary">{{readpost.timeStamp}} </p>
+    <h6>by {{readpost.author}}</h6>
+    <div class="pb-4 mb-4 font-italic border-bottom"> {{readpost.content| safe}} </div>
   </div>
+</div>
 
 
-  <!-- #for posting comment.......................................................................................................... -->
+<!-- #for posting comment.......................................................................................................... -->
 
-  {% if user.is_authenticated %}
+{% if user.is_authenticated %}
 
-  <form action="/blogread/postcomment/" method="POST">
-    <div class="col-sm-3 col-lg-1 col-xl-1">
-
-      <img class="w-100 d-block mx-auto rounded-circle" src="/static/image/users.png">
-    </div>
-    <div class="col-md-8 col-lg-10 col-xl-10 commentContainer">
-      <div class="my-2 mx-2">
-        <h4> {{user.username}}</h4>
-        <input type="text" class="form-control" id="comment" name="comment" required
-          placeholder="Enter your comment here.">
-        <input type="hidden" name="PostSno" value="{{readpost.sno}}">
-        <input type="hidden" name="parantSno" value="">
-      </div>
-      {% csrf_token %}
-      <button type="submit" class="btn btn-danger">Post</button>
-    </div>
-  </form>
-
-  <p> <span> </span> </p>
-  <!-- for those who are not login .................................................................................................. -->
-
-
-  {% else %}
-  <h5>Please login to comments</h5>
-  <!-- <input type="text" class="form-control" id="comment" name="comment" required placeholder="Enter your comment here.">
-  <div class="btn-group btn-" role="group" aria-label="Basic example">
-    <button type="submit" class="btn btn-danger" disabled>Post</button>
-  </div> -->
+<form action="/blogread/postcomment/" method="POST">
   <div class="col-sm-3 col-lg-1 col-xl-1">
-    <img class="w-100 d-block mx-auto rounded-circle " src="/static/image/user.png">
+
+    <img class="w-100 d-block mx-auto rounded-circle" src="/static/image/users.png">
   </div>
   <div class="col-md-8 col-lg-10 col-xl-10 commentContainer">
     <div class="my-2 mx-2">
-      <input type="text" class="form-control" id="comment" name="comment" placeholder="Enter your comment here.">
+      <h4> {{user.username}}</h4>
+      <input type="text" class="form-control" id="comment" name="comment" required
+        placeholder="Enter your comment here.">
+      <input type="hidden" name="PostSno" value="{{readpost.sno}}">
+      <input type="hidden" name="parantSno" value="">
     </div>
-    <button class="btn btn-danger my-2 btn-sm" type="button" disabled> Post </button>
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Post</button>
   </div>
-  {% endif %}
+</form>
+
+<p> <span> </span> </p>
+<!-- for those who are not login .................................................................................................. -->
 
 
-  <!-- # comment setion ............................................................................................................... -->
+{% else %}
+<h5>Please login to comments</h5>
+<!-- <input type="text" class="form-control" id="comment" name="comment" required placeholder="Enter your comment here.">
+  <div class="btn-group btn-" role="group" aria-label="Basic example">
+    <button type="submit" class="btn btn-danger" disabled>Post</button>
+  </div> -->
+<div class="col-sm-3 col-lg-1 col-xl-1">
+  <img class="w-100 d-block mx-auto rounded-circle " src="/static/image/user.png">
+</div>
+<div class="col-md-8 col-lg-10 col-xl-10 commentContainer">
+  <div class="my-2 mx-2">
+    <input type="text" class="form-control" id="comment" name="comment" placeholder="Enter your comment here.">
+  </div>
+  <button class="btn btn-danger my-2 btn-sm" type="button" disabled> Post </button>
+</div>
+{% endif %}
 
 
-  <h3>Comments ({{comments.count}})</h3>
-  {% load humanize %}
-  <div>
-    {% for comment in comments  reversed %}
-    <div class="row mt-4">
-      <div class="col-sm-3 col-lg-1 col-xl-1">
-        <img class="w-100 d-block mx-auto rounded-circle" src="/static/image/user.png">
-      </div>
-      <div class="col-md-8 col-lg-10 col-xl-10 commentContainer">
-        <div class="my-2 mx-2">
-          <b>{{comment.user.username}}</b> <span
-            class="badge badge-secondary">{{comment.timeStamp | naturaltime }}</span><br>
-          <pre>{{comment.comment |escape |linebreaks}}</pre>
+<!-- # comment setion ............................................................................................................... -->
 
-          {% if user.is_authenticated %}
 
-          <button class="btn btn-danger btn-sm" type="button" data-toggle="collapse"
-            data-target="#replybox{{comment.sno}}" aria-expanded="false" aria-controls="replybox{{comment.sno}}">
-            Add Reply
-          </button>
-          {% else %}
-          <!-- <button class="btn btn-danger btn-sm"  disabled> -->
-          <button class="btn btn-danger my-2 btn-sm" type="button" disabled> Add Reply </button>
-          <!-- replies are here ............................................................................................................-->
+<h3>Comments ({{comments.count}})</h3>
+{% load humanize %}
+<div>
+  {% for comment in comments  reversed %}
+  <div class="row mt-4" style="background-color:rgb(232, 228, 227);">
+    <div class="col-sm-3 col-lg-1 col-xl-1">
+      <img class="w-100 d-block mx-auto rounded-circle" src="/static/image/user.png">
+    </div>
+    <div class="col-md-8 col-lg-10 col-xl-10 commentContainer">
+      <div class="my-2 mx-2">
+        <b>{{comment.user.username}}</b> <span
+          class="badge badge-secondary">{{comment.timeStamp | naturaltime }}</span><br>
+        <pre>{{comment.comment |escape |linebreaks}}</pre>
 
-          {% endif %}
-          <div class="collapse" id="replybox{{comment.sno}}">
-            <form action="/blogread/postcomment/" method="post"><input type="hidden" name="csrfmiddlewaretoken"
-                value="VepBHkgTaqCtjKhTEDXpeluN8EnGeraQesxlOaIswdeXoBcn5q8O7UAU5Rhqbx7Q">
-              <textarea type="text" class="form-control my-2" required placeholder="Write a reply..."
-                name="comment"></textarea>
-              <input type="hidden" name="parantSno" value="{{comment.sno}}">
+        {% if user.is_authenticated %}
 
-              <!-- <input type="hidden" name="videoSlug" value="python-django-tutorials-hindi-0">
+        <button class="btn btn-danger btn-sm" type="button" data-toggle="collapse"
+          data-target="#replybox{{comment.sno}}" aria-expanded="false" aria-controls="replybox{{comment.sno}}">
+          Add Reply
+        </button>
+        {% else %}
+        <!-- <button class="btn btn-danger btn-sm"  disabled> -->
+        <button class="btn btn-danger my-2 btn-sm" type="button" disabled> Add Reply </button>
+        <!-- replies are here ............................................................................................................-->
+
+        {% endif %}
+        <div class="collapse" id="replybox{{comment.sno}}">
+          <form action="/blogread/postcomment/" method="post"><input type="hidden" name="csrfmiddlewaretoken"
+              value="VepBHkgTaqCtjKhTEDXpeluN8EnGeraQesxlOaIswdeXoBcn5q8O7UAU5Rhqbx7Q">
+            <textarea type="text" class="form-control my-2" required placeholder="Write a reply..."
+              name="comment"></textarea>
+            <input type="hidden" name="parantSno" value="{{comment.sno}}">
+
+            <!-- <input type="hidden" name="videoSlug" value="python-django-tutorials-hindi-0">
           <input type="hidden" name="parent" value="13"> -->
-              {% csrf_token %}
-              <input type="hidden" name="PostSno" value="{{readpost.sno}}">
-              <button class="btn btn-sm btn-danger" type="submit">Reply</button>
-            </form>
-          </div>
-        </div>
-        <div class="reply my-2 ">
-          {% for reply in replyDict|get_val:comment.sno%}
-          <div class="row mt-4">
-            <div class="col-sm-3 col-lg-1 col-xl-1">
-              <img class="w-100 d-block mx-auto rounded-circle" src="/static/image/user.png">
-            </div>
-            <div class="col-md-8 col-lg-10 col-xl-10 commentContainer">
-              <div class="my-2 mx-2">
-                <b>{{reply.user.username}}</b> <span
-                  class="badge badge-secondary">{{reply.timeStamp | naturaltime }}</span>
-                <div>{{reply.comment}}
-                </div>
-              </div>
-            </div>
-          </div>
-          {% endfor %}
+            {% csrf_token %}
+            <input type="hidden" name="PostSno" value="{{readpost.sno}}">
+            <button class="btn btn-sm btn-danger" type="submit">Reply</button>
+          </form>
         </div>
       </div>
+      <div class="reply my-2 ">
+        {% for reply in replyDict|get_val:comment.sno%}
+        <div class="row mt-4">
+          <div class="col-sm-3 col-lg-1 col-xl-1">
+            <img class="w-100 d-block mx-auto rounded-circle" src="/static/image/user.png">
+          </div>
+          <div class="col-md-8 col-lg-10 col-xl-10 commentContainer">
+            <div class="my-2 mx-2">
+              <b>{{reply.user.username}}</b> <span
+                class="badge badge-secondary">{{reply.timeStamp | naturaltime }}</span>
+              <pre>{{reply.comment |escape |linebreaks}}
+                </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
     </div>
   </div>
 
+</div>
+</div>
 
-  {% endfor %}
+
+{% endfor %}
 
 
 </div>
 </div>
 </div>
+</div>
+
+
+
 
 {% endblock body %}

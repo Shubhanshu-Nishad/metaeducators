@@ -14,6 +14,7 @@ class Post(models.Model):
     author = models.CharField(max_length=50)
     slug=models.CharField(max_length=155,unique=True)
     timeStamp=models.DateTimeField(blank=True)
+    image = models.ImageField(upload_to="static/donars", default="")
 
 
     # def save(self, *args, **kwargs):
@@ -29,7 +30,7 @@ class Post(models.Model):
         slug = slugify(self.title)
         unique_slug = slug
         num = 1
-        while Article.objects.filter(slug=unique_slug).exists():
+        while Post.objects.filter(slug=unique_slug).exists():
             unique_slug = '{}-{}'.format(slug, num)
             num += 1
         return unique_slug
