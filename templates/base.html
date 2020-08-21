@@ -9,30 +9,47 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="/static/css/playvideo.css" rel="stylesheet">
   <title> {% block title %} {% endblock title %} </title>
-{% comment %} 
-<style>
+  {% comment %}
+  <style>
     .commentReplies {
-        background-color: rgb(231, 231, 233);
-        margin: 18px 3px;
+      background-color: rgb(231, 231, 233);
+      margin: 18px 3px;
     }
 
     .commentReplies img {
-        margin: 8px 14px;
+      margin: 8px 14px;
     }
 
 
     .commentContainer {
-        overflow-x: auto;
+      overflow-x: auto;
     }
-</style> {% endcomment %}
+  </style> {% endcomment %}
+
+      <style>
+        @media screen and (max-width: 600px) {
+            main h1 {
+                font-size: 2rem !important;
+            }
+            
+            .card h3 {
+                font-size: 1rem !important;
+            }
+            #resume {
+                margin-left: 1rem !important;
+                margin-right: 1rem !important;
+
+            }
+        }
+    </style>
 
   {% block css %}
 
 
-{% endblock css %}
+  {% endblock css %}
 </head>
 
 <body>
@@ -40,7 +57,8 @@
   <nav class="navbar navbar-expand-lg navbar" style="padding-top: 2rem; background-color: black;">
     {% comment %} <a class="navbar-brand" href="/"> {% endcomment %}
       {% comment %} {%  load static  %} {% endcomment %}
-      <img class="rounded "  alt="META " src="/static/homeimg/shubhanshu.jpg" style="border-radius: 30.25rem!important;; height:70px ;"></a>
+      <img class="rounded " alt="META " src="/static/homeimg/shubhanshu.jpg"
+        style="border-radius: 30.25rem!important;; height:70px ;"></a>
     {% comment %} <a class="navbar-brand" href="/">META</a> {% endcomment %}
     <button class="navbar-toggler bg-danger " type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,10 +70,10 @@
         <li class="nav-item {% block homeactive %} {% endblock homeactive %}">
           <a class="nav-link text-white" href="/">Home <span class="sr-only">(current)</span></a>
         </li>
-          <li class="nav-item {% block videoactive %} {% endblock videoactive %}">
+        <li class="nav-item {% block videoactive %} {% endblock videoactive %}">
           <a class="nav-link text-white" href="/playlist">Video</a>
         </li>
-         <li class="nav-item {% block blogactive %} {% endblock blogactive %}">
+        <li class="nav-item {% block blogactive %} {% endblock blogactive %}">
           <a class="nav-link text-white" href="/bloghome">Blog</a>
         </li>
         <li class="nav-item {% block aboutactive %} {% endblock aboutactive %}">
@@ -67,23 +85,24 @@
 
       </ul>
       <form method=get class="form-inline my-2 my-lg-0 " action="/blogsearch">
-        <input class="form-control mr-sm-2 " type="search" placeholder="Search" aria-expanded="false" 
-          aria-label="Search" name="query" id="query" >
+        <input class="form-control mr-sm-2 " type="search" placeholder="Search" aria-expanded="false"
+          aria-label="Search" name="query" id="query">
         <button class="btn btn-danger my-2 my-sm-0 ml-2 mx-3">Search</button>
       </form>
       <div>
-      {% if user.is_authenticated %}
-      <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Welc. {{request.user}}
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="/logout/">logout</a>
-    {% comment %} <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a> {% endcomment %}
-  </div>
-</div>
-      {% else %}
+        {% if user.is_authenticated %}
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Welc. {{request.user}}
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="/logout/">logout</a>
+            {% comment %} <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a> {% endcomment %}
+          </div>
+        </div>
+        {% else %}
         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#loginModal">Login</button>
         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#signupModal">SignUp</button>
       </div>
@@ -119,7 +138,7 @@
                 name="loginpassword">
             </div>
 
-             {% csrf_token %}
+            {% csrf_token %}
             <button type="submit" class="btn btn-danger mt-2" id="loginsubmit">Login</button>
           </form>
         </div>
@@ -133,7 +152,8 @@
   </div>
 
   <!-- signup Modal -->
-  {% comment %} <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal" aria-hidden="true">
+  {% comment %} <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -149,7 +169,9 @@
 
             <div class="form-group">
               <label for="text">Username</label>
-              <input type="text" class="form-control" id="useruname" placeholder="metaeducator" name="username" required pattern="[A-Za-z][0-9]{>15}" title="Your username must be less than 15 characters & having only alphabet and number">
+              <input type="text" class="form-control" id="useruname" placeholder="metaeducator" name="username" required
+                pattern="[A-Za-z][0-9]{>15}"
+                title="Your username must be less than 15 characters & having only alphabet and number">
               <small id="unamehelp" class="form-text text-muted px-1">
                 Your unique username must be less than 15 characters (only lowecase letters, numbers &amp; underscores
                 allowed) with no spaces
@@ -163,30 +185,30 @@
               <label for="lname">Last Name</label>
               <input type="text" class="form-control" id="lname" placeholder="Nishad" Required name="lname">
             </div>
-            
+
             <div class="form-group">
               <label for="email">Enter your Email</label>
               <input type="email" class="form-control" id="email" placeholder="metaeducator@gmail.com" Required
                 name="email">
-                <small id="otpMessage" class="form-text"></small>
+              <small id="otpMessage" class="form-text"></small>
             </div>
             {% comment %} <div class="form-group">
-            <label for="email">Your Email</label>
-            <div class="mx-0">
-              <div class="col-md-8 px-0">
-                <input type="email" class="form-control" id="email" placeholder="Enter your Email" name="email">
-                <small id="otpMessage" class="form-text"></small>
-              </div> {% endcomment %}
-              {% comment %} <div class="col-md-4 my-1 px-0">
-                <button class="btn btn-danger btn-sm mt-2" id="otpbtn">Send OTP</button>
+              <label for="email">Your Email</label>
+              <div class="mx-0">
+                <div class="col-md-8 px-0">
+                  <input type="email" class="form-control" id="email" placeholder="Enter your Email" name="email">
+                  <small id="otpMessage" class="form-text"></small>
+                </div> {% endcomment %}
+                {% comment %} <div class="col-md-4 my-1 px-0">
+                  <button class="btn btn-danger btn-sm mt-2" id="otpbtn">Send OTP</button>
+                </div>
               </div>
-            </div>
 
-          </div>
-          <div class="form-group">
-            <label for="otp">Enter OTP</label>
-            <input type="text" class="form-control" id="otp" placeholder="Enter OTP" name="otp">
-          </div>
+            </div>
+            <div class="form-group">
+              <label for="otp">Enter OTP</label>
+              <input type="text" class="form-control" id="otp" placeholder="Enter OTP" name="otp">
+            </div>
 
             <div class="form-group">
               <label for="password"> Choose your password</label>
@@ -207,82 +229,85 @@
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
-    </div>  {% endcomment %}
+    </div> {% endcomment %}
 
-  <!-- SignUp Modal -->
-<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="signupModal">SignUp for an account</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-      <div class="modal-body">
-        <form name="contact" method="post" action="/signup/"><input type="hidden" name="csrfmiddlewaretoken" value="FNBFZPsc8WLw4Y8aswhrksDBnZF8AZifY1Jp6FULuJn09P3ETjsQd1JIkczSx5ff">
-
-          <div class="form-group">
-            <label for="uname">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="Enter your Name" name="username">
-            <small id="unamehelp" class="form-text text-muted px-1">
-              Your unique username must be less than 10 characters (only lowecase letters, numbers & underscores
-              allowed) with no spaces
-            </small>
-          </div>
-          <div class="form-group">
-            <label for="name">First Name</label>
-            <input type="text" class="form-control" id="fname" placeholder="Enter your First Name" name="fname">
-          </div>
-          <div class="form-group">
-            <label for="name">Last Name</label>
-            <input type="text" class="form-control" id="lname" placeholder="Enter your Last Name" name="lname">
+    <!-- SignUp Modal -->
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="signupModal">SignUp for an account</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
 
-          <div class="form-group">
-            <label for="email">Your Email</label>
-            <div class="mx-0">
-              <div class="col-md-8 px-0">
-                <input type="email" class="form-control" id="email" placeholder="Enter your Email" name="email">
-                <small id="otpMessage" class="form-text"></small>
+          <div class="modal-body">
+            <form name="contact" method="post" action="/signup/"><input type="hidden" name="csrfmiddlewaretoken"
+                value="FNBFZPsc8WLw4Y8aswhrksDBnZF8AZifY1Jp6FULuJn09P3ETjsQd1JIkczSx5ff">
+
+              <div class="form-group">
+                <label for="uname">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter your Name" name="username">
+                <small id="unamehelp" class="form-text text-muted px-1">
+                  Your unique username must be less than 10 characters (only lowecase letters, numbers & underscores
+                  allowed) with no spaces
+                </small>
               </div>
-               <!-- <div class="col-md-4 my-1 px-0">
+              <div class="form-group">
+                <label for="name">First Name</label>
+                <input type="text" class="form-control" id="fname" placeholder="Enter your First Name" name="fname">
+              </div>
+              <div class="form-group">
+                <label for="name">Last Name</label>
+                <input type="text" class="form-control" id="lname" placeholder="Enter your Last Name" name="lname">
+              </div>
+
+              <div class="form-group">
+                <label for="email">Your Email</label>
+                <div class="mx-0">
+                  <div class="col-md-8 px-0">
+                    <input type="email" class="form-control" id="email" placeholder="Enter your Email" name="email">
+                    <small id="otpMessage" class="form-text"></small>
+                  </div>
+                  <!-- <div class="col-md-4 my-1 px-0">
                 <button class="btn btn-danger btn-sm mt-2" id="otpbtn">Send OTP</button>
               </div> -->
-            </div>
+                </div>
 
-          </div>
-          <!-- <div class="form-group">
+              </div>
+              <!-- <div class="form-group">
             <label for="otp">Enter OTP</label>
             <input type="text" class="form-control" id="otp" placeholder="Enter OTP" name="otp">
           </div> -->
 
-          <div class="form-group">
-            <label for="password">Choose a password</label>
-            <input type="password" class="form-control" id="password" placeholder="Choose a password" name="password">
-          </div>
-          <div class="form-group">
-            <label for="password2">Retype a password</label>
-            <input type="password" class="form-control" id="password2" placeholder="Retype your password"
-              name="password2">
-              <input type="hidden" name="path" value="/">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-danger mt-2">SignUp</button>
-          </form>
+              <div class="form-group">
+                <label for="password">Choose a password</label>
+                <input type="password" class="form-control" id="password" placeholder="Choose a password"
+                  name="password">
+              </div>
+              <div class="form-group">
+                <label for="password2">Retype a password</label>
+                <input type="password" class="form-control" id="password2" placeholder="Retype your password"
+                  name="password2">
+                <input type="hidden" name="path" value="/">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger mt-2">SignUp</button>
+            </form>
           </div>
           {% comment %} <div class="g-recaptcha" data-sitekey="6LdvcqwUAAAAACmPYNVoiJA7D84xLSQQt5g9p10m"></div>
           <input type="hidden" name="path" value="/">
           <button type="submit" class="btn btn-danger mt-2">SignUp</button>
-        </form>
-      </div> {% endcomment %}
+          </form>
+        </div> {% endcomment %}
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 
   </div>
@@ -305,83 +330,92 @@
 
   {% endblock body %}
 
-<!-- #footer section................................................................................................................ -->
-<footer>
-          <div class="text-white  mb-0" id="contact" style="padding-top: 2rem; background-color: black;">
-            <div class="container text-white ">  
-              <div class="row">
-                <div class="col-lg-4 col-sm-12 mb-4">
-                  <h5 class="text-danger">metaeducator.com</h5>
-                  <p>
-                    I heartily like to 
-                    educate the people with all 
-                    aspects of coding to compete 
-                    with the present scenario in 
-                    HINDI language.           
-                  </p>
-                  <i class="fa fa-envelope mt-2" aria-hidden="true" ></i>
-                  <p class="d-inline ">metaeducator@gmail.com</p>
-                </div>
-                <div class="col-lg-3 col-sm-4 d-inline " style="width: 50%;">
-                  <h5 class="text-danger">Quick links</h5>
-                  <ul id="quick" class="list-unstyled" >
-                    <li>
-                      <a class="text-white"  href="/">Home</a>
-                    </li>
-                    <li>
-                      <a class="text-white"  href="/about/">About</a>
-                    </li>
-                    <li>
-                      <a class="text-white"  href="/contact/">Contact us</a>
-                    </li>
-                    <li>
-                      <a class="text-white"  href="/bloghome/">Blog</a>
-                    </li>
-                    <li>
-                      <a class="text-white"  href="/donate/">Donate </a>
-                    </li>
-                    <!-- <li>
+  <!-- #footer section................................................................................................................ -->
+  <footer>
+    <div class="text-white  mb-0" id="contact" style="padding-top: 2rem; background-color: black;">
+      <div class="container text-white ">
+        <div class="row">
+          <div class="col-lg-4 col-sm-12 mb-4">
+            <h5 class="text-danger">metaeducator.com</h5>
+            <p>
+              I heartily like to
+              educate the people with all
+              aspects of coding to compete
+              with the present scenario in
+              HINDI language.
+            </p>
+            <i class="fa fa-envelope mt-2" aria-hidden="true"></i>
+            <p class="d-inline ">metaeducator@gmail.com</p>
+          </div>
+          <div class="col-lg-3 col-sm-4 d-inline " style="width: 50%;">
+            <h5 class="text-danger">Quick links</h5>
+            <ul id="quick" class="list-unstyled">
+              <li>
+                <a class="text-white" href="/">Home</a>
+              </li>
+              <li>
+                <a class="text-white" href="/about/">About</a>
+              </li>
+              <li>
+                <a class="text-white" href="/contact/">Contact us</a>
+              </li>
+              <li>
+                <a class="text-white" href="/bloghome/">Blog</a>
+              </li>
+              <li>
+                <a class="text-white" href="/donate/">Donate </a>
+              </li>
+              <!-- <li>
                       <a href="aboutus.php">Our team</a>
                     </li> -->
-                    <!-- <li>
+              <!-- <li>
                       <a href="terms.html">Terms &amp; conditions</a>
                     </li> -->
-                  </ul>
-                </div>
-                <div class="col-lg-2 col-sm-4 "  style="width: 50%;">
-                  <h5 class="text-danger">Follow Us</h5>
-                  <a class="text-white"  href="https://www.facebook.com/https:/Metaeducator-109055404234838" target="_blank" class="fa fa-facebook p-2"></a>
-                  <a class="text-white"  href="https://www.facebook.com/https:/Metaeducator-109055404234838"  target="_blank" class="d-inline">Facebook</a>
-                  <br>
-                  <a class="text-white"  href="https://www.linkedin.com/in/shubhanshu-nishad-a5511b1b2" target="_blank" class="fa fa-linkedin p-2"></a>
-                  <a class="text-white"  href="https://www.linkedin.com/in/shubhanshu-nishad-a5511b1b2" target="_blank" class="d-inline">LinkedIn</a>
-                  <br>
-                  <a class="text-white"  href="https://www.instagram.com/metaeducator/" target="_blank" class="fa fa-instagram p-2"></a>
-                  <a class="text-white"  href="https://www.instagram.com/metaeducator/" target="_blank" class="d-inline">Instagram</a>
-                  <br>
-                  <a class="text-white"  href="https://www.twitter.com/metaeducator?s=09" target="_blank" class="fa fa-twitter p-2"></a>
-                  <a class="text-white"  href="https://www.twitter.com/metaeducator?s=09" target="_blank" class="d-inline">Twitter</a>
-                  <br>
-                  <a class="text-white"  href="https://t.me/metaeducator" target="_blank" class="fa fa-telegram p-2"></a>
-                  <a class="text-white"  href="https://t.me/metaeducator" target="_blank" class="d-inline">Telegram</a>
-                </div>
-                 {% comment %} <div class="col-lg-3">
-                  <img id="footer-logo" src="/static/image/log.jpeg" class="float-right" style="height: 10rem;">
-                </div>  {% endcomment %}
-                </div>
-                <div class="center opacity-10 py-3">
-                <p class="text-center" >© Copyright 2020  metaeducator . All Rights Reserved</p>
-                <p class="text-center">Website Designed and Developed by <a  class="text-white" href="www.metaeducator.com" target="_blank" > metaeducator.com</p></a>
-              </div>
-            </div>
+            </ul>
           </div>
-        </footer>
+          <div class="col-lg-2 col-sm-4 " style="width: 50%;">
+            <h5 class="text-danger">Follow Us</h5>
+            <a class="text-white" href="https://www.facebook.com/https:/Metaeducator-109055404234838" target="_blank"
+              class="fa fa-facebook p-2"></a>
+            <a class="text-white" href="https://www.facebook.com/https:/Metaeducator-109055404234838" target="_blank"
+              class="d-inline">Facebook</a>
+            <br>
+            <a class="text-white" href="https://www.linkedin.com/in/shubhanshu-nishad-a5511b1b2" target="_blank"
+              class="fa fa-linkedin p-2"></a>
+            <a class="text-white" href="https://www.linkedin.com/in/shubhanshu-nishad-a5511b1b2" target="_blank"
+              class="d-inline">LinkedIn</a>
+            <br>
+            <a class="text-white" href="https://www.instagram.com/metaeducator/" target="_blank"
+              class="fa fa-instagram p-2"></a>
+            <a class="text-white" href="https://www.instagram.com/metaeducator/" target="_blank"
+              class="d-inline">Instagram</a>
+            <br>
+            <a class="text-white" href="https://www.twitter.com/metaeducator?s=09" target="_blank"
+              class="fa fa-twitter p-2"></a>
+            <a class="text-white" href="https://www.twitter.com/metaeducator?s=09" target="_blank"
+              class="d-inline">Twitter</a>
+            <br>
+            <a class="text-white" href="https://t.me/metaeducator" target="_blank" class="fa fa-telegram p-2"></a>
+            <a class="text-white" href="https://t.me/metaeducator" target="_blank" class="d-inline">Telegram</a>
+          </div>
+          {% comment %} <div class="col-lg-3">
+            <img id="footer-logo" src="/static/image/log.jpeg" class="float-right" style="height: 10rem;">
+          </div> {% endcomment %}
+        </div>
+        <div class="center opacity-10 py-3">
+          <p class="text-center">© Copyright 2020 metaeducator . All Rights Reserved</p>
+          <p class="text-center">Website Designed and Developed by <a class="text-white" href="www.metaeducator.com"
+              target="_blank"> metaeducator.com</p></a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-<!-- #End footer..................................................................................................................... -->
+  <!-- #End footer..................................................................................................................... -->
 
-{% block js %}
+  {% block js %}
 
-{% endblock js %}
+  {% endblock js %}
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
