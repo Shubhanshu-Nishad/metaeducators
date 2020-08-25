@@ -2,3 +2,56 @@
 
 {% block title %} metaeducator Home {% endblock title %}
 {% block homeactive %} active {% endblock homeactive %}
+
+
+
+{% block body %}
+<div class="jumbotron jumbotron-fluid jumbotron-expand-md text-center " height="900"  >  
+          {% comment %} <h1 class="display-4 text-danger p-5 "> <b><i> First step towards Coding</i></b></h1>
+          <button class="btn bg-danger text-white mx-3 my-1">Bulid Logic</button>
+          <button class="btn bg-danger text-white mx-3 my-1">Daily 30 Min </button>
+          <button class="btn bg-danger text-white mx-3 my-1">Work together with friends</button> {% endcomment %}
+          <div class="container">
+          <div class="container py-5 mt-5" style="z-index:1;background-color:black; opacity: .8; ">
+        <img src="/static/homeimg/11.jpg" alt="logo" width="120" style="border-radius: 50%;" >
+        <h1 class="jumbotron-heading"><i><span style="color:red;" id="typed"></span></i></h1>
+        <h4 class="lead text-muted">I heartily like to educate the people with all aspects of coding to compete with the present scenario in HINDI language..</h4>
+        <p>
+            <a href="/bloghome" class="btn btn-danger my-2">Blog</a>
+            <a href="/playlist" class="btn btn-success my-2">Video</a>
+            <a href="/donate" class="btn btn-warning my-2">Donate</a>
+            <a href="/contact" class="btn btn-primary my-2">Contact</a>
+        </p>
+    </div>
+    </div>
+       
+      </div>
+{% endblock body %}
+{% comment %} <img src="https://source.unsplash.com/random/900×700/?technology" width="1280" height="900"> {% endcomment %}
+
+
+
+
+  {% block js %}
+
+ 
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.9/typed.min.js" async defer></script>
+<script>
+    window.onload = function () {
+        console.log("loaded")
+        var typed = new Typed('#typed', {
+            strings: ["Welcome in  metaeducator Family "," Leran Coding fundamental", " C / C++ / Python", "Web development", "Data Science", "Machine Learning", "AWS", "GCP", "Cyber Security", "and other technicial concepts of coding universe."],
+            backSpeed: 15,
+            smartBackspace: true,
+            backDelay: 1200,
+            startDelay: 1000,
+            typeSpeed: 25,
+            loop: true,
+        });
+    };
+</script>
+
+ {% endblock js %}

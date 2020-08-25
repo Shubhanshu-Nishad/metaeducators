@@ -57,7 +57,7 @@
   <nav class="navbar navbar-expand-lg navbar" style="padding-top: 2rem; background-color: black;">
     {% comment %} <a class="navbar-brand" href="/"> {% endcomment %}
       {% comment %} {%  load static  %} {% endcomment %}
-      <img class="rounded " alt="META " src="/static/homeimg/shubhanshu.jpg"
+      <img class="rounded " alt="META " src="/static/homeimg/11.jpg"
         style="border-radius: 30.25rem!important;; height:70px ;"></a>
     {% comment %} <a class="navbar-brand" href="/">META</a> {% endcomment %}
     <button class="navbar-toggler bg-danger " type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -74,15 +74,20 @@
           <a class="nav-link text-white" href="/playlist">Video</a>
         </li>
         <li class="nav-item {% block blogactive %} {% endblock blogactive %}">
-          <a class="nav-link text-white" href="/bloghome">Blog</a>
+          <a class="nav-link text-white" href="/ytlist">Blog</a>
         </li>
-        <li class="nav-item {% block aboutactive %} {% endblock aboutactive %}">
+        <li class="nav-item {% block donaractive %} {% endblock donaractive %}">
           <a class="nav-link text-white" href="/donate">Donate</a>
         </li>
-        <li class="nav-item {% block contactactive %} {% endblock contactactive %}">
+         <li class="nav-item {% block W&Cactive %} {% endblock W&Cactive %}">
+          <a class="nav-link text-white" href="/W&C">W&C</a>
+        </li>
+         <li class="nav-item {% block serviceactive %} {% endblock serviceactive %}">
+          <a class="nav-link text-white" href="/service">Services</a>
+        </li>
+             <li class="nav-item {% block contactactive %} {% endblock contactactive %}">
           <a class="nav-link text-white" href="/contact">Contact Me</a>
         </li>
-
       </ul>
       <form method=get class="form-inline my-2 my-lg-0 " action="/blogsearch">
         <input class="form-control mr-sm-2 " type="search" placeholder="Search" aria-expanded="false"
@@ -294,13 +299,14 @@
                 <input type="hidden" name="path" value="/">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger mt-2">SignUp</button>
-            </form>
+            </form> 
           </div>
-          {% comment %} <div class="g-recaptcha" data-sitekey="6LdvcqwUAAAAACmPYNVoiJA7D84xLSQQt5g9p10m"></div>
+          {% comment %} <div class="g-recaptcha" data-sitekey="6Ld6VMIZAAAAABQekvQfBLjbEwcc3ZrJyP7canan"></div>
           <input type="hidden" name="path" value="/">
+            {% csrf_token %}
           <button type="submit" class="btn btn-danger mt-2">SignUp</button>
           </form>
-        </div> {% endcomment %}
+        </div>  {% endcomment %}
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -418,6 +424,7 @@
   {% endblock js %}
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>

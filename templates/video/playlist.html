@@ -6,58 +6,53 @@
 <!-- Additional css for it -->
 {% block css %}
 
-{% comment %} Body start from here  {% endcomment %}
+{% comment %} Body start from here {% endcomment %}
 {% endblock css %}
 
 {% block body %}
-  <div class="jumbotron jumbotron-fluid jumbotron-expand-md text-center " style="
-      background-image: url('/static/video/final.jfif');background-size: cover; ">  
-        <div class="container py-5 mt-5" style="z-index:1;background-color:black; opacity: .8; " >
-          <h1 class="display-4 text-danger p-5 "> <b><i> First step towards Coding</i></b></h1>
-          <button class="btn bg-danger text-white mx-3 my-1">Bulid Logic</button>
-          <button class="btn bg-danger text-white mx-3 my-1">Daily 30 Min </button>
-          <button class="btn bg-danger text-white mx-3 my-1">Work together with friends</button>
-        </div>
-      </div>
+<div class="jumbotron jumbotron-fluid jumbotron-expand-md text-center " style="
+      background-image: url('/static/video/final.jfif');background-size: cover; ">
+  <div class="container py-5 mt-5" style="z-index:1;background-color:black; opacity: .8; ">
+    <h1 class="display-4 text-danger p-5 "> <b><i> First step towards Coding</i></b></h1>
+    <button class="btn bg-danger text-white mx-3 my-1">Bulid Logic</button>
+    <button class="btn bg-danger text-white mx-3 my-1">Daily 30 Min </button>
+    <button class="btn bg-danger text-white mx-3 my-1">Work together with friends</button>
+  </div>
+</div>
 <br>
 <div class="container">
-<h1> <b>Give Me Some Support & Time</b>  </i></h1>
-<hr>
-<h2><i> I try my best to cover all Topics of Coding  as soon as possible...</i></h2>
+  <h1> <b>Give Me Some Support & Time</b> </i></h1>
+  <hr>
+  <h2><i> I try my best to cover all Topics of Coding as soon as possible...</i></h2>
 
-<h4>This can only done by only and only  you not mine</h4>
-<h5> So, Please share all these video with your friends.</h5>
-<hr>
+  <h4>This can only done by only and only you not mine</h4>
+  <h5> So, Please share all these video with your friends.</h5>
+  <hr>
 </div>
 
-
-
-
-
-
-
-
-<div class="container-fluid main-container">
-    <div class="row my-4 mx-4">
-        
-            <div class="col-md-6 col-lg-4 text-center">
-                <img class="rounded-circle" src="/media/videoSeries/Python-logo.jpg" width="140" height="140">
-                <h2>Python Tutorials For Absolute Beginners In Hindi</h2>
-                <p>
-                    In this series, we will learn about Python Tutorials For Absolute Beginners In Hindi
-                </p>
-                <p>
-                    
-                        <a href="python-tutorials-for-absolute-beginners-0"><button class="btn btn-outline-danger">Start Watching »</button></a>
-                    
-                </p>
-            </div>
-        
-            
-        
+<div class="container my-3 mr ">
+</div>
+<div class="container">
+  <div class="row mb-2">
+    {% for Video in allvideos reversed %}
+    <div class="col-md-6">
+      <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+        <div class="card-body d-flex flex-column align-items-start">
+          <!-- <strong class="d-inline-block mb-2 text-success">Article by {{Video.author}}</strong> -->
+          <h5 class="mb-0"> <a class="text-dark" href="/blogread/{{Video.slug}}">{{Video.video_title}} </a></h5>
+          <p class="mb-1 text-muted"><b><i>{{Video.timeStamp}}</i></b></p>
+          <p class="preview">{{Video.video_desc |safe| truncatechars:80}}</p>
+          <a target="_blank" href="{{Video.video_link}}"><b> <i>Start Watching >></i></b> </a>
+          <a href="/playvideo/{{Video.slug}}"><b> <i>View Source Code</i></b> </a>
+        </div>
+        <img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb"
+          alt="Thumbnail [200x200]" src="/media/{{Video.image}}" data-holder-rendered="true"
+          style="width: 200px; height: 250px;">
+      </div>
     </div>
+    {% endfor %}
+  </div>
 </div>
-
 
 
 

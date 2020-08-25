@@ -42,9 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home.apps.HomeConfig',
     'blog.apps.BlogConfig',
+    'youtube.apps.YoutubeConfig',
     'django.contrib.humanize',
 ]
-
+                                                                        
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -71,6 +72,7 @@ TEMPLATES = [
             ],
              'libraries':{
             'extras': 'blog.templatestags.extras',
+            'extra': 'youtube.templatestags.extra',
 
             }
         },

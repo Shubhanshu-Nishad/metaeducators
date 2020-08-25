@@ -1,13 +1,11 @@
 from django.shortcuts import render ,HttpResponse,redirect
-from home.models import Cont,Donar
+from home.models import Cont,Donar,Winner,Customer
 from django.contrib import messages
 from django.contrib.auth.models import User
 from datetime import datetime
 from django.contrib.auth import authenticate, login,logout
-from django.core import mail
 from django.conf import settings
-from django.core.mail import BadHeaderError, EmailMessage, send_mail
-import smtplib
+
 
 # Create your views here.
 
@@ -16,6 +14,17 @@ import smtplib
 def home(request):
     return render(request,'home/home.html')
 
+
+def winner(request):
+    winner = Winner.objects.all()
+    context = {'Winners': winner}
+    return render(request,'home/W&C.html',context)
+
+
+def service(request):
+    customer = Customer.objects.all()
+    context = {'Customers': customer}
+    return render(request,'home/service.html',context)
 
 def donate(request):
     Donars = Donar.objects.all()
@@ -45,15 +54,6 @@ def contact(request):
 
 
 def handlesignup(request):
-
-    # if request.method=='POST':
-        
-        # message= '56952'
-        # try:
-        #     send_mail('Contact Form',message, settings.EMAIL_HOST_USER,['email'], fail_silently=False )
-        # except BadHeaderError:
-        #     return HttpResponse('Invalid header found.')
-
     if request.method=='POST':
         #Get the signup parameters 
         username=request.POST['username']
@@ -80,58 +80,13 @@ def handlesignup(request):
         if password != password2:
             messages.error(request,'Please Enter same password .')
             return render(request,'home/home.html')
-      
-        
-        # email_subject='Activate your account'
-        # email_body='Test body'
-        # # server = smtplib.SMTP('smtp.gmail.com:587')
-        # # server.ehlo()
-        # # server.starttls()
-        # smtpserver = smtplib.SMTP("smtp.gmail.com", 587)
-        # smtpserver.ehlo()
-
-        # smtpserver.starttls()
-        # smtpserver.ehlo()
-        # email = EmailMessage(
-        # email_subject,
-        # email_body,
-        # 'metaeducatorshubu@gmail.com',
-        # ['email'],
-        # )
-        # email.send(fail_silently=False)
-                
-        # sender = "metaeducatorshubu@gmail.com"
-        # receiver = ["email"]
-        # message = "Hello!"
-
-        # try:
-        #     session = smptlib.SMTP('smtp.gmail.com',587)
-        #     session.ehlo()
-        #     session.starttls()
-        #     session.ehlo()
-        #     session.login(sender,'shreyaji')
-        #     session.sendmail(sender,receiver,message)
-        #     session.quit()
-        # except SMTPException:
-        #     print('Error')
-        content='activate your account'
-        print(email,content)
-        send_mail(
-            #subject
-            "testing",
-            #msg
-            content,
-            settings.EMAIL_HOST_USER,
-            #REC LIST
-            [email]
-
-        )
+  
         myuser=User.objects.create_user(username=username, email=email, password=password)
         # myuser = form.save(commit=False)
         myuser.first_name= fname
-        myuser.last_name= lnam
+        myuser.last_name= lname
         myuser.save()
-        messages.success(request,'Your metaeducator account has been successfull created ')
+        messages.success(request,'Your metaeducator account has been successfull created & A Confirmations e-mail has been send to your register email address ,Please verified it ')
         # render redirect('home')
         return render(request,'home/home.html')
 

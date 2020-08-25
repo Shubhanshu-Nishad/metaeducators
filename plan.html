@@ -270,3 +270,79 @@
 </div>
 </div>
 {% endblock body %}
+
+
+
+
+def playvideo(request,slug):
+    listlug = Playlist.objects.filter(slug=slug).first()
+    print(listlug)
+    allvideos = Video.objects.all()
+    titles = Playlist.objects.values(playlist_title=listlug)
+    print(titles)
+    context={'allvideos':allvideos,'listslug':listlug}
+    return render(request,'video/playvideo.html',context)
+
+
+
+
+        
+        
+        # email_subject='Activate your account'
+        # email_body='Test body'
+        # # server = smtplib.SMTP('smtp.gmail.com:587')
+        # # server.ehlo()
+        # # server.starttls()
+        # smtpserver = smtplib.SMTP("smtp.gmail.com", 587)
+        # smtpserver.ehlo()
+
+        # smtpserver.starttls()
+        # smtpserver.ehlo()
+        # email = EmailMessage(
+        # email_subject,
+        # email_body,
+        # 'metaeducatorshubu@gmail.com',
+        # ['email'],
+        # )
+        # email.send(fail_silently=False)
+                
+        # sender = "metaeducatorshubu@gmail.com"
+        # receiver = ["email"]
+        # message = "Hello!"
+
+        # try:
+        #     session = smptlib.SMTP('smtp.gmail.com',587)
+        #     session.ehlo()
+        #     session.starttls()
+        #     session.ehlo()
+        #     session.login(sender,'shreyaji')
+        #     session.sendmail(sender,receiver,message)
+        #     session.quit()
+        # except SMTPException:
+        #     print('Error')
+        # content='activate your account'
+        # print(email,content)
+        # send_mail(
+        #     #subject
+        #     "testing",
+        #     #msg
+        #     content,
+        #     settings.EMAIL_HOST_USER,
+        #     #REC LIST
+        #     [email]
+
+        # )
+
+from django.core.mail import BadHeaderError, EmailMessage, send_mail
+
+from django.core import mai
+
+
+
+    # if request.method=='POST':
+        
+        # message= '56952'
+        # try:
+        #     send_mail('Contact Form',message, settings.EMAIL_HOST_USER,['email'], fail_silently=False )
+        # except BadHeaderError:
+        #     return HttpResponse('Invalid header found.')

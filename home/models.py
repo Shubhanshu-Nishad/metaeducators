@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.timezone import now
 # Create your models here.
 
 class Cont(models.Model):
@@ -33,3 +34,25 @@ class Donar(models.Model):
     def __str__(self):
         return  self.donar_name +  " donate "  +  self.donar_amount
     
+class Winner(models.Model):
+    winner_id = models.AutoField(primary_key=True)
+    winner_name = models.CharField(max_length=100,default="")
+    winner_desc = models.TextField()
+    image = models.ImageField(upload_to="static/winner", default="")
+    timeStamp=models.DateTimeField(blank=True)
+     
+    
+    def __str__(self):
+        return  self.winner_name
+
+class Customer(models.Model):
+    customer_id = models.AutoField(primary_key=True)
+    customer_name = models.CharField(max_length=100)
+    customer_desc = models.TextField()
+    customer_urls = models.CharField(max_length=100,default="")
+    image = models.ImageField(upload_to="static/customer", default="")
+    timeStamp=models.DateTimeField(blank=True)
+     
+    
+    def __str__(self):
+        return  self.customer_name

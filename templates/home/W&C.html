@@ -1,0 +1,62 @@
+{%  extends 'base.html' %}
+
+{% block title %} META About {% endblock title %}
+{% block W&Cactive %} active {% endblock W&Cactive %}
+
+{% block css %}
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/album.css" rel="stylesheet">
+{% endblock css %}
+
+
+{% block body %}
+   <main role="main">
+
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading"><b><i>WINNER & CERTIFICATE</i></b></h1>
+          <p class="lead text-muted"><b>एक हारा हुआ ईन्सान, हारने के बाद भी स्माईल करे तो,
+जितने वाला अपनी जीत की खुशी खो देता है।</b></p>
+          <p>
+          <p class="lead text-muted"> <b>
+A loser, if he smiles even after losing,
+The one who loses the joy of his victory.</b></p>
+          <p>
+            <a href="#" class="btn btn-primary my-2">Be Happy</a>
+            <a href="#" class="btn btn-secondary my-2">Be Kind</a>
+          </p>
+        </div>
+      </section>
+
+      <div class="album py-5 bg-light">
+        <div class="container">
+        <div class="row">
+          {%for Winner in Winners %}
+          
+            <div class="col-md-4">
+              <div class="card mb-4 shadow-sm">
+                <img class="card-img-top" src="/media/{{Winner.image}}" alt="Winner" width="400" height="400">
+                <div class="card-body">
+                  <p class="card-text"> {{Winner.winner_name| safe}}</p>
+                  <p class="card-text"> {{Winner.winner_desc| safe}}</p>
+                  <small class="text-muted"> {{Winner.timeStamp}}</small>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+
+{% endblock  %}
+
+{% block js %}
+
+
+{% endblock js %}
