@@ -1,5 +1,5 @@
 from django.shortcuts import render ,HttpResponse,redirect
-from home.models import Cont,Donar,Winner,Customer
+from home.models import Cont,Donar,Winner,Customer,Notice,Announcement
 from django.contrib import messages
 from django.contrib.auth.models import User
 from datetime import datetime
@@ -12,7 +12,10 @@ from django.conf import settings
 #HTML PAGES..............................................................................................................................
 
 def home(request):
-    return render(request,'home/home.html')
+    notice=Notice.objects.all()
+    announcement = Announcement.objects.all()
+    context={'notices':notice,'announcements':announcement}
+    return render(request,'home/home.html',context)
 
 
 def winner(request):
@@ -35,18 +38,19 @@ def donate(request):
 
 
 def contact(request):
-    messages.success(request,"Can I help you Sir ji ? ")
+    messages.success(request,"Can I help you Sir ? ")
     if(request.method=='POST'):
         name=request.POST['name']
+        edu_qul = request.POST['edu_qul']
         email=request.POST['email']
         phone=request.POST['phone']
         content=request.POST['content']       
         if len(name)<2 or len(email)<4 or len(phone)<10 or len(content)<5:
             messages.error(request, 'Sorry ,please fill the form in a right manner')
         else:
-            contact=Cont(name=name,email=email,phone=phone,desc=content)
+            contact=Cont(name=name,email=email,phone=phone,desc=content,edu_qul=edu_qul)
             contact.save()
-            messages.success(request, ' metaeducator : Thanks a lot for connecting with us.')
+            messages.success(request, ' metaeducator : Thanks a lot for connecting with us . Very soon I will contact with you...')
 
     return render(request,'home/contact.html')
 

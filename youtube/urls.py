@@ -8,5 +8,6 @@ urlpatterns = [
     path('playvideo/postcomment/',views.postcomment,name='postcomment'),
     path('playlist/', views.playvideo, name='playvideo'), 
     path('playvideo/<str:slug>', views.Watchvideo, name='Watchvideo'), 
+    path('videosearch/', views.videosearch, name='videosearch'), 
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

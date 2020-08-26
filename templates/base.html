@@ -74,7 +74,7 @@
           <a class="nav-link text-white" href="/playlist">Video</a>
         </li>
         <li class="nav-item {% block blogactive %} {% endblock blogactive %}">
-          <a class="nav-link text-white" href="/ytlist">Blog</a>
+          <a class="nav-link text-white" href="/bloghome">Blog</a>
         </li>
         <li class="nav-item {% block donaractive %} {% endblock donaractive %}">
           <a class="nav-link text-white" href="/donate">Donate</a>
@@ -89,7 +89,7 @@
           <a class="nav-link text-white" href="/contact">Contact Me</a>
         </li>
       </ul>
-      <form method=get class="form-inline my-2 my-lg-0 " action="/blogsearch">
+      <form method=get class="form-inline my-2 my-lg-0 " action="/videosearch">
         <input class="form-control mr-sm-2 " type="search" placeholder="Search" aria-expanded="false"
           aria-label="Search" name="query" id="query">
         <button class="btn btn-danger my-2 my-sm-0 ml-2 mx-3">Search</button>
@@ -360,16 +360,17 @@
                 <a class="text-white" href="/">Home</a>
               </li>
               <li>
-                <a class="text-white" href="/about/">About</a>
+                <a class="text-white" href="/playlist/">video</a>
               </li>
-              <li>
-                <a class="text-white" href="/contact/">Contact us</a>
-              </li>
+              
               <li>
                 <a class="text-white" href="/bloghome/">Blog</a>
               </li>
               <li>
                 <a class="text-white" href="/donate/">Donate </a>
+              </li>
+              <li>
+                <a class="text-white" href="/contact/">Contact us</a>
               </li>
               <!-- <li>
                       <a href="aboutus.php">Our team</a>

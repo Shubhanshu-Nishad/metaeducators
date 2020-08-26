@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Cont,Donar,Winner,Customer
+from .models import Cont,Donar,Winner,Customer,Notice,Announcement
 
 # Register your models here.
 @admin.register(Winner)
@@ -14,4 +14,4 @@ class Winneradmin(admin.ModelAdmin):
         
 
 
-admin.site.register((Cont,Donar,Customer))
+admin.site.register((Cont,Donar,Customer,Notice,Announcement))

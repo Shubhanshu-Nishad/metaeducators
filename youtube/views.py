@@ -13,7 +13,6 @@ def playvideo(request ):
 def Watchvideo(request,slug):
     # readpost=Post.objects.filter(slug=slug).first()
     watchvideo = Video.objects.filter(slug=slug).first()
-    print(watchvideo)
     comments = videocomment.objects.filter(video=watchvideo , parant=None)
     # Managing replies.................................................................................................................
     replies = videocomment.objects.filter(video=watchvideo).exclude(parant=None)
@@ -45,3 +44,20 @@ def postcomment(request ):
 
     return redirect(f"/playvideo/{video.slug}")
 
+
+
+def videosearch(request ):
+    
+    query=request.GET['query']
+    if len(query)>78:
+        allvideos=Video.objects.none()
+    else:
+        allvideoscontent=Video.objects.filter(video_desc__icontains=query)
+        allvideostitle=Video.objects.filter(video_title__icontains=query) 
+        allvideosplaylist=Video.objects.filter(playlist_title__icontains=query) 
+        allplaylist=allvideostitle.union(allvideosplaylist)
+        allvideos=allplaylist.union(allvideoscontent)
+    if allvideos.count() == 0:
+        messages.warning(request,'No search result found. Please refine  your query')
+    params={'allvideos':allvideos,'query':query}
+    return render(request,'video/videosearch.html',params)

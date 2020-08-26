@@ -9,7 +9,7 @@ urlpatterns = [
     # path('', views.home, name='home'),
     path('blogread/postcomment/',views.postcomment,name='postcomment'),
     path('bloghome/',views.bloghome,name='bloghome'), 
-    path('blogsearch/', views.blogsearch, name='blogsearch'), 
+    # path('blogsearch/', views.blogsearch, name='blogsearch'), 
     path('blogread/<str:slug>', views.blogread, name='blogread'), 
     # API to Post Comment 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

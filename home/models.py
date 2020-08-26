@@ -5,6 +5,7 @@ from django.utils.timezone import now
 class Cont(models.Model):
     sno = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100,)
+    edu_qul = models.CharField(max_length=100,)
     email = models.CharField(max_length=90)
     phone = models.CharField(max_length=13)
     desc = models.TextField()
@@ -56,3 +57,21 @@ class Customer(models.Model):
     
     def __str__(self):
         return  self.customer_name
+
+
+class Notice(models.Model):
+    notice=models.TextField()
+    
+    def __str__(self):
+        return  self.notice
+
+
+class Announcement(models.Model):
+    announcement_title =  models.CharField(max_length=100)
+    announcement_desc = models.TextField()
+    link =  models.CharField(max_length=400)
+    about_link = models.CharField(max_length=400)
+    image = models.ImageField(upload_to="static/annoucement", default="")
+
+    def __str__(self):
+        return  self.announcement_title

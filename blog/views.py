@@ -33,19 +33,19 @@ def blogread(request,slug):
 
 # Managing MOdels........................................................................................................................
 
-def blogsearch(request ):
+# def blogsearch(request ):
     
-    query=request.GET['query']
-    if len(query)>78:
-        allposts=Post.objects.none()
-    else:
-        allpostscontent=Post.objects.filter(content__icontains=query)
-        allpoststitle=Post.objects.filter(title__icontains=query) 
-        allposts=allpoststitle.union(allpostscontent)
-    if allposts.count() == 0:
-        messages.warning(request,'No search result found. Please refine  your query')
-    params={'allposts':allposts,'query':query}
-    return render(request,'blog/blogsearch.html',params)
+#     query=request.GET['query']
+#     if len(query)>78:
+#         allposts=Post.objects.none()
+#     else:
+#         allpostscontent=Post.objects.filter(content__icontains=query)
+#         allpoststitle=Post.objects.filter(title__icontains=query) 
+#         allposts=allpoststitle.union(allpostscontent)
+#     if allposts.count() == 0:
+#         messages.warning(request,'No search result found. Please refine  your query')
+#     params={'allposts':allposts,'query':query}
+#     return render(request,'blog/blogsearch.html',params)
 
 
 def postcomment(request ):
