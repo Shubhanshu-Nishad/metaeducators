@@ -12,22 +12,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="/static/css/playvideo.css" rel="stylesheet">
   <title> {% block title %} {% endblock title %} </title>
-  {% comment %}
-  <style>
-    .commentReplies {
-      background-color: rgb(231, 231, 233);
-      margin: 18px 3px;
-    }
-
-    .commentReplies img {
-      margin: 8px 14px;
-    }
-
-
-    .commentContainer {
-      overflow-x: auto;
-    }
-  </style> {% endcomment %}
 
       <style>
         @media screen and (max-width: 600px) {
@@ -84,6 +68,9 @@
         </li>
          <li class="nav-item {% block serviceactive %} {% endblock serviceactive %}">
           <a class="nav-link text-white" href="/service">Services</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white" target="_blank"  href="https://www.youtube.com/channel/UClqeB8qhY7k0Yaw6KIQI3dg/featured">YouTube</a>
         </li>
              <li class="nav-item {% block contactactive %} {% endblock contactactive %}">
           <a class="nav-link text-white" href="/contact">Contact Me</a>
@@ -155,86 +142,6 @@
       </div>
     </div>
   </div>
-
-  <!-- signup Modal -->
-  {% comment %} <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="signupModal">SignUp for an account</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-
-        <div class="modal-body">
-          <form name="contact" method="post" action="/signup/"><input type="hidden" name="csrfmiddlewaretoken"
-              value="LEtKjyzLXOP7iVgHyp7Zh8kfUdvC2pfl4SBuqo1kjBrBnMbbZcioaHqmRqpmZvcl">
-
-            <div class="form-group">
-              <label for="text">Username</label>
-              <input type="text" class="form-control" id="useruname" placeholder="metaeducator" name="username" required
-                pattern="[A-Za-z][0-9]{>15}"
-                title="Your username must be less than 15 characters & having only alphabet and number">
-              <small id="unamehelp" class="form-text text-muted px-1">
-                Your unique username must be less than 15 characters (only lowecase letters, numbers &amp; underscores
-                allowed) with no spaces
-              </small>
-            </div>
-            <div class="form-group">
-              <label for="fname">First Name</label>
-              <input type="text" class="form-control" id="fname" placeholder="Shubhanshu" Required name="fname">
-            </div>
-            <div class="form-group">
-              <label for="lname">Last Name</label>
-              <input type="text" class="form-control" id="lname" placeholder="Nishad" Required name="lname">
-            </div>
-
-            <div class="form-group">
-              <label for="email">Enter your Email</label>
-              <input type="email" class="form-control" id="email" placeholder="metaeducator@gmail.com" Required
-                name="email">
-              <small id="otpMessage" class="form-text"></small>
-            </div>
-            {% comment %} <div class="form-group">
-              <label for="email">Your Email</label>
-              <div class="mx-0">
-                <div class="col-md-8 px-0">
-                  <input type="email" class="form-control" id="email" placeholder="Enter your Email" name="email">
-                  <small id="otpMessage" class="form-text"></small>
-                </div> {% endcomment %}
-                {% comment %} <div class="col-md-4 my-1 px-0">
-                  <button class="btn btn-danger btn-sm mt-2" id="otpbtn">Send OTP</button>
-                </div>
-              </div>
-
-            </div>
-            <div class="form-group">
-              <label for="otp">Enter OTP</label>
-              <input type="text" class="form-control" id="otp" placeholder="Enter OTP" name="otp">
-            </div>
-
-            <div class="form-group">
-              <label for="password"> Choose your password</label>
-              <input type="password" class="form-control" id="password" required name="password"
-                placeholder="Choose a password">
-            </div>
-            <div class="form-group">
-              <label for="password">Re Enter your password</label>
-              <input type="password" class="form-control" id="password2" required name="password2"
-                placeholder="Retype a password">
-            </div>
-            <input type="hidden" name="path" value="/">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-danger mt-2">SignUp</button>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div> {% endcomment %}
 
     <!-- SignUp Modal -->
     <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal"
@@ -370,14 +277,14 @@
                 <a class="text-white" href="/donate/">Donate </a>
               </li>
               <li>
+                <a class="text-white" href="/W&C/">W&C </a>
+              </li>
+              <li>
+                <a class="text-white" href="/service/">Services </a>
+              </li>
+              <li>
                 <a class="text-white" href="/contact/">Contact us</a>
               </li>
-              <!-- <li>
-                      <a href="aboutus.php">Our team</a>
-                    </li> -->
-              <!-- <li>
-                      <a href="terms.html">Terms &amp; conditions</a>
-                    </li> -->
             </ul>
           </div>
           <div class="col-lg-2 col-sm-4 " style="width: 50%;">
@@ -386,6 +293,11 @@
               class="fa fa-facebook p-2"></a>
             <a class="text-white" href="https://www.facebook.com/https:/Metaeducator-109055404234838" target="_blank"
               class="d-inline">Facebook</a>
+            <br>
+             <a class="text-white" href="https://www.youtube.com/channel/UClqeB8qhY7k0Yaw6KIQI3dg/featured" target="_blank"
+              class="fa fa-youtube p-2"></a>
+            <a class="text-white" href="https://www.youtube.com/channel/UClqeB8qhY7k0Yaw6KIQI3dg/featured" target="_blank"
+              class="d-inline">YouTube</a>
             <br>
             <a class="text-white" href="https://www.linkedin.com/in/shubhanshu-nishad-a5511b1b2" target="_blank"
               class="fa fa-linkedin p-2"></a>
