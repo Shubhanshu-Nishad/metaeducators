@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+
+# import pymysql
+# pymysql.version_info = (1, 3, 13, "final", 0)
+# pymysql.install_as_MySQLdb()
+
 from django.contrib.messages import constants as messages
 from django.core.mail import send_mail                                                                                                                                                                      
 
@@ -85,8 +90,15 @@ WSGI_APPLICATION = 'metaeducator.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        #'ENGINE': 'django.db.backends.sqlite3',
+        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'meta',
+        'USER': 'root',
+        'PORT': '3306',
+        'PASSWORD': '',
+        'HOST': 'localhost'
+
     }
 }
 
