@@ -18,8 +18,9 @@ def bloghome(request ):
 def blogread(request,slug):
     # readpost=Post.objects.filter(slug=slug).first()
     readpost=Post.objects.filter(slug=slug).first()
+    print(readpost)
     comments=blogcomment.objects.filter(post=readpost , parant=None)
-    # Managing replies...................................................................................................................
+    # Managing replies..................................................................................................................
     replies=blogcomment.objects.filter(post=readpost).exclude(parant=None)
     replyDict = { }
     for reply in replies:
@@ -32,19 +33,19 @@ def blogread(request,slug):
 
 # Managing MOdels........................................................................................................................
 
-def blogsearch(request ):
+# def blogsearch(request ):
     
-    query=request.GET['query']
-    if len(query)>78:
-        allposts=Post.objects.none()
-    else:
-        allpostscontent=Post.objects.filter(content__icontains=query)
-        allpoststitle=Post.objects.filter(title__icontains=query) 
-        allposts=allpoststitle.union(allpostscontent)
-    if allposts.count() == 0:
-        messages.warning(request,'No search result found. Please refine  your query')
-    params={'allposts':allposts,'query':query}
-    return render(request,'blog/blogsearch.html',params)
+#     query=request.GET['query']
+#     if len(query)>78:
+#         allposts=Post.objects.none()
+#     else:
+#         allpostscontent=Post.objects.filter(content__icontains=query)
+#         allpoststitle=Post.objects.filter(title__icontains=query) 
+#         allposts=allpoststitle.union(allpostscontent)
+#     if allposts.count() == 0:
+#         messages.warning(request,'No search result found. Please refine  your query')
+#     params={'allposts':allposts,'query':query}
+#     return render(request,'blog/blogsearch.html',params)
 
 
 def postcomment(request ):

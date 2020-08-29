@@ -31,9 +31,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '1$%=i(h0b8x_aau1kz^v_*u&22c6qeawwv#-z)d3)=)9a(y!-g'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 # APPEND_SLASH=False
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -47,9 +47,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home.apps.HomeConfig',
     'blog.apps.BlogConfig',
+    'youtube.apps.YoutubeConfig',
     'django.contrib.humanize',
 ]
-
+                                                                        
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -76,6 +77,7 @@ TEMPLATES = [
             ],
              'libraries':{
             'extras': 'blog.templatestags.extras',
+            'extra': 'youtube.templatestags.extra',
 
             }
         },

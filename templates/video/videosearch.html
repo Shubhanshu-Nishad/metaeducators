@@ -1,0 +1,59 @@
+{%  extends 'base.html' %}
+
+{% block title %} Videos Search Results {% endblock title %}
+{% load static %}
+
+{% block body %}
+
+<div class="container my-3 ">
+     <h1>META blog Search Results:</h1>
+    {% if allvideos|length < 1 %}
+     <h3> No Search Results founds:</h3>
+
+     Suggestion:
+     <ul>
+     <li>Try different keys.</li>
+     <li>Trt more general keys.</li>
+     <li>Try fewer keywords.</li>
+     </ul>
+    {% endif %}
+    </div>
+
+
+
+<div class="container my-3 mr ">
+</div>
+<div class="container">
+  <div class="row mb-2">
+    {% for allvideos in allvideos %}
+    <div class="col-md-6">
+      <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+        <div class="card-body d-flex flex-column align-items-start">
+          <!-- <strong class="d-inline-block mb-2 text-success">Article by {{Video.author}}</strong> -->
+          <h5 class="mb-0">{{Video.playlist_title}} </h5>
+          <hr>
+          <h5 class="mb-0"> <a class="text-dark" href="/blogread/{{Video.slug}}">{{allvideos.video_title}} </a></h5>
+          <p class="mb-1 text-muted"><b><i>{{allvideos.timeStamp}}</i></b></p>
+          <p class="preview">{{allvideos.video_desc |safe| truncatechars:80}}</p>
+          <a target="_blank" href="{{allvideos.video_link}}"><b> <i>Start Watching >></i></b> </a>
+          <a href="/playvideo/{{allvideos.slug}}"><b> <i>View Source Code</i></b> </a>
+        </div>
+        <img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb"
+          alt="Thumbnail [200x200]" src="{{allvideos.img_link}}" data-holder-rendered="true"
+          style="width: 200px; height: 250px;">
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+{% endblock body %}

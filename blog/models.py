@@ -14,31 +14,10 @@ class Post(models.Model):
     author = models.CharField(max_length=50)
     slug=models.CharField(max_length=155,unique=True)
     timeStamp=models.DateTimeField(blank=True)
-    image = models.ImageField(upload_to="static/donars", default="")
-
-
-    # def save(self, *args, **kwargs):
-    #     self.slug = slugify(title)
-    #     super(Post, self).save(*args, **kwargs)    
-
+    img_link=  models.CharField(max_length=5000)
 
     def __str__(self):
         return self.title +' by '+ self.author
-
-
-    def _get_unique_slug(self):
-        slug = slugify(self.title)
-        unique_slug = slug
-        num = 1
-        while Post.objects.filter(slug=unique_slug).exists():
-            unique_slug = '{}-{}'.format(slug, num)
-            num += 1
-        return unique_slug
- 
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = self._get_unique_slug()
-        super().save(*args, **kwargs)
 
 # Model for Comment and reply ...........................................................................................................
 

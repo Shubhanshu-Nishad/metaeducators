@@ -1,4 +1,95 @@
 {%  extends 'base.html' %}
 
-{% block title %} metaeducator Home {% endblock title %}
+{% block title %}Free Programming Videos, Courses & More In Hindi - metaeducator {% endblock title %}
 {% block homeactive %} active {% endblock homeactive %}
+{% load static %}
+
+
+{% block body %}
+{% for notice in notices %}
+<div class="number">
+    <div class="col-md-12" style="background:red; color:white;">
+        <i>NOTICE</i>
+        <marquee hspace="20" style="font-size:25px"> <i> {{notice.notice}}
+             </i> </marquee>
+    </div>
+</div>
+{% endfor %}
+
+<div class="jumbotron jumbotron-fluid jumbotron-expand-md text-center " height="900">
+    {% comment %} <h1 class="display-4 text-danger p-5 "> <b><i> First step towards Coding</i></b></h1>
+    <button class="btn bg-danger text-white mx-3 my-1">Bulid Logic</button>
+    <button class="btn bg-danger text-white mx-3 my-1">Daily 30 Min </button>
+    <button class="btn bg-danger text-white mx-3 my-1">Work together with friends</button> {% endcomment %}
+    <div class="container">
+        <div class="container py-5 mt-5" style="z-index:1;background-color:black; opacity: .8; ">
+            <img src="/static/homeimg/11.jpg" alt="logo" width="120" style="border-radius: 50%;">
+            <h1 class="jumbotron-heading"><i><span style="color:red;" id="typed"></span></i></h1>
+            <div style="color:white;" >
+            <h5 >I heartily like to educate the people with all aspects of coding to compete with
+                the present scenario in HINDI language..</h5>
+                <p>1. Quiz -  Winner Photo would be uploaded on this website(W&C).</p>
+                <p>2.Hand written Notes</p>
+                <p>3.Source Code </p>
+                
+            <p>
+                <a href="/bloghome" class="btn btn-danger my-2">Blog</a>
+                <a href="/playlist" class="btn btn-success my-2">Video</a>
+                <a href="/donate" class="btn btn-warning my-2">Donate</a>
+                <a href="/contact" class="btn btn-primary my-2">Contact</a>
+            </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+<div class="container">
+    <div class="row">
+    {% for announcement in announcements %}
+        <div class="card mx-auto my-2 p-2 align-items-center" style="width: 18rem;">
+            <img src="{{announcement.img_link}}" class="padded card-img-top"  width="400" height="400" >
+            <div class="card-body">
+                <h5 class="card-title text-center">{{announcement.announcement_title}}</h5>
+                <p class="card-text text-center">{{announcement.announcement_desc}}</p>
+                <a href="/{{announcement.link}}" target="_blank" class="btn btn-primary d-block">{{announcement.about_link}}</a>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+
+
+
+{% endblock body %}
+
+{% block js %}
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.9/typed.min.js" async defer></script>
+<script>
+    window.onload = function () {
+        console.log("loaded")
+        var typed = new Typed('#typed', {
+            strings: ["Welcome in  metaeducator Family ", " Leran Coding fundamental", " C / C++ / Python", "Web development", "Data Science","Artificial Intelligence", "Machine Learning", "Amazon Web Services", "Google Cloud Platform", "Cyber Security", "and other technical concepts of coding universe."],
+            backSpeed: 15,
+            smartBackspace: true,
+            backDelay: 1200,
+            startDelay: 1000,
+            typeSpeed: 25,
+            loop: true,
+        });
+    };
+</script>
+
+{% endblock js %}
