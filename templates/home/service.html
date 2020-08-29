@@ -1,8 +1,8 @@
 {%  extends 'base.html' %}
 
-{% block title %} META About {% endblock title %}
+{% block title %} META Services {% endblock title %}
 {% block donateactive %} active {% endblock donateactive %}
-
+{% load static %}
 {% block css %}
 
 
@@ -117,9 +117,6 @@
           <hr>
           <h4>Definition of 'E-learning'</h4>
           <hr>
-          <img class="rounded " alt="Coding students " style="height:auto; max-width:100%; border:none;
-        display:block;" src="/static/homeimg/code.cms"></a>
-          <br>
           <p>
          <b>
 Definition:</b>  A learning system based on formalised teaching but with the help of electronic resources is known as E-learning. While teaching can be based in or out of the classrooms, the use of computers and the Internet forms the major component of E-learning. E-learning can also be termed as a network enabled transfer of skills and knowledge, and the delivery of education is made to a large number of recipients at the same or different times. Earlier, it was not accepted wholeheartedly as it was assumed that this system lacked the human element required in learning.</p>
@@ -152,6 +149,8 @@ Definition:</b>  A learning system based on formalised teaching but with the hel
         <div class="p-4">
           <h4 class="font-italic">Follow Me </h4>
           <ol class="list-unstyled">
+          <li><a href="https://www.youtube.com/channel/UClqeB8qhY7k0Yaw6KIQI3dg/featured" target="_blank"
+              class="d-inline">YouTube</a></li>
             <li><a href="https://www.facebook.com/https:/Metaeducator-109055404234838" target="_blank"
                 class="d-inline">Facebook</a></li>
             <li><a href="https://www.linkedin.com/in/shubhanshu-nishad-a5511b1b2" target="_blank"
@@ -160,7 +159,6 @@ Definition:</b>  A learning system based on formalised teaching but with the hel
             <li><a href="https://www.twitter.com/metaeducator?s=09" target="_blank" class="d-inline">Twitter</a></li>
             <li><a href="https://t.me/metaeducator" target="_blank" class="d-inline">Telegram</a></li>
             <li><a href="https://github.com/Shubhanshu-Nishad" target="_blank" class="d-inline">GitHub</a></li>
-            <li><a href="https://github.com/Shubhanshu-Nishad" target="_blank ">GitHub</a></li>
           </ol>
         </div>
       </aside><!-- /.blog-sidebar -->
@@ -181,7 +179,7 @@ Definition:</b>  A learning system based on formalised teaching but with the hel
       {%for Customer in Customers %}
       <div class="col-lg-4 mt-2">
         <img class="rounded-circle"
-          src="/media/{{Customer.image}}"
+          src="{{Customer.img_link}}"
           alt="Generic placeholder image" width="140" height="140">
         <h2>{{Customer.customer_name| safe}}</h2>
         <p>{{Customer.customer_desc| safe}}.</p>

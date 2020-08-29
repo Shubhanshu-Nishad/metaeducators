@@ -1,8 +1,8 @@
 {%  extends 'base.html' %}
 
-{% block title %} META blog {% endblock title %}
+{% block title %} META Source Code {% endblock title %}
 {% block blogactive %} active {% endblock blogactive %}
-
+{% load static %}
 <!-- Additional css for it -->
 {% block css %}
 
@@ -49,7 +49,7 @@
           <a href="/playvideo/{{Video.slug}}"><b> <i>View Source Code</i></b> </a>
         </div>
         <img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb"
-          alt="Thumbnail [200x200]" src="/media/{{Video.image}}" data-holder-rendered="true"
+          alt="Thumbnail [200x200]" src="{{Video.img_link}}" data-holder-rendered="true"
           style="width: 200px; height: 250px;">
       </div>
     </div>

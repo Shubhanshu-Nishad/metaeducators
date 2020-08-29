@@ -5,7 +5,8 @@ from django.contrib.auth.models import User
 from datetime import datetime
 from django.contrib.auth import authenticate, login,logout
 from django.conf import settings
-
+import requests
+import json
 
 # Create your views here.
 
@@ -84,7 +85,8 @@ def handlesignup(request):
         if password != password2:
             messages.error(request,'Please Enter same password .')
             return render(request,'home/home.html')
-  
+
+        
         myuser=User.objects.create_user(username=username, email=email, password=password)
         # myuser = form.save(commit=False)
         myuser.first_name= fname

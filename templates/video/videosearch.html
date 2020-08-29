@@ -1,7 +1,7 @@
 {%  extends 'base.html' %}
 
 {% block title %} Videos Search Results {% endblock title %}
-
+{% load static %}
 
 {% block body %}
 
@@ -39,7 +39,7 @@
           <a href="/playvideo/{{allvideos.slug}}"><b> <i>View Source Code</i></b> </a>
         </div>
         <img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb"
-          alt="Thumbnail [200x200]" src="/media/{{allvideos.image}}" data-holder-rendered="true"
+          alt="Thumbnail [200x200]" src="{{allvideos.img_link}}" data-holder-rendered="true"
           style="width: 200px; height: 250px;">
       </div>
     </div>
