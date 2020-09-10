@@ -18,7 +18,6 @@ def bloghome(request ):
 def blogread(request,slug):
     # readpost=Post.objects.filter(slug=slug).first()
     readpost=Post.objects.filter(slug=slug).first()
-    print(readpost)
     comments=blogcomment.objects.filter(post=readpost , parant=None)
     # Managing replies..................................................................................................................
     replies=blogcomment.objects.filter(post=readpost).exclude(parant=None)

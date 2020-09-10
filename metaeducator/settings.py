@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+
+# import pymysql
+# pymysql.version_info = (1, 3, 13, "final", 0)
+# pymysql.install_as_MySQLdb()
+
 from django.contrib.messages import constants as messages
 from django.core.mail import send_mail                                                                                                                                                                      
 
@@ -26,9 +31,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '1$%=i(h0b8x_aau1kz^v_*u&22c6qeawwv#-z)d3)=)9a(y!-g'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 # APPEND_SLASH=False
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -85,12 +90,14 @@ WSGI_APPLICATION = 'metaeducator.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
 
 
 # Password validation

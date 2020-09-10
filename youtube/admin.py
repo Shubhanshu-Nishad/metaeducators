@@ -1,5 +1,5 @@
 from django.contrib import admin
-from youtube.models import Video , videocomment
+from youtube.models import Video , videocomment, Ytlist
 
 # Register your models here.
 
@@ -14,4 +14,4 @@ class Postadmin(admin.ModelAdmin):
         js= ("js/tinyvideo.js",)
         
 
-admin.site.register(videocomment)
+admin.site.register((videocomment,Ytlist))

@@ -1,18 +1,21 @@
 from django.shortcuts import render,HttpResponse,redirect
 from django.contrib import messages
-from youtube.models import Video, videocomment
+from youtube.models import Video, videocomment,Ytlist
 from youtube.templatestags import extra
 # Create your views here.
 
 def playvideo(request ):
-    allvideos = Video.objects.all()
-    context={'allvideos':allvideos}
+    allytlist = Ytlist.objects.all()
+    context={'allytlist':allytlist}
     return render(request,'video/playlist.html',context)
 
 
 def Watchvideo(request,slug):
     # readpost=Post.objects.filter(slug=slug).first()
     watchvideo = Video.objects.filter(slug=slug).first()
+    allwatchvideo = Video.objects.all()
+    # context={'allytlist':allytlist}
+    print(allwatchvideo)
     comments = videocomment.objects.filter(video=watchvideo , parant=None)
     # Managing replies.................................................................................................................
     replies = videocomment.objects.filter(video=watchvideo).exclude(parant=None)
@@ -22,7 +25,7 @@ def Watchvideo(request,slug):
             replyDict[reply.parant.sno] = [reply]
         else:
             replyDict[reply.parant.sno].append(reply) 
-    context={'watchvideo':watchvideo,'comments':comments,'user':request.user, 'replyDict':replyDict}
+    context={'allwatchvideo':allwatchvideo,'watchvideo':watchvideo,'comments':comments,'user':request.user, 'replyDict':replyDict}
     return render(request,'video/playvideo.html',context)
 
 def postcomment(request ):

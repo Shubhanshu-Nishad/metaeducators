@@ -12,11 +12,24 @@ class Video(models.Model):
     playlist_title = models.CharField(max_length=200, default="")
     slug=models.CharField(max_length=250,unique=True,default="")
     video_link=models.CharField(max_length=250,unique=True,default="")
-    img_link=  models.CharField(max_length=5000)
+    # img_link=  models.CharField(max_length=5000)
     timestamp=models.DateTimeField(blank=True)
 
     def __str__(self):
         return self.video_title + ' of  ' + self.playlist_title
+
+
+
+
+class Ytlist(models.Model):
+    sno = models.AutoField(primary_key=True)
+    ytlist_desc = models.TextField()
+    ytlist_title = models.CharField(max_length=200, default="")
+    slug=models.CharField(max_length=250,unique=True,default="")
+    img_link=  models.CharField(max_length=5000)
+
+    def __str__(self):
+        return self.ytlist_title 
 
 
 
