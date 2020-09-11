@@ -2,6 +2,8 @@ from django.shortcuts import render,HttpResponse,redirect
 from django.contrib import messages
 from youtube.models import Video, videocomment,Ytlist
 from youtube.templatestags import extra
+from math import ceil
+
 # Create your views here.
 
 def playvideo(request ):
@@ -13,9 +15,22 @@ def playvideo(request ):
 def Watchvideo(request,slug):
     # readpost=Post.objects.filter(slug=slug).first()
     watchvideo = Video.objects.filter(slug=slug).first()
+<<<<<<< HEAD
     allwatchvideo = Video.objects.all()
     # context={'allytlist':allytlist}
     print(allwatchvideo)
+=======
+    ytli= watchvideo.playlist_title
+    watchvid = Video.objects.all()
+    # print(watchvid)
+    allwatchvideo=[]
+    catprods= watchvid.values('playlist_title', 'sno')
+    cats= {item["playlist_title"] for item in catprods}
+    for cat in cats:
+        if cat==ytli:
+            prod=watchvid.filter(playlist_title=cat)
+            allwatchvideo.append(prod)
+>>>>>>> meta
     comments = videocomment.objects.filter(video=watchvideo , parant=None)
     # Managing replies.................................................................................................................
     replies = videocomment.objects.filter(video=watchvideo).exclude(parant=None)
@@ -25,7 +40,14 @@ def Watchvideo(request,slug):
             replyDict[reply.parant.sno] = [reply]
         else:
             replyDict[reply.parant.sno].append(reply) 
+<<<<<<< HEAD
     context={'allwatchvideo':allwatchvideo,'watchvideo':watchvideo,'comments':comments,'user':request.user, 'replyDict':replyDict}
+=======
+
+    context={'allwatchvideo':allwatchvideo,'watchvideo':watchvideo,'comments':comments,'user':request.user, 'replyDict':replyDict,}
+
+
+>>>>>>> meta
     return render(request,'video/playvideo.html',context)
 
 def postcomment(request ):

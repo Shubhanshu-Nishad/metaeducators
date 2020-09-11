@@ -5,12 +5,12 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="I heartily like to educate the people with all aspects of coding to compete with the present scenario in HINDI language..
+  <meta name="description" content="I heartily like to educate the people with all aspects of coding to compete with the present scenario in HINDI language..
     1. Quiz - Winner Photo would be uploaded on this website(W&C).
     2.Hand written Notes
     3.Source Code
-"> 
-  <link rel="icon" type="image/png" href="/static/homeimg/11.jpg"> 
+">
+  <link rel="icon" type="image/png" href="/static/homeimg/11.jpg">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -18,23 +18,24 @@
   <link href="/static/css/playvideo.css" rel="stylesheet">
   <title> {% block title %} {% endblock title %} </title>
 
-      <style>
-        @media screen and (max-width: 600px) {
-            main h1 {
-                font-size: 2rem !important;
-            }
-            
-            .card h3 {
-                font-size: 1rem !important;
-            }
-            #resume {
-                margin-left: 1rem !important;
-                margin-right: 1rem !important;
+  <style>
+    @media screen and (max-width: 600px) {
+      main h1 {
+        font-size: 2rem !important;
+      }
 
-            }
-        }
-    </style>
-{% load static %}
+      .card h3 {
+        font-size: 1rem !important;
+      }
+
+      #resume {
+        margin-left: 1rem !important;
+        margin-right: 1rem !important;
+
+      }
+    }
+  </style>
+  {% load static %}
   {% block css %}
 
 
@@ -68,16 +69,17 @@
         <li class="nav-item {% block donaractive %} {% endblock donaractive %}">
           <a class="nav-link text-white" href="/donate">Donate</a>
         </li>
-         <li class="nav-item {% block W&Cactive %} {% endblock W&Cactive %}">
+        <li class="nav-item {% block W&Cactive %} {% endblock W&Cactive %}">
           <a class="nav-link text-white" href="/W&C">W&C</a>
         </li>
-         <li class="nav-item {% block serviceactive %} {% endblock serviceactive %}">
+        <li class="nav-item {% block serviceactive %} {% endblock serviceactive %}">
           <a class="nav-link text-white" href="/service">Services</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link text-white" target="_blank"  href="https://www.youtube.com/channel/UClqeB8qhY7k0Yaw6KIQI3dg/featured">YouTube</a>
+          <a class="nav-link text-white" target="_blank"
+            href="https://www.youtube.com/channel/UClqeB8qhY7k0Yaw6KIQI3dg/featured">YouTube</a>
         </li>
-             <li class="nav-item {% block contactactive %} {% endblock contactactive %}">
+        <li class="nav-item {% block contactactive %} {% endblock contactactive %}">
           <a class="nav-link text-white" href="/contact">Contact Me</a>
         </li>
       </ul>
@@ -148,83 +150,81 @@
     </div>
   </div>
 
-    <!-- SignUp Modal -->
-    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="signupModal">SignUp for an account</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
+  <!-- SignUp Modal -->
+  <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="signupModal">SignUp for an account</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
 
-          <div class="modal-body">
-            <form name="contact" method="post" action="/signup/"><input type="hidden" name="csrfmiddlewaretoken"
-                value="FNBFZPsc8WLw4Y8aswhrksDBnZF8AZifY1Jp6FULuJn09P3ETjsQd1JIkczSx5ff">
+        <div class="modal-body">
+          <form name="contact" method="post" action="/signup/"><input type="hidden" name="csrfmiddlewaretoken"
+              value="FNBFZPsc8WLw4Y8aswhrksDBnZF8AZifY1Jp6FULuJn09P3ETjsQd1JIkczSx5ff">
 
-              <div class="form-group">
-                <label for="uname">Username</label>
-                <input type="text" class="form-control" id="username" placeholder="Enter your Name" name="username">
-                <small id="unamehelp" class="form-text text-muted px-1">
-                  Your unique username must be less than 10 characters (only lowecase letters, numbers & underscores
-                  allowed) with no spaces
-                </small>
-              </div>
-              <div class="form-group">
-                <label for="name">First Name</label>
-                <input type="text" class="form-control" id="fname" placeholder="Enter your First Name" name="fname">
-              </div>
-              <div class="form-group">
-                <label for="name">Last Name</label>
-                <input type="text" class="form-control" id="lname" placeholder="Enter your Last Name" name="lname">
-              </div>
+            <div class="form-group">
+              <label for="uname">Username</label>
+              <input type="text" class="form-control" id="username" placeholder="Enter your Name" name="username">
+              <small id="unamehelp" class="form-text text-muted px-1">
+                Your unique username must be less than 10 characters (only lowecase letters, numbers & underscores
+                allowed) with no spaces
+              </small>
+            </div>
+            <div class="form-group">
+              <label for="name">First Name</label>
+              <input type="text" class="form-control" id="fname" placeholder="Enter your First Name" name="fname">
+            </div>
+            <div class="form-group">
+              <label for="name">Last Name</label>
+              <input type="text" class="form-control" id="lname" placeholder="Enter your Last Name" name="lname">
+            </div>
 
-              <div class="form-group">
-                <label for="email">Your Email</label>
-                <div class="mx-0">
-                  <div class="col-md-8 px-0">
-                    <input type="email" class="form-control" id="email" placeholder="Enter your Email" name="email">
-                    <small id="otpMessage" class="form-text"></small>
-                  </div>
-                  <!-- <div class="col-md-4 my-1 px-0">
+            <div class="form-group">
+              <label for="email">Your Email</label>
+              <div class="mx-0">
+                <div class="col-md-8 px-0">
+                  <input type="email" class="form-control" id="email" placeholder="Enter your Email" name="email">
+                  <small id="otpMessage" class="form-text"></small>
+                </div>
+                <!-- <div class="col-md-4 my-1 px-0">
                 <button class="btn btn-danger btn-sm mt-2" id="otpbtn">Send OTP</button>
               </div> -->
-                </div>
-
               </div>
-              <!-- <div class="form-group">
+
+            </div>
+            <!-- <div class="form-group">
             <label for="otp">Enter OTP</label>
             <input type="text" class="form-control" id="otp" placeholder="Enter OTP" name="otp">
           </div> -->
 
-              <div class="form-group">
-                <label for="password">Choose a password</label>
-                <input type="password" class="form-control" id="password" placeholder="Choose a password"
-                  name="password">
-              </div>
-              <div class="form-group">
-                <label for="password2">Retype a password</label>
-                <input type="password" class="form-control" id="password2" placeholder="Retype your password"
-                  name="password2">
-                <input type="hidden" name="path" value="/">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-danger mt-2">SignUp</button>
-            </form> 
-          </div>
-          {% comment %} <div class="g-recaptcha" data-sitekey="6Ld6VMIZAAAAABQekvQfBLjbEwcc3ZrJyP7canan"></div>
-          <input type="hidden" name="path" value="/">
-            {% csrf_token %}
-          <button type="submit" class="btn btn-danger mt-2">SignUp</button>
+            <div class="form-group">
+              <label for="password">Choose a password</label>
+              <input type="password" class="form-control" id="password" placeholder="Choose a password" name="password">
+            </div>
+            <div class="form-group">
+              <label for="password2">Retype a password</label>
+              <input type="password" class="form-control" id="password2" placeholder="Retype your password"
+                name="password2">
+              <input type="hidden" name="path" value="/">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger mt-2">SignUp</button>
           </form>
-        </div>  {% endcomment %}
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
+        {% comment %} <div class="g-recaptcha" data-sitekey="6Ld6VMIZAAAAABQekvQfBLjbEwcc3ZrJyP7canan"></div>
+        <input type="hidden" name="path" value="/">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger mt-2">SignUp</button>
+        </form>
+      </div> {% endcomment %}
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
+  </div>
   </div>
 
 
@@ -254,9 +254,15 @@
       <div class="container text-white ">
         <div class="row">
           <div class="col-lg-4 col-sm-12 mb-4">
+<<<<<<< HEAD
              <h5 class="text-danger"><a class="text-danger" href="https://www.metaeducators.com"
               target="_blank"> metaeducators.com</a></h5>
               <p>
+=======
+             <h5 class="text-danger"><a class="text-danger" href="https://www.metaeducators.com" target="_blank">
+                metaeducators.com</a></h5>
+          <p>
+>>>>>>> meta
               I heartily like to
               educate the people with all
               aspects of coding to compete
@@ -264,7 +270,12 @@
               HINDI language.
             </p>
             <i class="fa fa-envelope mt-2" aria-hidden="true"></i>
+<<<<<<< HEAD
             <h6 class="d-inline "><a class="text-white" href="mailto:metaeducators@gmail.com">metaeducator@gmail.com</a></h6>
+=======
+            <h6 class="d-inline "><a class="text-white" href="mailto:metaeducators@gmail.com">metaeducator@gmail.com</a>
+            </h6>
+>>>>>>> meta
           </div>
           <div class="col-lg-3 col-sm-4 d-inline " style="width: 50%;">
             <h5 class="text-danger">Quick links</h5>
@@ -275,7 +286,7 @@
               <li>
                 <a class="text-white" href="/playlist/">video</a>
               </li>
-              
+
               <li>
                 <a class="text-white" href="/bloghome/">Blog</a>
               </li>
@@ -300,10 +311,10 @@
             <a class="text-white" href="https://www.facebook.com/https:/Metaeducator-109055404234838" target="_blank"
               class="d-inline">Facebook</a>
             <br>
-             <a class="text-white" href="https://www.youtube.com/channel/UClqeB8qhY7k0Yaw6KIQI3dg/featured" target="_blank"
-              class="fa fa-youtube p-2"></a>
-            <a class="text-white" href="https://www.youtube.com/channel/UClqeB8qhY7k0Yaw6KIQI3dg/featured" target="_blank"
-              class="d-inline">YouTube</a>
+            <a class="text-white" href="https://www.youtube.com/channel/UClqeB8qhY7k0Yaw6KIQI3dg/featured"
+              target="_blank" class="fa fa-youtube p-2"></a>
+            <a class="text-white" href="https://www.youtube.com/channel/UClqeB8qhY7k0Yaw6KIQI3dg/featured"
+              target="_blank" class="d-inline">YouTube</a>
             <br>
             <a class="text-white" href="https://www.linkedin.com/in/shubhanshu-nishad-a5511b1b2" target="_blank"
               class="fa fa-linkedin p-2"></a>
@@ -328,12 +339,18 @@
           </div> {% endcomment %}
         </div>
         <div class="center opacity-10 py-3">
+<<<<<<< HEAD
           <p class="text-center">© Copyright 2020 metaeducator . All Rights Reserved</p>
           <p class="text-center">Website Designed and Developed by <a class="text-white" href="http://www.metaeducators.com"
               target="_blank"> metaeducators.com</p></a>
+=======
+
+          <p class="text-center">© Copyright 2020 metaeducators . All Rights Reserved</p>
+          <p class="text-center">Website Designed and Developed by <a class="text-white"
+              href="https://www.metaeducators.com">metaeducators.com</a> </div>
+>>>>>>> meta
         </div>
       </div>
-    </div>
   </footer>
 
   <!-- #End footer..................................................................................................................... -->
