@@ -29,7 +29,7 @@ class Ytlist(models.Model):
     img_link=  models.CharField(max_length=5000)
 
     def __str__(self):
-        return self.ytlist_title 
+        return self.ytlist_title + ' of  ' + self.slug
 
 
 

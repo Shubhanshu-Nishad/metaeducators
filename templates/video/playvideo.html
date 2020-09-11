@@ -240,20 +240,23 @@ div.toolbar-item button{
         <!-- Course content holder -->
         <div class="col-md-3 px-0" id="course-content-box">
             <div class="row mx-0 py-2 px-3 bg-lgrey">
-                <h5> Course Content<i class="mx-2 fas fa-plus" id="toggleCourse"></i></h5>
+            
+                 <h5> Course Content<i class="mx-2 fas fa-plus" id="toggleCourse"></i></h5> 
                 <button id="togglePlayer" class="btn btn-sm btn-danger mx-3">Hide Player</button>
             </div>
             <div id="content-box">
                 <ul class="content-holder">
-                    {% for video in allwatchvideo %}
-                    <a href="{{video.slug}}">
+                    {% for dict in allwatchvideo %}
+                     {% for videos in dict %}
+                    <a href="{{videos.slug}}">
                         <li class="content-holder-item  active ">
-                           {{video.video_title}}
+                           {{videos.video_title}}
                             <div class="mx-3">
                                 <i class="far fa-play-circle"></i> Free YouTube Video
                             </div>
                         </li>
                     </a>
+                    {% endfor %}
                     {% endfor %}
                     <!-- <a href="/videos/general-python-errors-2">
                         <li class="content-holder-item  ">
@@ -289,6 +292,8 @@ div.toolbar-item button{
                     aria-labelledby="overview-tab">
                     
                     <div class="container clearfix py-2 px-0">
+                    <a target="_blank" href="https://www.youtube.com/channel/UClqeB8qhY7k0Yaw6KIQI3dg/featured" class="btn btn-danger ">SUBSCRIBE</a>
+                    <hr>
                         <h3 class="mb-3">
     
                             {{watchvideo.video_title}}
@@ -301,11 +306,78 @@ div.toolbar-item button{
                             
                             <a class="btn btn-danger" href="#">&larr; Previous </a>
                             
+                           {% comment %} {% for i in range %}        {% endcomment %}
+                            
+                            <a class="btn btn-danger" href="{{no_of_slides.slug}}">Next &rarr;</a>
+                            {% comment %} {% endfor %} {% endcomment %}
+                        </div>
+
+
+
+
+
+
+
+
+
+ 
+                       <!-- <div class="my-4 d-flex justify-content-between">
+                            
+                            <a class="btn btn-danger" href="#">&larr; Previous </a>
+                            
     
                             
                             <a class="btn btn-danger" href="/videos/general-python-errors-2">Next &rarr;</a>
                             
-                        </div>
+                        </div> -->
+
+
+                        {% comment %} {% if nSlides==1 %}
+                        <a class="btn btn-danger" href="#">&larr; Previous </a>
+                        <a class="btn btn-danger" href="">Next &rarr;</a>
+
+                    
+                    {% elif nSlides==1  %}
+                    <a class="btn btn-danger" href="">&larr; Previous </a>
+                    <a class="btn btn-danger" href="#">Next &rarr;</a>
+
+                    {% else %}
+                    <a class="btn btn-danger" href="">&larr; Previous </a>
+                    <a class="btn btn-danger" href="">Next &rarr;</a>
+
+
+                    {% endif %}
+
+                </div> {% endcomment %}
+
+
+                {% comment %} {% for i in range %}
+                <h1>iam king</h1>
+                <a class="btn btn-danger" href="#">&larr; Previous </a>
+                <a class="btn btn-danger" href="{{i.slug}}">Next &rarr;</a>
+                {% endfor %}
+
+                {% for i in product|slice:"1:"%}
+
+                    <a class="btn btn-danger" href="">&larr; Previous </a>
+                    <a class="btn btn-danger" href="">Next &rarr;</a>
+
+
+                {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
+
+                <a class="btn btn-danger" href="">&larr; Previous </a>
+                <a class="btn btn-danger" href="">Next &rarr;</a>
+
+                  {% endif %}
+
+        {% endfor %} {% endcomment %}
+
+
+
+
+
+
+
                     </div>
                 </div>
                 <div class="tab-pane fade mx-4 mt-3" id="qna" role="tabpanel" aria-labelledby="qna-tab">
@@ -318,6 +390,9 @@ div.toolbar-item button{
     
                         
                     </div>
+
+
+
     
                     <div class="container mt-4 mb-0 px-0">
  <!-- #for posting comment.......................................................................................................... -->
@@ -380,6 +455,7 @@ div.toolbar-item button{
 <h3>Comments ({{comments.count}})</h3>
 {% load humanize %}
 {% for comment in comments  reversed %}
+{{comment}}
 <div style="background-color:rgb(232, 228, 227);">
  <div class="row mt-4 mr-2">
    <div class="col-sm-3 col-lg-1 col-xl-1 mt-2 ml-2">
