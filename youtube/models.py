@@ -12,11 +12,10 @@ class Video(models.Model):
     playlist_title = models.CharField(max_length=200, default="")
     slug=models.CharField(max_length=250,unique=True,default="")
     video_link=models.CharField(max_length=250,unique=True,default="")
-    # img_link=  models.CharField(max_length=5000)
-    timestamp=models.DateTimeField(blank=True)
+    numbe=models.IntegerField(default="0")
 
     def __str__(self):
-        return self.video_title + ' of  ' + self.playlist_title
+        return self.video_title + ' of  ' + self.playlist_title + ' (' + str(self.numbe) + ')'
 
 
 

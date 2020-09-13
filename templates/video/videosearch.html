@@ -32,10 +32,10 @@
           <!-- <strong class="d-inline-block mb-2 text-success">Article by {{Video.author}}</strong> -->
           <h5 class="mb-0"><a class="text-dark" href="/playvideo/{{allvideos.slug}}">{{allvideos.playlist_title}} </a> </h5>
           <hr>
-          <h5 class="mb-0"> <a class="text-dark" href="/playvideo/{{allvideos.slug}}">{{allvideos.video_title}} </a></h5>
+          <h5 class="mb-0"> <a class="text-dark" href="/playvideo/{{allvideos.slug}}">{{allvideos.numbe}}.{{allvideos.video_title}} </a></h5>
           <p class="mb-1 text-muted"><b><i>{{allvideos.timeStamp}}</i></b></p>
           <p class="preview"><a class="text-dark" href="/playvideo/{{allvideos.slug}}">{{allvideos.video_desc |safe| truncatechars:100}}</a></p>
-          <a href="/playvideo/{{allvideos.slug}}"><b> <i>View Source Code</i></b> </a>
+          <a class="btn btn-primary my-2" href="/playvideo/{{allvideos.slug}}"><b> <i>View Source Code</i></b> </a>
         </div>
       </div>
     </div>

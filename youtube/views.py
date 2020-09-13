@@ -1,6 +1,6 @@
 from django.shortcuts import render,HttpResponse,redirect
 from django.contrib import messages
-from youtube.models import Video, videocomment,Ytlist
+from youtube.models import Video, videocomment, Ytlist
 from youtube.templatestags import extra
 from math import ceil
 
@@ -13,22 +13,24 @@ def playvideo(request ):
 
 
 def Watchvideo(request,slug):
-    # readpost=Post.objects.filter(slug=slug).first()
     watchvideo = Video.objects.filter(slug=slug).first()
-
     allwatchvideo = Video.objects.all()
-    # context={'allytlist':allytlist}
-    print(allwatchvideo)
-    ytli= watchvideo.playlist_title
+    num=watchvideo.numbe
     watchvid = Video.objects.all()
-    # print(watchvid)
+    ytlist= watchvideo.playlist_title
+    ytslug= watchvideo.slug
+    res = ''.join([i for i in ytslug if not i.isdigit()]) 
     allwatchvideo=[]
     catprods= watchvid.values('playlist_title', 'sno')
     cats= {item["playlist_title"] for item in catprods}
+    i=0
     for cat in cats:
-        if cat==ytli:
+        if cat==ytlist:
+            i=i+1
             prod=watchvid.filter(playlist_title=cat)
             allwatchvideo.append(prod)
+
+
     comments = videocomment.objects.filter(video=watchvideo , parant=None)
     # Managing replies.................................................................................................................
     replies = videocomment.objects.filter(video=watchvideo).exclude(parant=None)
@@ -39,11 +41,19 @@ def Watchvideo(request,slug):
         else:
             replyDict[reply.parant.sno].append(reply) 
 
-    context={'allwatchvideo':allwatchvideo,'watchvideo':watchvideo,'comments':comments,'user':request.user, 'replyDict':replyDict}
+    if num==1:
+        next= res + str(2) 
+        prev='shu'
+    elif num==i:
+        prev=res  + str(num - 1) 
+        next='shu'
+    else :
+        prev= res  + str(num - 1) 
+        next= res + str(num + 1) 
+       
 
-
-    context={'allwatchvideo':allwatchvideo,'watchvideo':watchvideo,'comments':comments,'user':request.user, 'replyDict':replyDict,}
-
+  
+    context={'allwatchvideo':allwatchvideo,'watchvideo':watchvideo,'comments':comments,'user':request.user, 'replyDict':replyDict,'prev':prev,'next':next}
     return render(request,'video/playvideo.html',context)
 
 def postcomment(request ):

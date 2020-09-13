@@ -220,7 +220,7 @@ div.toolbar-item button{
                     {% for dict in allwatchvideo %}
                      {% for videos in dict %}
                     <a href="{{videos.slug}}">
-                        <li class="content-holder-item  active ">
+                        <li class="content-holder-item  active ">{{videos.numbe}}.
                            {{videos.video_title}}
                             <div class="mx-3">
                                 <i class="far fa-play-circle"></i> Free YouTube Video
@@ -267,20 +267,23 @@ div.toolbar-item button{
                     <hr>
                         <h3 class="mb-3">
     
-                            {{watchvideo.video_title}}
+                        {{watchvideo.numbe}}   . {{watchvideo.video_title}}
                         </h3>
                         </p>
 
                         {{watchvideo.video_desc|safe}}
                        
-                        <div class="my-4 d-flex justify-content-between">
-                            
-                            <a class="btn btn-danger" href="#">&larr; Previous </a>
-                            
-                           {% comment %} {% for i in range %}        {% endcomment %}
-                            
-                            <a class="btn btn-danger" href="{{no_of_slides.slug}}">Next &rarr;</a>
-                            {% comment %} {% endfor %} {% endcomment %}
+                       <div class="my-4 d-flex justify-content-between">
+                            {% if prev=="shu" %}
+                            <a class="btn btn-danger" href="#">&larr; Previous </a> 
+                            <a class="btn btn-danger" href="{{next}}">Next &rarr;</a>
+                            {% elif next="shu" %}
+                             <a class="btn btn-danger" href="{{prev}}">&larr; Previous </a>
+                             <a class="btn btn-danger" href="#">Next &rarr;</a>
+                            {% else %}
+                            <a class="btn btn-danger" href="{{prev}}">&larr; Previous </a>
+                            <a class="btn btn-danger" href="{{next}}">Next &rarr;</a>
+                            {% endif %}
                         </div>
 
  <!-- #for posting comment.......................................................................................................... -->
