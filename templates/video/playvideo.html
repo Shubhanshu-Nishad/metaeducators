@@ -5,29 +5,6 @@
 {% load extra  %}
 {% block css %}
 {% load static %}
-<!-- <style>
-  pre {
-    max-height: 59vh;
-  }
-
-  .commentContainer pre {
-    font-size: 14pt;
-    font-family: helvetica;
-
-  }
-
-  @media only screen and (max-width: 575px) {
-    img.rounded-circle {
-      height: 0px;
-      visibility: hidden;
-    }
-  }
-</style> -->
-
-
-
-
-
 
 <link href="/static/css/blogpost/prism.css" rel="stylesheet">
 <style>
@@ -216,12 +193,6 @@ div.toolbar-item button{
 </style>
 
 
-
-
-
-
-
-
 {% endblock css %}
 
 <!-- #for rendering post............................................................................................................. -->
@@ -312,106 +283,6 @@ div.toolbar-item button{
                             {% comment %} {% endfor %} {% endcomment %}
                         </div>
 
-
-
-
->>>>>>> meta
-
-    <div class="row" id="sticky-d">
-        <!-- Video Holder -->
-        <div class="col-md-9 bg-black px-0" id="video-box">
-            <div class="container videoContainer embed-responsive embed-responsive-16by9 px-3">
-                <iframe class="embed-responsive-item" src="{{watchvideo.video_link}}"
-                    allowfullscreen></iframe>
-            </div>
-            <hr>
-        </div>
-        <!-- Course content holder -->
-        <div class="col-md-3 px-0" id="course-content-box">
-            <div class="row mx-0 py-2 px-3 bg-lgrey">
-                <h5> Course Content<i class="mx-2 fas fa-plus" id="toggleCourse"></i></h5>
-                <button id="togglePlayer" class="btn btn-sm btn-danger mx-3">Hide Player</button>
-            </div>
-            <div id="content-box">
-                <ul class="content-holder">
-                    {% for video in allwatchvideo %}
-                    <a href="{{video.slug}}">
-                        <li class="content-holder-item  active ">
-                           {{video.video_title}}
-                            <div class="mx-3">
-                                <i class="far fa-play-circle"></i> Free YouTube Video
-                            </div>
-                        </li>
-                    </a>
-                    {% endfor %}
-                    <!-- <a href="/videos/general-python-errors-2">
-                        <li class="content-holder-item  ">
-                            2. No python interpreter configured for the project&#x27; in Pycharm
-                            <div class="mx-3">
-                                <i class="far fa-play-circle"></i> Free YouTube Video
-                            </div>
-                        </li>
-                    </a> -->
-                    
-
-<<<<<<< HEAD
-                </ul>
-            </div>
-        </div> 
-        <hr>
-    </div>
-=======
-
->>>>>>> meta
-
-    <div class="col-md-9 bg-black px-0" id="video-box2">
-        <div class="other bg-light">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview" role="tab"
-                        aria-controls="overview" aria-selected="true">Overview</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="qna-tab" data-toggle="tab" href="#qna" role="tab" aria-controls="qna"
-                        aria-selected="false">Comments</a>
-                </li>
-            </ul>
-            
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show mx-4 mt-3 active" id="overview" role="tabpanel"
-                    aria-labelledby="overview-tab">
-                    
-                    <div class="container clearfix py-2 px-0">
-                        <h3 class="mb-3">
-    
-                            {{watchvideo.video_title}}
-                        </h3>
-                        </p>
-                        {{watchvideo.video_desc|safe}}
-                       
-                        <div class="my-4 d-flex justify-content-between">
-                            
-                            <a class="btn btn-danger" href="#">&larr; Previous </a>
-                            
-    
-                            
-                            <a class="btn btn-danger" href="/videos/general-python-errors-2">Next &rarr;</a>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade mx-4 mt-3" id="qna" role="tabpanel" aria-labelledby="qna-tab">
-                    <div id="comments" class="container px-0">
-                        
-    
-                       
-    
-                        
-    
-                        
-                    </div>
-    
-                    <div class="container mt-4 mb-0 px-0">
  <!-- #for posting comment.......................................................................................................... -->
  
  
@@ -425,7 +296,7 @@ div.toolbar-item button{
                             
                         </div> -->
 
-
+<!-- 
                         {% comment %} {% if nSlides==1 %}
                         <a class="btn btn-danger" href="#">&larr; Previous </a>
                         <a class="btn btn-danger" href="">Next &rarr;</a>
@@ -442,8 +313,7 @@ div.toolbar-item button{
 
                     {% endif %}
 
-                </div> {% endcomment %}
-
+                </div> {% endcomment %} 
 
                 {% comment %} {% for i in range %}
                 <h1>iam king</h1>
@@ -464,34 +334,15 @@ div.toolbar-item button{
 
                   {% endif %}
 
-        {% endfor %} {% endcomment %}
-
-
-
-
-
+        {% endfor %} {% endcomment %}  -->
 
 
                     </div>
                 </div>
-                <div class="tab-pane fade mx-4 mt-3" id="qna" role="tabpanel" aria-labelledby="qna-tab">
-                    <div id="comments" class="container px-0">
-                        
-    
-                       
-    
-                        
-    
-                        
-                    </div>
-
-
-
-    
-                    <div class="container mt-4 mb-0 px-0">
+<div class="tab-pane fade mx-4 mt-3" id="qna" role="tabpanel" aria-labelledby="qna-tab">
+<div id="comments" class="container px-0">
+<div class="container mt-4 mb-0 px-0">
  <!-- #for posting comment.......................................................................................................... -->
- 
->>>>>>> meta
  {% if user.is_authenticated %}
 
  <form action="/playvideo/postcomment/" method="POST">
@@ -548,8 +399,6 @@ div.toolbar-item button{
 <!-- # comment senction ............................................................................................................... -->
 
 <!-- # comment senction ............................................................................................................... -->
-
->>>>>>> meta
 
 <h3>Comments ({{comments.count}})</h3>
 {% load humanize %}
@@ -622,13 +471,6 @@ div.toolbar-item button{
     </div>
 </div>
 </div>
-
-
-
-
-
-
-
 
 
 
@@ -711,16 +553,6 @@ Array.from(imgs).forEach((element)=>{
 })
 
 </script> 
-
-
-
-
-
-
-
-
-
-
 
 
 </div>

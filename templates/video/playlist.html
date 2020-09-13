@@ -1,49 +1,77 @@
 {%  extends 'base.html' %}
 
-{% block title %} Videos Search Results {% endblock title %}
-
+{% block title %} META Source Code {% endblock title %}
+{% block blogactive %} active {% endblock blogactive %}
+{% load static %}
+<!-- Additional css for it -->
 {% block css %}
 
- {% endblock css %}
-
-
-{% load static %}
+{% comment %} Body start from here {% endcomment %}
+{% endblock css %}
 
 {% block body %}
-
-<div class="container my-3 shu">
-     <h1>META blog Search Results:</h1>
-    {% if allvideos|length < 1 %}
-     <h3> No Search Results founds:</h3>
-
-     Suggestion:
-     <ul>
-     <li>Try different keys.</li>
-     <li>Trt more general keys.</li>
-     <li>Try fewer keywords.</li>
-     </ul>
-    {% endif %}
-    </div>
-
-
-
-<div class="container my-3 mr ">
-</div>
-<div class="container">
-  <div class="row mb-2">
-    {% for allvideos in allvideos %}
-    <div class="col-md-6">
-      <div class="card flex-md-row mb-4 shadow-sm h-md-250">
-        <div class="card-body d-flex flex-column align-items-start">
-          <!-- <strong class="d-inline-block mb-2 text-success">Article by {{Video.author}}</strong> -->
-          <h5 class="mb-0">{{allvideos.playlist_title}} </h5>
-          <hr>
-          <h5 class="mb-0"> <a class="text-dark" href="/playvideo/{{allvideos.slug}}">{{allvideos.video_title}} </a></h5>
-          <p class="preview"> <a class="text-dark" href="/playvideo/{{allvideos.slug}}">{{allvideos.video_desc |safe| truncatechars:100}} </a></p>
-          <a href="/playvideo/{{allvideos.slug}}"><b> <i>View Source Code</i></b> </a>
-        </div>
-      </div>
-    </div>
-    {% endfor %}
+<div class="jumbotron jumbotron-fluid jumbotron-expand-md text-center " style="
+      background-image: url('/static/video/final.jfif');background-size: cover; ">
+  <div class="container py-5 mt-5" style="z-index:1;background-color:black; opacity: .8; ">
+    <h1 class="display-4 text-danger p-5 "> <b><i> First step towards Coding</i></b></h1>
+    <button class="btn bg-danger text-white mx-3 my-1">Bulid Logic</button>
+    <button class="btn bg-danger text-white mx-3 my-1">Daily 30 Min </button>
+    <button class="btn bg-danger text-white mx-3 my-1">Work together with friends</button>
   </div>
 </div>
+<br>
+<div class="container">
+  <h1> <b>Give Me Some Support & Time</b> </i></h1>
+  <hr>
+  <h2><i> I try my best to cover all Topics of Coding as soon as possible...</i></h2>
+
+  <h4>This can only done by only and only you not mine</h4>
+  <h5> So, Please share all these video with your friends.</h5>
+  <br>
+  <a target="_blank" href="https://www.youtube.com/channel/UClqeB8qhY7k0Yaw6KIQI3dg/featured" class="btn btn-danger my-2">SUBSCRIBE</a>
+  <hr>
+</div>
+{% comment %} For rendering all playlist {% endcomment %}
+<div class="container-fluid main-container">
+    <div class="row my-4 mx-4">
+        {% for list in allytlist reversed %}
+            <div class="col-md-6 col-lg-4 text-center">
+                <img class="rounded-circle" src="{{list.img_link}}" width="140" height="140">
+                <h2>{{list.ytlist_title}}</h2>
+                <p>
+                   {{list.ytlist_desc }}
+                </p>
+                <p>
+                    
+                        <a href="/playvideo/{{list.slug}}"><button class="btn btn-outline-danger">Watch Video </button></a>
+                    
+                </p>
+            </div>
+             {% endfor %}
+    </div>
+</div>
+
+  {% comment %} <form>
+              <div class="form-group">
+               <input type="hidden" name="ytlist" value="{{list.ytlist_title}}">
+                 <input  name="path" value="/playvideo/{{list.slug}}">
+                 <button type="submit" class="btn btn-danger mt-2">Watch Video</button>
+                <a href="/playvideo/{{list.slug}}"><button class="btn btn-outline-danger">Watch Video </button></a>
+            </form> 
+          </div>  {% endcomment %}
+
+
+
+
+
+
+
+
+
+{% endblock body %}
+
+<!-- Adding Additional JavaScript -->
+{% block js %}
+
+
+{% endblock js %}
