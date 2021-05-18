@@ -23,14 +23,12 @@ def Watchvideo(request,slug):
     allwatchvideo=[]
     catprods= watchvid.values('playlist_title', 'sno')
     cats= {item["playlist_title"] for item in catprods}
-    i=0
+    
     for cat in cats:
         if cat==ytlist:
-            i=i+1
             prod=watchvid.filter(playlist_title=cat)
             allwatchvideo.append(prod)
-
-
+    i = sum( [ len(listElem) for listElem in allwatchvideo])
     comments = videocomment.objects.filter(video=watchvideo , parant=None)
     # Managing replies.................................................................................................................
     replies = videocomment.objects.filter(video=watchvideo).exclude(parant=None)
@@ -40,13 +38,14 @@ def Watchvideo(request,slug):
             replyDict[reply.parant.sno] = [reply]
         else:
             replyDict[reply.parant.sno].append(reply) 
-
+    
     if num==1:
         next= res + str(2) 
-        prev='shu'
+        prev=res + str(1) 
+
     elif num==i:
         prev=res  + str(num - 1) 
-        next='shu'
+        next=res + str(num)
     else :
         prev= res  + str(num - 1) 
         next= res + str(num + 1) 
