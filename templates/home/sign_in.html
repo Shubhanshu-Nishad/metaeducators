@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign In {% endblock title %}
+{% block loginactive %} active {% endblock loginactive %}
+{% load static %}
+
+{% block css %}
+
+
+<link href="/static/home/login/css/loginbootstrap.min.css" rel="stylesheet">
+<link href="/static/home/login/css/loginfont-awesome.min.css" rel="stylesheet">
+<link href="/static/home/login/css/loginstyle.css" rel="stylesheet">
+
+<style>
+  @media(max-width:576px) {
+    #hide {
+      display: none;
+    }
+  }
+</style>
+{% endblock css %}
+
+{% block body %}
+
+<section class="form-07">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="_form_07_main">
+          <div class="row">
+            <div class="col-sm-6 ncv-kl-bn">
+              <div class="_form_07_main_sub_01" id="hide">
+                <div class="form-07-head">
+                  <h2>Smarteye</h2>
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy</p>
+                </div>
+
+                <br>
+                <br>
+                <br>
+                <div class="form-7-social-media">
+                  <ol>
+                    <li><i class="fa fa-facebook"></i></li>
+                    <li><i class="fa fa-twitter"></i></li>
+
+                    <li><i class="fa fa-youtube"></i></li>
+                    <li><i class="fa fa-linkedin"></i></li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 cv-kl-bn">
+              <div class="_pl_nb_df">
+                <div class="_bg_cs">
+                  <h2>Sign into your account</h2>
+                </div>
+                <form action="/login/" method="post"><input type="hidden" name="csrfmiddlewaretoken"
+                    value="LEtKjyzLXOP7iVgHyp7Zh8kfUdvC2pfl4SBuqo1kjBrBnMbbZcioaHqmRqpmZvcl">
+                  <div class="form-group">
+                    <label>Enter Your Username</label>
+                    <input type="loginuname" name="loginuname" class="form-control" type="text" placeholder="Enter username"
+                      required="" aria-required="true">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Enter Your Password</label>
+                    <input type="loginpassword" name="loginpassword" class="form-control" type="text" placeholder="Enter password"
+                      required="" aria-required="true">
+                  </div>
+                  <!-- <a href="/sign_up">create a new account </a>
+                    <div class="form-group">
+                      <div class="_btn_04">
+                        <a href="#">Login</a>
+                      </div>
+                    </div> -->
+                  <div class="form-group">
+                    <div class="_btn_04 ">
+                      {% csrf_token %}
+                      <button style="background-color: rgb(254,54,95);border: none;"type="submit" id="loginsubmit">Login</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+</section>
+
+
+{% endblock body %}
+
+{% block js %}
+
+{% endblock js %}
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="row gutters">
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="text-right">
+      
+      {% csrf_token %}
+      <button type="submit" id="update_profile" name="submit"class="btn btn-primary">Update</button>
+    
+    </div>
+  </div> -->
+
+
+  <!-- <form action="/login/" method="post"><input type="hidden" name="csrfmiddlewaretoken"
+		value="LEtKjyzLXOP7iVgHyp7Zh8kfUdvC2pfl4SBuqo1kjBrBnMbbZcioaHqmRqpmZvcl"> -->

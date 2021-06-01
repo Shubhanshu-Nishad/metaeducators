@@ -1,0 +1,126 @@
+{%  extends 'base.html' %}
+
+{% block title %}Sign Up {% endblock title %}
+{% block loginactive %} active {% endblock loginactive %}
+{% load static %}
+
+{% block css %}
+
+
+<link href="/static/home/login/css/loginbootstrap.min.css" rel="stylesheet">
+<link href="/static/home/login/css/loginfont-awesome.min.css" rel="stylesheet">
+<link href="/static/home/login/css/loginstyle.css" rel="stylesheet">
+
+<style>
+ 
+@media(max-width:576px) {
+    #hide{display:none;}
+    }
+</style>
+ 
+{% endblock css %}
+
+{% block body %}
+
+<section class="form-07">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="_form_07_main">
+              <div class="row">
+                <div class="col-sm-6 ncv-kl-bn" >
+                  <div class="_form_07_main_sub_01" id="hide">
+                    <div class="form-07-head">
+                      <h2>Smarteye</h2>
+                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="form-7-social-media">
+                      <ol>
+                        <li><i class="fa fa-facebook"></i></li>
+                        <li><i class="fa fa-twitter"></i></li>
+                        
+                        <li><i class="fa fa-youtube"></i></li>
+                        <li><i class="fa fa-linkedin"></i></li>
+                      </ol>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 cv-kl-bn">
+                  <div class="_pl_nb_df">
+                    <div class="_bg_cs">
+                      <h2>Create a new Account</h2>
+                    </div>
+                    <form name="contact" method="post" action="/signup/"><input type="hidden" name="csrfmiddlewaretoken"
+                      value="FNBFZPsc8WLw4Y8aswhrksDBnZF8AZifY1Jp6FULuJn09P3ETjsQd1JIkczSx5ff">
+                    <div class="form-group">
+                      <!-- <label>Enter Your Name</label> -->
+                      <input type="name" name="fname" class="form-control" type="text" placeholder="Enter first Name" required="" aria-required="true">
+                    </div>
+                    <div class="form-group">
+                      <!-- <label>Enter Your Email</label> -->
+                      <input type="name" name="lname" class="form-control" type="text" placeholder="Enter last name" required="" aria-required="true">
+                    </div>
+                    <div class="form-group">
+                      <!-- <label>Enter Your Name</label> -->
+                      <input type="name" name="username" class="form-control" type="text" placeholder="Choose Your User Id Name" required="" aria-required="true">
+                    </div>
+                    <div class="form-group">
+                      <!-- <label>Enter Your Email</label> -->
+                      <input type="email" name="email" class="form-control" type="text" placeholder="Enter Email" required="" aria-required="true">
+                    </div>
+                    <div class="form-group">
+                      <input type="password" name="password" class="form-control" type="text" placeholder="Choose Your password" required="" aria-required="true">
+                    </div>
+                    <div class="form-group">
+                      <input type="password" name="repassword" class="form-control" type="text" placeholder="Re type your password" required="" aria-required="true">
+                    </div>
+                    <a href="/sign_in">  Already,I have an Account</a>
+<!-- 
+                    <div class="checkbox form-group">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="">
+                        <label class="form-check-label" for="">
+                          Remember me
+                        </label>
+                      </div>
+                      <a href="#">Forgot Password</a>
+                    </div> -->
+<!-- 
+                    <div class="form-group">
+                      <div class="_btn_04">
+                        <a href="#">sign up</a>
+                      </div>
+                    </div> -->
+                    <div class="form-group">
+                      <div class="_btn_04">
+                        {% csrf_token %}
+                        <button style="background-color: rgb(254,54,95);border: none;" type="submit" id="loginsubmit">Login</button>
+                  </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+{% endblock body %}
+
+{% block js %}
+
+{% endblock js %}

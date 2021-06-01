@@ -1,241 +1,127 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="I heartily like to educate the people with all aspects of coding to compete with the present scenario in HINDI language..
-    1. Quiz - Winner Photo would be uploaded on this website(W&C).
-    2.Hand written Notes
-    3.Source Code
-">
-  <link rel="icon" type="image/png" href="/static/homeimg/11.jpg">
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="/static/css/playvideo.css" rel="stylesheet">
   <title> {% block title %} {% endblock title %} </title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
 
-  <style>
-    @media screen and (max-width: 600px) {
-      main h1 {
-        font-size: 2rem !important;
-      }
 
-      .card h3 {
-        font-size: 1rem !important;
-      }
+  <!-- Favicons -->
+  <link href="/static/base/image/logoji.png" rel="icon">
+  <link href="/static/base/image/apple-touch-icon.png" rel="apple-touch-icon">
 
-      #resume {
-        margin-left: 1rem !important;
-        margin-right: 1rem !important;
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
-      }
-    }
-  </style>
-  {% load static %}
+  <!-- Bootstrap CSS File -->
+  <link href="/static/base/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Libraries CSS Files -->
+  <link href="/static/base/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/static/base/lib\animate\animate.css" rel="stylesheet">
+  <link href="/static/base/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="/static/base/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="/static/base/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="/static/base/css/style.css" rel="stylesheet">
+
+
+
+{% load static %}
   {% block css %}
 
 
   {% endblock css %}
+
+
+
+
 </head>
 
 <body>
-  <!-- #Navbar....................................................................................................................... -->
-  <nav class="navbar navbar-expand-lg navbar" style="padding-top: 2rem; background-color: red;">
-    {% comment %} <a class="navbar-brand" href="/"> {% endcomment %}
-      {% comment %} {%  load static  %} {% endcomment %}
-      <img class="rounded " alt="META " src="/static/homeimg/11.png"
-        style="border-radius: 30.25rem!important;; height:70px ;"></a>
-    {% comment %} <a class="navbar-brand" href="/">META</a> {% endcomment %}
-    <button class="navbar-toggler bg-danger " type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item {% block homeactive %} {% endblock homeactive %}">
-          <a class="nav-link text-white" href="/">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item {% block videoactive %} {% endblock videoactive %}">
-          <a class="nav-link text-white" href="/playlist">Video</a>
-        </li>
-        <li class="nav-item {% block blogactive %} {% endblock blogactive %}">
-          <a class="nav-link text-white" href="/bloghome">Blog</a>
-        </li>
-        <li class="nav-item {% block donaractive %} {% endblock donaractive %}">
-          <a class="nav-link text-white" href="/donate">Donate</a>
-        </li>
-        <li class="nav-item {% block W&Cactive %} {% endblock W&Cactive %}">
-          <a class="nav-link text-white" href="/W&C">W&C</a>
-        </li>
-        <li class="nav-item {% block serviceactive %} {% endblock serviceactive %}">
-          <a class="nav-link text-white" href="/service">Services</a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link text-white" target="_blank"
-            href="https://www.youtube.com/channel/UClqeB8qhY7k0Yaw6KIQI3dg/featured">YouTube</a>
-        </li>
-        <li class="nav-item {% block contactactive %} {% endblock contactactive %}">
-          <a class="nav-link text-white" href="/contact">Contact Me</a>
-        </li>
-      </ul>
-      <form method=get class="form-inline my-2 my-lg-0 " action="/videosearch">
-        <input class="form-control mr-sm-2 " type="search" placeholder="Search" aria-expanded="false"
-          aria-label="Search" name="query" id="query">
-        <button class="btn btn-danger my-2 my-sm-0 ml-2 mx-3">Search</button>
-      </form>
-      <div>
-        {% if user.is_authenticated %}
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Welc. {{request.user}}
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="/logout/">logout</a>
-            {% comment %} <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a> {% endcomment %}
-          </div>
-        </div>
+  <!--==========================
+  Header
+  ============================-->
+  <header id="header" class="fixed-top">
+    <div class="container">
+
+      <div class="logo float-left">
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <h1 class="text-light"><a href="#header"><span>NewBiz</span></a></h1> -->
+        <a href="#intro" ><img src="/static/base/image/logojii.png" alt="" ></a>
+      </div>
+
+      <nav class="main-nav float-right d-none d-lg-block">
+        <ul>
+          <li class="{% block homeactive %} {% endblock homeactive %}"><a href="/">Home</a></li>
+          <li class="{% block videoactive %} {% endblock videoactive %}"><a href="/playlist">Video</a></li>
+          <li class="{% block blogactive %} {% endblock blogactive %}}"><a href="/bloghome">Blog</a></li>
+          <li class="{% block coursesactive %} {% endblock coursesactive %}"><a href="/courses">Courses</a></li>
+          <li class="{% block Servicesactive %} {% endblock Servicesactive %}"><a href="/service">Services</a></li>
+          <li class="{% block internshipactive %} {% endblock internshipactive %}"><a href="/internship">Internship</a></li>
+          <li class="drop-down {% block exploreactive %} {% endblock exploreactive %}"><a href="">Explore</a>
+          <ul>
+          <li><li class="{% block W&Cactive %} {% endblock W&Cactive %}"><a href="/W&C">W&C</a></li>
+          <li><li class="{% block projectactive %} {% endblock projectactive %}"><a href="/project">Project</a></li>
+          <li class="{% block donateactive %} {% endblock donateactive %}"><a href="/donate">Donate</a></li>
+          </ul>
+          </li>
+          <li class="{% block contactactive %} {% endblock contactactive %}"><a href="/contact">Contact Us</a></li>
+          {% comment %} <li >
+          <form method=get class="form-inline my-2 my-lg-0 " action="/videosearch">
+            <input class="form-control mr-sm-2 " type="search" placeholder="Search" aria-expanded="false"
+            aria-label="Search" name="query" id="query">
+            <button class="btn btn-danger my-2 my-sm-0 ml-2 mx-3">Search</button>
+          </form> 
+          </li> {% endcomment %}
+
+            {% if user.is_authenticated %}
+        <li class="drop-down {% block Welcomeactive %} {% endblock Welcomeactive %}"><a href="">Welcome </a>
+          <ul>  
+            <li><a href="/profile/">{{request.user}}</a></li>
+            {% comment %} {% for permission in permissions  %} {% endcomment %}
+            {% if request.user not in query %} 
+            <li><a href="/edit_profile/">Edit Profile</a></li>
+            {% endif %}
+            {% comment %} {% endfor %} {% endcomment %}
+
+            <li ><a href="/logout/">Logout </a></li>
+          </ul>
         {% else %}
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#loginModal">Login</button>
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#signupModal">SignUp</button>
-      </div>
-    </div>
+        <li class="drop-down {% block Loginactive %} {% endblock Loginactive %}"><a href="">Login</a>
+        <ul>
+          <li><a href="/sign_in">Sign in </a></li>
+          <li ><a href="/sign_up">Sign Up </a></li>
+         
+        </ul>
+    
     {% endif %}
-  </nav>
+            <!-- <ul>
+              <li><a href="/sign_in">Sign in </a></li>
+              <li ><a href="/sign_up">Sign Up </a></li>
+            </ul> -->
+          </div>
+        </ul>
+      </nav><!-- .main-nav -->
 
-
-
-  <!-- Login Modal ...................................................................................................................-->
-  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <h5 class="modal-title" id="loginModal">Login using your credentials</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-
-        <div class="modal-body">
-          <form action="/login/" method="post"><input type="hidden" name="csrfmiddlewaretoken"
-              value="LEtKjyzLXOP7iVgHyp7Zh8kfUdvC2pfl4SBuqo1kjBrBnMbbZcioaHqmRqpmZvcl">
-            <div class="form-group">
-              <label for="text">Username</label>
-              <input type="text" class="form-control" id="loginuname" placeholder="Enter your username" Required
-                name="loginuname">
-            </div>
-            <div class="form-group">
-              <label for="loginpassword">Password</label>
-              <input type="password" class="form-control" id="loginpassword" placeholder="Enter your password" Required
-                name="loginpassword">
-            </div>
-
-            {% csrf_token %}
-            <button type="submit" class="btn btn-danger mt-2" id="loginsubmit">Login</button>
-          </form>
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
 
       </div>
     </div>
-  </div>
-
-  <!-- SignUp Modal -->
-  <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="signupModal">SignUp for an account</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-
-        <div class="modal-body">
-          <form name="contact" method="post" action="/signup/"><input type="hidden" name="csrfmiddlewaretoken"
-              value="FNBFZPsc8WLw4Y8aswhrksDBnZF8AZifY1Jp6FULuJn09P3ETjsQd1JIkczSx5ff">
-
-            <div class="form-group">
-              <label for="uname">Username</label>
-              <input type="text" class="form-control" id="username" placeholder="Enter your Name" name="username">
-              <small id="unamehelp" class="form-text text-muted px-1">
-                Your unique username must be less than 10 characters (only lowecase letters, numbers & underscores
-                allowed) with no spaces
-              </small>
-            </div>
-            <div class="form-group">
-              <label for="name">First Name</label>
-              <input type="text" class="form-control" id="fname" placeholder="Enter your First Name" name="fname">
-            </div>
-            <div class="form-group">
-              <label for="name">Last Name</label>
-              <input type="text" class="form-control" id="lname" placeholder="Enter your Last Name" name="lname">
-            </div>
-
-            <div class="form-group">
-              <label for="email">Your Email</label>
-              <div class="mx-0">
-                <div class="col-md-8 px-0">
-                  <input type="email" class="form-control" id="email" placeholder="Enter your Email" name="email">
-                  <small id="otpMessage" class="form-text"></small>
-                </div>
-                <!-- <div class="col-md-4 my-1 px-0">
-                <button class="btn btn-danger btn-sm mt-2" id="otpbtn">Send OTP</button>
-              </div> -->
-              </div>
-
-            </div>
-            <!-- <div class="form-group">
-            <label for="otp">Enter OTP</label>
-            <input type="text" class="form-control" id="otp" placeholder="Enter OTP" name="otp">
-          </div> -->
-
-            <div class="form-group">
-              <label for="password">Choose a password</label>
-              <input type="password" class="form-control" id="password" placeholder="Choose a password" name="password">
-            </div>
-            <div class="form-group">
-              <label for="password2">Retype a password</label>
-              <input type="password" class="form-control" id="password2" placeholder="Retype your password"
-                name="password2">
-              <input type="hidden" name="path" value="/">
-              {% csrf_token %}
-              <button type="submit" class="btn btn-danger mt-2">SignUp</button>
-          </form>
-        </div>
-        {% comment %} <div class="g-recaptcha" data-sitekey="6Ld6VMIZAAAAABQekvQfBLjbEwcc3ZrJyP7canan"></div>
-        <input type="hidden" name="path" value="/">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-danger mt-2">SignUp</button>
-        </form>
-      </div> {% endcomment %}
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
+  </div>      
+      
     </div>
-  </div>
-  </div>
-
-
-  </div>
-
+  </header><!-- #header -->
 
 
 
 
   {% for message in messages %}
-
+  <br>
+  <br>
+  <br>
   <div class="alert alert-{{ message.tags }} mb-0 alert-dismissible fade show" role="alert">
     <strong> Message : </strong>{{ message }}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -248,116 +134,106 @@
 
   {% endblock body %}
 
-  <!-- #footer section................................................................................................................ -->
-  <footer>
-    <div class="text-white  mb-0" id="contact" style="padding-top: 2rem; background-color: rgb(129, 15, 15);">
-      <div class="container text-white ">
+
+ 
+
+  <!--==========================
+    Footer
+  ============================-->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
         <div class="row">
-          <div class="col-lg-4 col-sm-12 mb-4">
-             <h5 class="text-danger"><a class="text-danger" href="https://www.metaeducators.com"
-              target="_blank"> metaeducators.com</a></h5>
-              <p>
-          <p>
 
-              I heartily like to
-              educate the people with all
-              aspects of coding to compete
-              with the present scenario in
-              HINDI language.
-            </p>
-            <i class="fa fa-envelope mt-2" aria-hidden="true"></i>
-
-            <h6 class="d-inline "><a class="text-white" href="mailto:metaeducators@gmail.com">metaeducator@gmail.com</a></h6>
-
-            <h6 class="d-inline "><a class="text-white" href="mailto:metaeducators@gmail.com">metaeducator@gmail.com</a>
-            </h6>
+          <div class="col-lg-4 col-md-6 footer-info">
+            <h3>Metaeducator</h3>
+            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
           </div>
-          <div class="col-lg-3 col-sm-4 d-inline " style="width: 50%;">
-            <h5 class="text-danger">Quick links</h5>
-            <ul id="quick" class="list-unstyled">
-              <li>
-                <a class="text-white" href="/">Home</a>
-              </li>
-              <li>
-                <a class="text-white" href="/playlist/">video</a>
-              </li>
 
-              <li>
-                <a class="text-white" href="/bloghome/">Blog</a>
-              </li>
-              <li>
-                <a class="text-white" href="/donate/">Donate </a>
-              </li>
-              <li>
-                <a class="text-white" href="/W&C/">W&C </a>
-              </li>
-              <li>
-                <a class="text-white" href="/service/">Services </a>
-              </li>
-              <li>
-                <a class="text-white" href="/contact/">Contact us</a>
-              </li>
+          <div class="col-lg-2 col-md-4 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+            <li> <a href="/playlist/">Video</a> </li>
+            <li> <a href="/bloghome/">Blog</a> </li>
+            <li> <a href="/courses/">Courses</a> </li>
+            <li> <a href="/services/">Services</a> </li>
+            <li> <a href="/intrinship/">Intrinship</a> </li>
+            <li> <a href="/contact/">Contact us</a> </li>
             </ul>
           </div>
-          <div class="col-lg-2 col-sm-4 " style="width: 50%;">
-            <h5 class="text-danger">Follow Us</h5>
-            <a class="text-white" href="https://www.facebook.com/https:/Metaeducator-109055404234838" target="_blank"
-              class="fa fa-facebook p-2"></a>
-            <a class="text-white" href="https://www.facebook.com/https:/Metaeducator-109055404234838" target="_blank"
-              class="d-inline">Facebook</a>
-            <br>
-            <a class="text-white" href="https://www.youtube.com/channel/UClqeB8qhY7k0Yaw6KIQI3dg/featured"
-              target="_blank" class="fa fa-youtube p-2"></a>
-            <a class="text-white" href="https://www.youtube.com/channel/UClqeB8qhY7k0Yaw6KIQI3dg/featured"
-              target="_blank" class="d-inline">YouTube</a>
-            <br>
-            <a class="text-white" href="https://www.linkedin.com/in/shubhanshu-nishad-a5511b1b2" target="_blank"
-              class="fa fa-linkedin p-2"></a>
-            <a class="text-white" href="https://www.linkedin.com/in/shubhanshu-nishad-a5511b1b2" target="_blank"
-              class="d-inline">LinkedIn</a>
-            <br>
-            <a class="text-white" href="https://www.instagram.com/metaeducator/" target="_blank"
-              class="fa fa-instagram p-2"></a>
-            <a class="text-white" href="https://www.instagram.com/metaeducator/" target="_blank"
-              class="d-inline">Instagram</a>
-            <br>
-            <a class="text-white" href="https://www.twitter.com/metaeducator?s=09" target="_blank"
-              class="fa fa-twitter p-2"></a>
-            <a class="text-white" href="https://www.twitter.com/metaeducator?s=09" target="_blank"
-              class="d-inline">Twitter</a>
-            <br>
-            <a class="text-white" href="https://t.me/metaeducator" target="_blank" class="fa fa-telegram p-2"></a>
-            <a class="text-white" href="https://t.me/metaeducator" target="_blank" class="d-inline">Telegram</a>
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h4>Contact Us</h4>
+            <p>
+              GLA University,Mathura <br>
+              Chaumuhan, Uttar Pradesh <br>
+              281406 <br>
+              <strong>Phone:</strong> 9455593295<br>
+              <strong>Email:</strong> metaeducator@gmail.com<br>
+            </p>
+
+            <div class="social-links">
+              <a href="https://twitter.com/metaeducator" target='blank' class="twitter"><i class="fa fa-twitter"></i></a>
+              <a href="" class="facebook"><i class="fa fa-facebook"></i></a>
+              <a href="https://www.instagram.com/metaeducator/?hl=en" target='blank' class="instagram"><i class="fa fa-instagram"></i></a>
+              <!-- <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a> -->
+              <a href="https://www.linkedin.com/company/metaeducator/" target='blank' class="linkedin"><i class="fa fa-linkedin"></i></a>
+            </div>
+
           </div>
-           <div class="col-lg-3">
-            <img id="footer-logo" src="/static/homeimg/11.png" class="float-right" style="height: 10rem;">
+
+          <div class="col-lg-3 col-md-6 footer-newsletter">
+            <h4>Our Newsletter</h4>
+            
+            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
+            
+            <form action="/newsletter/" method="post" enctype="multipart/form-data">
+            {%csrf_token %}
+              <input type="email" name="email"><input type="submit"  value="Subscribe">
+            </form>
           </div>
-        </div>
-        <div class="center opacity-10 py-3">
-          <p class="text-center">© Copyright 2020 metaeducator . All Rights Reserved</p>
-          <p class="text-center">Website Designed and Developed by <a class="text-white" href="http://www.metaeducators.com"
-              target="_blank"> metaeducators.com</p></a>
+
         </div>
       </div>
-  </footer>
+    </div>
 
-  <!-- #End footer..................................................................................................................... -->
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>Metaeducator</strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a href="https://metaeducators.com/">Metaeducator</a>
+      </div>
+    </div>
+  </footer><!-- #footer -->
+
 
   {% block js %}
 
   {% endblock js %}
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-</body>
 
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <!-- Uncomment below i you want to use a preloader -->
+  <!-- <div id="preloader"></div> -->
+
+  <!-- JavaScript Libraries -->
+  <script src="/static/base/lib/jquery/jquery.min.js"></script>
+  <script src="/static/base/lib/jquery/jquery-migrate.min.js"></script>
+  <script src="/static/base/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/base/lib/easing/easing.min.js"></script>
+  <script src="/static/base/lib/mobile-nav/mobile-nav.js"></script>
+  <script src="/static/base/lib/wow/wow.min.js"></script>
+  <script src="/static/base/lib/waypoints/waypoints.min.js"></script>
+  <script src="/static/base/lib/counterup/counterup.min.js"></script>
+  <script src="/static/base/lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="/static/base/lib/isotope/isotope.pkgd.min.js"></script>
+  <script src="/static/base/lib/lightbox/js/lightbox.min.js"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="/static/base/contactform/contactform.js"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="/static/base/js/main.js"></script>
+
+</body>
 </html>

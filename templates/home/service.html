@@ -6,101 +6,146 @@
 {% block css %}
 
 
-<link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/carousel/">
+{% comment %} <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/carousel/"> {% endcomment %}
 
 <!-- Bootstrap core CSS -->
 <link href="/static/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="/static/css/carousel.css" rel="stylesheet">
+<link href="/static/css/carousel.css" rel="stylesheet"> 
 
 
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:300,400|Roboto:300,400,700">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <style>
-<style>
-
-  @media only screen and (max-width: 768px) {
-    .shubu{display:none;;
-    }
+.carousel {
+	margin: 30px 0;
+    background: #ccc;
+}
+.carousel .carousel-item {
+    text-align: center;
+	overflow: hidden;
+    height: 475px;
+}
+.carousel .carousel-item img {
+	max-width: 100%;
+    margin: 0 auto; /* Align slide image horizontally center in Bootstrap v3 */
+}
+.carousel-caption h3, .carousel-caption p {
+	color: #fff;
+	display: inline-block;
+	font-family: 'Oswald', sans-serif;
+	text-shadow: none;
+	margin-bottom: 20px;
+}
+.carousel-caption h3 {
+	background: rgba(0,0,0,0.9);
+	padding: 12px 24px;
+	font-size: 40px;	
+	text-transform: uppercase;
+}
+.carousel-caption p {
+	background: #20b0b9;
+	padding: 10px 20px;
+	font-size: 20px;
+	font-weight: 300;
+}
+.carousel .nav {	
+	background: #eee;
+}
+.carousel .nav a {
+	color: #333;
+	border-radius: 0;
+	font-size: 85%;
+	padding: 10px 16px;
+	background: transparent;
+}
+.carousel .nav .active a {
+	color: #fff;
+	background: #20b0b9;
+}
+.carousel .nav strong {
+	display: block;
+	font-family: 'Roboto', sans-serif;
+	font-size: 110%;
+	text-transform: uppercase;
+}
+@media only screen and (max-width: 768px) {
+  .shubu{display:none;;
   }
-
-  @media only screen and (max-width: 486px) {
-    .shu{display:none;;
-    }
-  }  
-
+}
 </style>
-
+<script>
+$(document).ready(function(){
+	// Highlight bottom nav links
+	var clickEvent = false;
+	$("#myCarousel").on("click", ".nav a", function(){
+		clickEvent = true;
+		$(this).parent().siblings().removeClass("active");
+		$(this).parent().addClass("active");		
+	}).on("slid.bs.carousel", function(e){
+		if(!clickEvent){
+			itemIndex = $(e.relatedTarget).index();
+			targetNavItem = $(".nav li[data-slide-to='" + itemIndex + "']");
+			$(".nav li").not(targetNavItem).removeClass("active");
+			targetNavItem.addClass("active");
+		}
+		clickEvent = false;
+	});
+});
+</script>
 {% endblock css %}
 {% block body %}
-<main role="main">
-
-
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-      
-        <img class="first-slide" src="/static/services/slide2.jfif" alt="First slide" width="1280" height="700">
-        <div class="container">
-          <div class="carousel-caption">
-            <div class="container py-5 mt-5" style="z-index:1;background-color:black; opacity: .9; ">
-              <h1 class="display-4 text-danger p-5 "> <b><i> <span> E-educator </span> </i></b></h1>
-              <button class="btn bg-danger text-white mx-3 my-1 text-center">C/C++</button>
-              <button class="btn bg-danger text-white mx-3 my-1">Python</button>
-              <button class="btn bg-danger text-white mx-3 my-1">Java</button>
-              <button class="btn bg-danger text-white mx-3 my-1">HTML/CSS/JS</button>
-              <button class="btn bg-danger text-white mx-3 my-1">PHP/Nodejs</button>
-              <button class="btn bg-danger text-white mx-3 my-1">Django/Flask</button>
-              <p><a class="btn btn-lg btn-primary mt-2" href="/contact/" role="button">Contact Me</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img class="second-slide" src="/static/services/slide1.jfif" width="1280" height="500" alt="Second slide">
-        <div class="container">
-          <div class="carousel-caption">
-            <div class="container py-5 mt-5" style="z-index:1;background-color:red; opacity: .9; ">
-              <h1 style="color:Black;"><br><i>Need a website for your business/ Portfolio?</i></h1>
-              <h3>“We don't just build websites, we build websites that grow your performance.”</h3>
-              <h5>― Shubhanshu Nishad</h5>
-              <p><a class="btn btn-lg btn-primary" href="/contact/" role="button">Contact Me</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img class="third-slide" src="/static/services/slide3.jfif" alt="Third slide" width="1280" height="500">
-        <div class="container">
-          <div class="carousel-caption text-center">
-            <h1 class="shu mt-2" style="color:black;">Are you have any doubts?</h1>
-            <div class="container py-5 mt-5" style="z-index:1;background-color:black; opacity: .9; ">
-            <h3 style="color:red;">“Our doubts are traitors,
-              and make us lose the good we oft might win,
-              by fearing to attempt.”.</h3>
-              <h4>― William Shakespeare</h4>
-            <p><a class="btn btn-lg btn-primary" href="/contact/" role="button">Contect Me</a></p>
-          </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-  <br>
-</main>
+<div class="">
+	<div class="row">
+		<div class="col-md-12">
+			<div id="myCarousel" class="carousel slide" data-ride="carousel">
+				<!-- Wrapper for carousel items -->
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<img src="/static/services/slide1.jfif" class="img-fluid" alt="Notebook">
+						<div class="carousel-caption">
+							<h3>Amazing Digital Experience</h3>
+							<p>Pulvinar leo id risus pellentesque vestibulum. Sed diam libero, sodales eget sapien bibendum.</p>
+						</div>
+					</div>	
+					<div class="carousel-item">
+						<img src="/static/services/slide2.jfif" class="img-fluid" alt="Tablet">
+						<div class="carousel-caption">
+							<h3>Live Monitoring Tools</h3>							
+							<p>Nullam hendrerit justo non leo aliquet imperdiet. Etiam sagittis lectus condime dapibus vitae.</p>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<img src="/static/services/slide3.jfif" class="img-fluid" alt="Workstation">
+						<div class="carousel-caption">
+							<h3>Attractive Pricing</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam pellentesque tempor quis.</p>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<img src="/static/services/slide2.jfif" class="img-fluid" alt="Report">
+						<div class="carousel-caption">
+							<h3>Award Winning Support</h3>
+							<p>Nullam hendrerit justo non leo aliquet imperdiet. Etiam in sagittis lectus ultrices placerat.</p>
+						</div>
+					</div>
+				</div>
+				<!-- Carousel controls -->
+				<ol class="nav nav-pills nav-justified">
+					<li data-target="#myCarousel" data-slide-to="0" class="nav-item active"><a href="#" class="nav-link"><strong>About</strong>Lorem ipsum dolor sit amet</a></li>
+					<li data-target="#myCarousel" data-slide-to="1" class="nav-item"><a href="#" class="nav-link"><strong>Features</strong> Nesciunt stumpown odio aliqua</a></li>
+					<li data-target="#myCarousel" data-slide-to="2" class="nav-item"><a href="#" class="nav-link"><strong>Pricing</strong> Oullam hendrerit justom leow</a></li>
+					<li data-target="#myCarousel" data-slide-to="3" class="nav-item"><a href="#" class="nav-link"><strong>Support</strong> Proin suscipit non adipiscing</a></li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</div>
 
 <div class="container">
   <main role="main" class="container">
@@ -111,21 +156,199 @@
         </h3>
 
         <div class="blog-post">
-          <h2 class="blog-post-title">"Online learning is not the next big thing, it is the now big thing.”</h2>
-          <h5>― Donna J. Abernathy</h5>
+          <h2 class="blog-post-title">New Education Policy: Students To Learn Coding From Class 6</h2>
           <p class=" badge badge-secondary">July 30, 2020 </p>
+          <h5>by <b>Metaeducator</b></h5>
+          <p>The New Education Policy allows students to choose coding from class 6th onwards..</p>
           <hr>
-          <h4>Definition of 'E-learning'</h4>
-          <hr>
-          <p>
-         <b>
-Definition:</b>  A learning system based on formalised teaching but with the help of electronic resources is known as E-learning. While teaching can be based in or out of the classrooms, the use of computers and the Internet forms the major component of E-learning. E-learning can also be termed as a network enabled transfer of skills and knowledge, and the delivery of education is made to a large number of recipients at the same or different times. Earlier, it was not accepted wholeheartedly as it was assumed that this system lacked the human element required in learning.</p>
+          <img class="rounded " alt="Coding students " style="height:auto; max-width:100%; border:none;
+        display:block;" src="/static/homeimg/Students_Coding.jpg"></a>
+          <br>
+          <p>According to the New Education Policy that has been approved by the Narendra Modi-led National Democratic
+            Alliance (NDA) government, students will be taught Coding as a subject from as early as class 6th.</p>
           <blockquote>
-            <p>However, with the rapid progress in technology and the advancement in learning systems, it is now embraced by the masses. The introduction of computers was the basis of this revolution and with the passage of time, as we get hooked to smartphones, tablets, etc, these devices now have an importance place in the classrooms for learning. Books are gradually getting replaced by electronic educational materials like optical discs or pen drives. Knowledge can also be shared via the Internet, which is accessible 24/7, anywhere, anytime.</p>
+            <p>School Education secretary Anita Karwal said students of class 6 and onwards will be taught coding in
+              schools as a part of 21st-century skills.</p>
           </blockquote>
-          <p>
-            <b>Description:</b> E-learning has proved to be the best means in the corporate sector, especially when training programs are conducted by MNCs for professionals across the globe and employees are able to acquire important skills while sitting in a board room, or by having seminars, which are conducted for employees of the same or the different organizations under one roof. The schools which use E-learning technologies are a step ahead of those which still have the traditional approach towards learning. </p>
+          <p>The announcement was made in by Education Ministry officials at a press conference in the presence of
+            <b>Union Minister Prakash Javadekar.</b> </p>
+          <h5>Through coding, students can learn to create games and applications for multiple platforms such as
+            Android, Windows and iOS.</h6>
         </div><!-- /.blog-post -->
+        <div class="blog-post">
+          <h2 class="blog-post-title">What Providers Need to Know About COVID-19 Coding and Billing</h2>
+          <p class=" badge badge-secondary">Aug 02, 2020 </p>
+          <h5>by <b>Metaeducator</b></h5>
+          <p>The healthcare system is facing an unprecedented crisis, but accurate COVID-19 coding and billing can help
+            providers weather the storm and prepare for future outbreaks.</p>
+          <hr>
+          <img class="rounded " alt="COrona virus " style="height:auto; max-width:100%; border:none;
+        display:block;" src="/static/homeimg/2020-03-02_coronavirus.jpg"></a>
+          <br>
+          <p><time datetime="2020-4-17">April 17, 2020</time> -&nbsp;The COVID-19 pandemic is putting strain on the
+            healthcare system, but accurately capturing data and documenting cases of the novel coronavirus can help
+            ease the burden on providers.</p>
+
+
+
+          <p>COVID-19 coding and billing allows providers to track the spread of the novel coronavirus and get paid for
+            testing and treating the sudden surge of patients presenting with symptoms of the highly contagious disease.
+            And effective processes will help providers overcome the challenges of COVID-19 now and in the future.</p>
+
+          <p>&ldquo;Equipping a health care workforce to accurately code medical procedures, streamlines communication
+            across the health system, reducing administrative and rework costs at a time when resources are stretched by
+            the COVID-19 pandemic,&rdquo;says Patrice A. Harris, MD, MA, president of the American Medical Association
+            (AMA).</p>
+
+          <p>However, a lack of resources and oftentimes know-how is preventing many providers from realizing the
+            benefits of effective COVID-19 coding and billing.</p>
+          <p>It is not business as usual at this time. Many healthcare organizations have had to cancel or postpone
+            their normal services to prevent the spread of COVID-19, while many more are now treating and having to
+            document patients with a completely novel condition. Meanwhile, increasing unemployment rates are bringing
+            in a new mix of patients to organizations, creating more coding and documentation challenges than usual.</p>
+
+          <p>The healthcare industry is quickly adapting to world in which COVID-19 exists and that includes creating
+            new codes for the novel coronavirus. Using these codes and new documentation guidelines that come with them
+            will be critical to tackling COVID-19 and the challenges associated with it.</p>
+
+          <p>In the following article, <em>RevCycleIntelligence </em>breaks down what providers need to know about
+            COVID-19 coding and billing and best practices organizations can implement to ease the burden now and when
+            the dust settles.</p>
+
+          <h3><strong>New codes enable COVID-19 tracking and billing</strong></h3>
+
+          <p>Providers use a variety of medical code sets to document and bill for patient encounters. The primary sets
+            used by providers have all recently created new codes to capture COVID-19 testing and care.</p>
+
+          <h3><strong><em>ICD-10-CM</em></strong></h3>
+
+          <p>Spurred by the urgent need to capture COVID-19 diagnoses on claims and surveillance data, the CDC <a
+              href="https://www.cdc.gov/nchs/data/icd/Announcement-New-ICD-code-for-coronavirus-3-18-2020.pdf">announced</a>
+            in March that is has added the new International Classification of Diseases, Tenth Revision, Clinical
+            Modification (ICD-10-CM) emergency code created by the World Health Organization earlier this year. The code
+            to document the diagnosis of COVID-19 is U07.1, 2019-nCoV acute respiratory disease.</p>
+          .</p>
+
+          <p>According to <a href="https://www.cdc.gov/nchs/data/icd/COVID-19-guidelines-final.pdf">official
+              guidance</a> from the CDC, providers should only use U07.1 to document a confirmed diagnosis of COVID-19
+            as documented by the provider, per documentation of a positive COVID-19 test result, or a presumptive
+            positive COVID-19 test result. This also applies to asymptomatic patients who test positive for coronavirus.
+          </p>
+
+          <p>CDC notes that this is an exception to the hospital inpatient guideline. In this case,
+            &ldquo;confirmation&rdquo; does not require documentation of the type of test performed, rather provider
+            documentation is sufficient.</p>
+
+          <p>The new ICD-10-CM code is a principal or first-listed diagnosis code, so providers should sequence it first
+            then use appropriate codes for associated manifestations, except in obstetric patients.</p>
+
+          <p>CMS has also recognized the code for Medicare Severity-Diagnosis Related Group (MS-DRG) Grouper purposes
+            effective April 1, 2020 at which time the ICD-10 MS-DRG Grouper software package accommodated the new code.
+          </p>
+          <p>
+          <p>Suspected, possible, probable, or inconclusive cases of COVID-19 should not be assigned U07.1, CDC
+            emphasizes in the guidance. Instead, providers should assign codes explaining the reason for the encounter,
+            such as a fever or Z20.828, Contact with and (suspected) exposure to other viral communicable diseases.</p>
+
+          <p>Providers should also code for exposure to COVID-19 using code Z03.818, Encounter for observation for
+            suspected exposure to other biological agents ruled out and screening, CDC states.</p>
+
+          <h3><strong><em>CPT</em></strong></h3>
+
+          <p>Since the COVID-19 outbreak, AMA has also been updating its Current Procedural Terminology (CPT) code set
+            to enable providers to code and bill for coronavirus testing.</p>
+
+          <p>AMA announced on March 13 the addition of CPT code 87635 for novel coronavirus testing through infectious
+            agent detection by nucleic acid. The code should be used, for example, if a provider or other healthcare
+            professional collects respiratory swabs and sends them to the lab after suspecting a 47-year-old male
+            presenting to the emergency department with fever, cough, and shortness of breath has COVID-19.</p>
+
+          <p>More recently, the association unveiled the addition of codes 86328 and 86769 for COVID-19 antibody tests
+            and the revision for SARS-CoV-2 nucleic acid tests (86318).</p>
+
+          <p>Code 86328 was created for antibody tests using a single step method immunoassay, AMA stated in the
+            announcement. The testing method usually includes a strip with all of the critical components for the assay
+            and is appropriate for a point-of care platform. Code 86769 was established for antibody tests using a
+            multiple step method, the association reported.</p>
+
+          <h3><em><strong>HCPCS</strong></em></h3>
+
+          <p>As COVID-19 testing ramps up, CMS has created Healthcare Common Procedure Coding System (HCPCS) codes so
+            providers can get reimbursed for diagnosing patients and stopping the spread of coronavirus.</p>
+
+          <img class="rounded " alt="COrona virus " style="height:auto; max-width:100%; border:none;
+        display:block;" src="/static/homeimg/coding.jfif"></a>
+          <br>
+
+          <p>Earlier this year, CMS announced the addition of two codes &ndash; U0001 and U0002 &ndash; for COVID-19
+            tests. The first code can be used to document and bill for tests performed specifically at CDC testing
+            laboratories, while the second code supports the agency&rsquo;s efforts to allow clinical laboratories
+            outside of the CDC to create and bill for their own COVID-19 tests.</p>
+
+          <p>Medicare started accepting the codes on April 1, 2020, and the codes will be retroactive to account for
+            testing done on or after Feb. 4, 2020.</p>
+
+          <p>According to a pricing list from March 12, 2020, Medicare will reimburse providers about $35 for claims
+            coded with U0001 and approximately $51 for claims with U0002.</p>
+
+          <h3><strong>Telehealth coding and billing</strong></h3>
+
+          <p>In addition to caring for patients with a novel virus, many providers are also engaging in unchartered
+            territory: telehealth.</p>
+
+          <p>Hospitals are using telehealth services when possible to triage patients, a recent report from the Office
+            of the Inspector at HHS showed. Ambulatory organizations are following suit as elective and non-urgent
+            services decline.</p>
+
+          <p>But for many providers, telehealth is a new service emerging from the COVID-19 crisis and it is presenting
+            new coding and billing challenges for organizations.</p>
+
+          <p>Fortunately, HHS has relaxed a wide range of rules and regulations to enable providers to leverage
+            telehealth during the crisis and get paid the same amount for treating patients virtually. Some of the
+            services include telehealth visits, virtual check-ins, and e-visits. The department also continues to add
+            new services to the list as the crisis continues.</p>
+
+          <p>To document telehealth services and other virtual visits, CMS has provided a <a
+              href="https://www.cms.gov/Medicare/Medicare-General-Information/Telehealth/Telehealth-Codes">list of HCPCS
+              codes</a> that will be paid for under the Physician Fee Schedule during the national emergency.</p>
+
+          <p>AMA has also provided guidance on telehealth coding and billing using CPT codes. The guidance covers coding
+            for telehealth visits, online digital visits, remote patient monitoring, and telephone evaluation and
+            management services. The association&rsquo;s 11 scenarios for CPT coding during the crisis also includes
+            examples of how to code for telehealth services.</p>
+
+          <h3><strong>Best practices for COVID-19 coding and billing</strong></h3>
+
+          <p>Rules and regulations are seemingly changing every day as new information emerges regarding COVID-19, and
+            with that coding and billing policies shift to account for the latest information. With that in mind,
+            providers need to be diligently following coding and billing guidance from the CDC, CMS, AMA, and other
+            official organizations, says Maria Noelle Ward, MEd, RHIA, CCS, CCS-P, director of HIM practice excellence
+            at AHIMA.</p>
+
+          <p>&ldquo;Most importantly, they need to be sure that they&#39;re following the coding guidelines, those
+            provided from a visit perspective and the telehealth and the CPT codes, but also the guidelines that have
+            been provided by the CDC for actually coding patients who have COVID,&rdquo; she told
+            <em>RevCycleIntelligence</em>.</p>
+
+          <p>This is especially important as hospitals shift services to outpatient in preparation for greater inpatient
+            demand, Ward stressed.</p>
+
+          <p>Providers should also be assessing documentation guidelines in their EHRs to make sure providers are
+            accurately documenting services at this time. CDI query templates are a key resource for providers, Ward
+            stated.</p>
+
+          <p>&ldquo;All of the coded data is going to provide information that contributes to patient care, public
+            policy, reimbursement determination, and any of the statistics related to the spread of COVID,&rdquo; Ward
+            concluded. &ldquo;Researchers looking at how to treat this and future coronavirus outbreaks are going to
+            need this information. So, it has to be correct on the front end.&rdquo;</p>
+
+          <p>&ldquo;In order to do that, we have to have complete, precise, accurate documentation and it needs to
+            reflect all of the related conditions. That&rsquo;s going to lead to higher quality data that will affect
+            patient outcomes in the future.&rdquo;</p>
+
+        </div><!-- /.blog-post -->
+
+
       </div><!-- /.blog-main -->
 
       <aside class="col-md-4 blog-sidebar shubu">
@@ -140,21 +363,25 @@ Definition:</b>  A learning system based on formalised teaching but with the hel
           <ol class="list-unstyled mb-0">
             <li> <a href="/">Home</a> </li>
             <li> <a href="/playlist/">Video</a> </li>
-            <li> <a href="/contact/">Contact us</a> </li>
             <li> <a href="/bloghome/">Blog</a> </li>
+            <li> <a href="/courses/">Courses</a> </li>
+            <li> <a href="/services/">Services</a> </li>
+            <li> <a href="/intrinship/">Intrinship</a> </li>
+            <li> <a href="/W&C/">W&C</a> </li>
+            <li> <a href="/project/">Intrinship</a> </li>
             <li> <a href="/donate/">Donate </a> </li>
+            <li> <a href="/contact/">Contact us</a> </li>
           </ol>
         </div>
 
         <div class="p-4">
-          <h4 class="font-italic">Follow Me </h4>
+          <h4 class="font-italic">Follow Ue </h4>
           <ol class="list-unstyled">
-          <li><a href="https://www.youtube.com/channel/UClqeB8qhY7k0Yaw6KIQI3dg/featured" target="_blank"
+          <li><a href="https://www.linkedin.com/company/metaeducator/" target="_blank"class="d-inline">LinkedIn</a></li>
+            <li><a href="https://www.youtube.com/channel/UClqeB8qhY7k0Yaw6KIQI3dg/featured" target="_blank"
               class="d-inline">YouTube</a></li>
             <li><a href="https://www.facebook.com/https:/Metaeducator-109055404234838" target="_blank"
                 class="d-inline">Facebook</a></li>
-            <li><a href="https://www.linkedin.com/in/shubhanshu-nishad-a5511b1b2" target="_blank"
-                class="d-inline">LinkedIn</a></li>
             <li><a href="https://www.instagram.com/metaeducator/" target="_blank" class="d-inline">Instagram</a></li>
             <li><a href="https://www.twitter.com/metaeducator?s=09" target="_blank" class="d-inline">Twitter</a></li>
             <li><a href="https://t.me/metaeducator" target="_blank" class="d-inline">Telegram</a></li>
@@ -164,42 +391,30 @@ Definition:</b>  A learning system based on formalised teaching but with the hel
       </aside><!-- /.blog-sidebar -->
 
     </div><!-- /.row -->
-    </div>
+</div>
+</div>
 
 
-  <!-- Marketing messaging and featurettes
-      ================================================== -->
-  <!-- Wrap the rest of the page in another container to center all the content. -->
+{% endblock  %}
+{% block js %}
 
-  <div class="container marketing">
-
-    <!-- Three columns of text below the carousel -->
-    <div class="row">
-
-      {%for Customer in Customers %}
-      <div class="col-lg-4 mt-2">
-        <img class="rounded-circle"
-          src="{{Customer.img_link}}"
-          alt="Generic placeholder image" width="140" height="140">
-        <h2>{{Customer.customer_name| safe}}</h2>
-        <p>{{Customer.customer_desc| safe}}.</p>
-        <p><a class="btn btn-secondary" target="_blank"  href="{{Customer.customer_urls}}" role="button">Click here to view &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-      {% endfor %}
-
-
-    </div><!-- /.row -->
-
-
-  </div><!-- /.container -->
-  </main>
-
-
-
-  {% endblock  %}
-
-
-  {% block js %}
-
-
-  {% endblock js %}
+<script>
+$(document).ready(function(){
+	// Highlight bottom nav links
+	var clickEvent = false;
+	$("#myCarousel").on("click", ".nav a", function(){
+		clickEvent = true;
+		$(this).parent().siblings().removeClass("active");
+		$(this).parent().addClass("active");		
+	}).on("slid.bs.carousel", function(e){
+		if(!clickEvent){
+			itemIndex = $(e.relatedTarget).index();
+			targetNavItem = $(".nav li[data-slide-to='" + itemIndex + "']");
+			$(".nav li").not(targetNavItem).removeClass("active");
+			targetNavItem.addClass("active");
+		}
+		clickEvent = false;
+	});
+});
+</script>
+{% endblock js %}

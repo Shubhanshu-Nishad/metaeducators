@@ -9,10 +9,28 @@
 
     <!-- Custom styles for this template -->
     <link href="/static/css/album.css" rel="stylesheet">
+<style>
+    .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+</style>
 {% endblock css %}
 
 
 {% block body %}
+<br>
+<br>
+<br>
    <main role="main">
 
       <section class="jumbotron text-center">
@@ -30,26 +48,31 @@ The one who loses the joy of his victory.</b></p>
           </p>
         </div>
       </section>
-
-      <div class="album py-5 bg-light">
-        <div class="container">
-        <div class="row">
-          {%for Winner in Winners %}
-          
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" src="{{Winner.img_link}}" alt="Winner" width="400" height="400">
-                <div class="card-body">
-                  <p class="card-text"> {{Winner.winner_name| safe}}</p>
-                  <p class="card-text"> {{Winner.winner_desc| safe}}</p>
-                  <small class="text-muted"> {{Winner.timeStamp}}</small>
-                </div>
-              </div>
-            </div>
-            {% endfor %}
-          </div>
+<div class="b-example-divider"></div>
+  {%for Winner in Winners %}
+  <div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div class="col-10 col-sm-8 col-lg-6">
+        <img src="{{Winner.img_link}}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+      </div>
+      <div class="col-lg-6">
+        <h2 class="display-5 fw-bold lh-1 mb-3">{{Winner.winner_name| safe}}</h2>
+        <p class="lead">{{Winner.winner_desc| safe}}</p>
+        <p> <span class="badge badge-secondary">{{Winner.timeStamp}}</span></p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <button type="button" class="btn btn-outline-secondary btn-lg px-4"><a href="{{Winner.url}}" target='blank'>{{Winner.url_name}}</a></button>
         </div>
       </div>
+    </div>
+    {% endfor %}
+  </div>
+
+
+
+
+
+
+
 
     </main>
 
@@ -57,6 +80,6 @@ The one who loses the joy of his victory.</b></p>
 {% endblock  %}
 
 {% block js %}
-
+<script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
 {% endblock js %}

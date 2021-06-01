@@ -1,209 +1,195 @@
-{%  extends 'base.html' %}
-
-{% block title %} META Donaters {% endblock title %}
-{% block donateactive %} active {% endblock donateactive %}
-{% load static %}
-{% block css %}
+{% extends 'base.html' %} {% block title %} META Donaters {% endblock title %} {% block donateactive %} active {% endblock donateactive %} {% load static %} {% block css %}
 
 <style>
-  @media (min-width: 992px) {
-
-    #university-courses .col-lg-3,
-    #services .col-lg-3 {
-      max-width: 24% !important;
+    @media (min-width: 992px) {
+        #university-courses .col-lg-3,
+        #services .col-lg-3 {
+            max-width: 24% !important;
+        }
     }
-  }
-
-  #events-update {
-    padding: 1rem !important;
-    margin: 1rem !important;
-  }
-
-
-  #slider4 img {
-    width: 10rem !important;
-    height: 10rem !important;
-  }
-
-  #testimonials h3 {
-    font-size: 2rem !important;
-    margin-bottom: 1rem !important;
-  }
+    
+    #events-update {
+        padding: 1rem !important;
+        margin: 1rem !important;
+    }
+    
+    #slider4 img {
+        width: 10rem !important;
+        height: 10rem !important;
+    }
+    
+    #testimonials h3 {
+        font-size: 2rem !important;
+        margin-bottom: 1rem !important;
+    }
 </style>
 
-{% endblock css %}
-
-
-{% block body %}
+{% endblock css %} {% block body %}
 
 <main>
-  <!-- for description of donations -->
-  <div class="container">
-    <div id="content">
-      <h1> Community Support </h1>
-      <!-- Page content goes here -->
-      <p>Although the videos and other content of this website <b> are free for anyone to watch, learn and share,</b>
-        this
-        website and the <a href="https://www.youtube.com/channel/UClqeB8qhY7k0Yaw6KIQI3dg/featured"
-          target="_blank">corresponding youtube channel metaeducator </a>relies on support from people like you.
-      </p>
-      <p>As I was only <span class="badge badge-secondary">17 years olds</span> , I have no source of earning other than
-        my <b>pocket money</b> , I <b><i> dont earn anything from YouTube </i></b> which makes it difficult for me to
-        <b> <i> pay the hosting, equipment
-            and software</i> </b> costs for producing content.</p>
-
-      <p>All the <b> donations will be used in buying new equipment, improving quality of the content </b> and bringing
-        more of
-        such videos up. You can support this content by donating any amount of money through scanning the <b> PayTM QR
-          or through Banking or via online :</b>
-        <br><br>
-
-      </p>
-
-
-    </div>
-  </div>
-
-  <!-- for donations cards -->
-  <div class="album py-5 bg-light">
+    <!-- for description of donations -->
+    <br>
     <div class="container">
+        <div id="content">
+            <h1> Community Support </h1>
+            <!-- Page content goes here -->
+            <p>Although the videos and other content of this website <b> are free for anyone to watch, learn and share,</b> this website and the <a href="https://www.youtube.com/channel/UClqeB8qhY7k0Yaw6KIQI3dg/featured" target="_blank">corresponding youtube channel metaeducator </a>relies
+                on support from people like you.
+            </p>
+            <p>As I was only <span class="badge badge-secondary">17 years olds</span> , I have no source of earning other than my <b>pocket money</b> , I <b><i> dont earn anything from YouTube </i></b> which makes it difficult for me to
+                <b> <i> pay the hosting, equipment
+            and software</i> </b> costs for producing content.
+            </p>
 
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" src="/static/image/donations/paytm1.jpg" alt="Card image cap">
-            <div class="card-body">
-              <p class="card-text ">
-              <h5> <b> <i>Donate by scanning QR Code</i> </b> </h5>
-              </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <p></p>
-              </div>
-            </div>
-          </div>
+            <p>All the <b> donations will be used in buying new equipment, improving quality of the content </b> and bringing more of such videos up. You can support this content by donating any amount of money through scanning the <b> PayTM QR
+          or through Banking or via online :</b>
+                <br><br>
+
+            </p>
+
+
         </div>
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" src="/static/image/donations/bank.jfif" alt="Card image cap">
-            <div class="card-body">
-              <p class="card-text">
-              <h4>Through Bank</h4>
-              </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <ul>
-                  <li>Name : SHUBHANSHU NISHAD</li>
-                  <li>ACC NO :<b> 1126104000120982</b></li>
-                  <li>IFSSC :IBKL0001126</li>
-                  <li>BANK : IDBI</li>
-                  <li>BRANCH : SULTANPUR (U.P)</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" src="/static/image/donations/online.jfif" alt="Card image cap">
-            <div class="card-body">
-              <p class="card-text">
-              <h4>Via online</h4>
-              </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <ul>
-                  <li>Name : SHUBHANSHU NISHAD</li>
-                  <li>BHIM UPI </li>
-                  <li>UPI ID :<b><i></i> 945559325@ybl</b></li>
-                  <li>ADDRESS :NIRALA NAGAR</li>
-                  <li>DISTRICT : SULTANPUR (U.P) </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+    </div>
 
-
-        <!-- for carousel item -->
-
-        <section id="testimonials" class="container">
-          <h3 class=" text-center pt-3 my-5 pb-0 text-danger" style="font-size: 3rem;font-weight: 400;">
-            The People who are donating.
-          </h3>
-          <div class="row ">
-            <div class="col-sm-10 m-auto ">
-              <div id="slider4" class="carousel slide mb-5" data-ride="carousel">
-                <ol class="carousel-indicators">
-                  <li class="" data-target="#slider3" data-slide-to="0"></li>
-                  <li data-target="#slider4" data-slide-to="1" class="active"></li>
-                  <li data-target="#slider4" data-slide-to="2 " class=""></li>
-                </ol>
-                <!-- First carousel -->
-                <div class="carousel-inner ">
-                  <div class="carousel-item active ">
-                    <div id="events-update" class="card jumbotron jumbotron-expand-md  mx-5 py-0 px-5 "
-                      style="border: none;">
-                      <div class="card-body text-center text-white  bg-dark">
-                        <img class="m-3" src="{{Donar.0.img_link}}"
-                          style="width: 15rem; height: 15rem; border-radius: 150px;border: 2px solid #dc3545; ">
-                        <h4 class="text-danger">{{Donar.0.donar_name}}</h4>
-                        <small>{{Donar.0.donar_professional}}</small>
-                        <h3><span class="badge badge-secondary">{{Donar.0.donar_amount}}</span></h3>
-
-                        <p class="my-3 text-white"><i>"{{Donar.0.donar_desc}}"</i></p>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Rest carousel -->
-                  {% for i in Donar|slice:"1:" %}
-                  <div class="carousel-item ">
-                    <div id="events-update" class="card jumbotron jumbotron-expand-md  mx-5 py-0 px-5 "
-                      style="border: none;">
-                      <div class="card-body text-center text-white  bg-dark">
-                        <img class="m-3" src="{{i.img_link}}"
-                          style="width: 15rem; height: 15rem; border-radius: 150px;border: 2px solid #dc3545;">
-                        <h4 class="text-danger">{{i.donar_name}}</h4>
-                        <small>{{i.donar_professional}}</small>
-                        <h3><span class="badge badge-secondary">{{i.donar_amount}}</span></h3>
-
-                        <p class="my-3 text-white"><i>"{{i.donar_desc}}."</i></p>
-                      </div>
-                    </div>
-                  </div>
-                  {%endfor%}
-
-
-                  <!-- CONTROLS -->
-                  <a href="#slider4" class="carousel-control-prev" data-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                  </a>
-
-                  <a href="#slider4" class="carousel-control-next" data-slide="next">
-                    <span class="carousel-control-next-icon"></span>
-                  </a>
-                </div>
-              </div>
-            </div>
-        </section>
-
-
-
-
-
+    <!-- for donations cards -->
+    <div class="album py-5 bg-light">
         <div class="container">
-          <p>Apart form paying through <b>PayTM/Paypal</b> , you can also support this content by:<br>
-            &#8226; Sharing it as much as you can <br>
-            &#8226; Liking and commenting on the videos<br>
-            &#8226; Subscribing to the <a
-              href="https://www.youtube.com/channel/UClqeB8qhY7k0Yaw6KIQI3dg/featured" target="_blank">
-              metaeducator YouTube channel</a><br>
-            &#8226; Sharing the posts on www.metaeducator.in<br>
-          </p>
-          <p>Thanks a lot for the tremendous support. Happy coding!</p>
-          <br><br>
 
-          </p>
-        </div>
-      </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img class="card-img-top" src="/static\image\donations\Covidfoodmall.in final.png" alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text ">
+                                <p class="card-text">
+                                <h4>Donate in this Mission</h4>
+                            </p>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                                    <button type="button" class="btn btn-outline-secondary btn-lg px-4"><a href="https://imjo.in/FYEHnP"
+                    target='blank'>Donate</a></button>
+                                </div>
+
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img class="card-img-top" src="/static/image/donations/bank.jfif" alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text">
+                                <h4>Through Bank</h4>
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <ul>
+                                    <li>Name : SHUBHANSHU NISHAD</li>
+                                    <li>ACC NO :<b> 1126104000120982</b></li>
+                                    <li>IFSSC :IBKL0001126</li>
+                                    <li>BANK : IDBI</li>
+                                    <li>BRANCH : SULTANPUR (U.P)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img class="card-img-top" src="/static/image/donations/online.jfif" alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text">
+                                <h4>Via online</h4>
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <ul>
+                                    <li>Name : SHUBHANSHU NISHAD</li>
+                                    <li>BHIM UPI </li>
+                                    <li>UPI ID :<b><i></i> 945559325@ybl</b></li>
+                                    <li>ADDRESS :NIRALA NAGAR</li>
+                                    <li>DISTRICT : SULTANPUR (U.P) </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- for carousel item -->
+
+                <section id="testimonials" class="container">
+                    <h3 class=" text-center pt-3 my-5 pb-0 text-danger" style="font-size: 3rem;font-weight: 400;">
+                        The People who are donating.
+                    </h3>
+                    <div class="row ">
+                        <div class="col-sm-10 m-auto ">
+                            <div id="slider4" class="carousel slide mb-5" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    <li class="" data-target="#slider3" data-slide-to="0"></li>
+                                    <li data-target="#slider4" data-slide-to="1" class="active"></li>
+                                    <li data-target="#slider4" data-slide-to="2 " class=""></li>
+                                </ol>
+                                <!-- First carousel -->
+                                <div class="carousel-inner ">
+                                    <div class="carousel-item active ">
+                                        <div id="events-update" class="card jumbotron jumbotron-expand-md  mx-5 py-0 px-5 " style="border: none;">
+                                            <div class="card-body text-center text-white  bg-dark">
+                                                <img class="m-3" src="{{Donar.0.img_link}}" style="width: 15rem; height: 15rem; border-radius: 150px;border: 2px solid #dc3545; ">
+                                                <h4 class="text-danger">{{Donar.0.donar_name}}</h4>
+                                                <small>{{Donar.0.donar_professional}}</small>
+                                                <h3><span class="badge badge-secondary">{{Donar.0.donar_amount}}</span></h3>
+
+                                                <p class="my-3 text-white"><i>"{{Donar.0.donar_desc}}"</i></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Rest carousel -->
+                                    {% for i in Donar|slice:"1:" %}
+                                    <div class="carousel-item ">
+                                        <div id="events-update" class="card jumbotron jumbotron-expand-md  mx-5 py-0 px-5 " style="border: none;">
+                                            <div class="card-body text-center text-white  bg-dark">
+                                                <img class="m-3" src="{{i.img_link}}" style="width: 15rem; height: 15rem; border-radius: 150px;border: 2px solid #dc3545;">
+                                                <h4 class="text-danger">{{i.donar_name}}</h4>
+                                                <small>{{i.donar_professional}}</small>
+                                                <h3><span class="badge badge-secondary">{{i.donar_amount}}</span></h3>
+
+                                                <p class="my-3 text-white"><i>"{{i.donar_desc}}."</i></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {%endfor%}
+
+
+                                    <!-- CONTROLS -->
+                                    <a href="#slider4" class="carousel-control-prev" data-slide="prev">
+                                        <span class="carousel-control-prev-icon"></span>
+                                    </a>
+
+                                    <a href="#slider4" class="carousel-control-next" data-slide="next">
+                                        <span class="carousel-control-next-icon"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                </section>
+
+
+
+
+
+                <div class="container">
+                    <p>Apart form paying through <b>PayTM/Paypal</b> , you can also support this content by:<br> &#8226; Sharing it as much as you can <br> &#8226; Liking and commenting on the videos<br> &#8226; Subscribing to the <a href="https://www.youtube.com/channel/UClqeB8qhY7k0Yaw6KIQI3dg/featured"
+                            target="_blank">
+              metaeducator YouTube channel</a><br> &#8226; Sharing the posts on www.metaeducator.in<br>
+                    </p>
+                    <p>Thanks a lot for the tremendous support. Happy coding!</p>
+                    <br><br>
+
+                    </p>
+                </div>
+                </div>
 
 </main>
 
-{% endblock  %}
+{% endblock %}

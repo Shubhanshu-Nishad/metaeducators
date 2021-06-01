@@ -1,0 +1,375 @@
+{% extends 'base.html' %} {% block title %} {{request.user}} {% endblock title %} {% block Welcomeactive %} active {% endblock Welcomeactive %} {% load static %} {% block css %}
+<style>
+    body {
+        margin-top: 20px;
+        color: #1a202c;
+        text-align: left;
+        background-color: #e2e8f0;
+    }
+    
+    .main-body {
+        padding: 15px;
+    }
+    
+    .card {
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+    }
+    
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 0 solid rgba(0, 0, 0, .125);
+        border-radius: .25rem;
+    }
+    
+    .card-body {
+        flex: 1 1 auto;
+        min-height: 1px;
+        padding: 1rem;
+    }
+    
+    .gutters-sm {
+        margin-right: -8px;
+        margin-left: -8px;
+    }
+    
+    .gutters-sm>.col,
+    .gutters-sm>[class*=col-] {
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+    
+    .mb-3,
+    .my-3 {
+        margin-bottom: 1rem !important;
+    }
+    
+    .bg-gray-300 {
+        background-color: #e2e8f0;
+    }
+    
+    .h-100 {
+        height: 100% !important;
+    }
+    
+    .shadow-none {
+        box-shadow: none !important;
+    }
+</style>
+
+<style>
+    body {
+        font-family: 'Varela Round', sans-serif;
+    }
+    
+    .modal-login {
+        width: 350px;
+    }
+    
+    .modal-login .modal-content {
+        padding: 20px;
+        border-radius: 1px;
+        border: none;
+    }
+    
+    .modal-login .modal-header {
+        border-bottom: none;
+        position: relative;
+        justify-content: center;
+    }
+    
+    .modal-login h4 {
+        text-align: center;
+        font-size: 26px;
+    }
+    
+    .modal-login .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .modal-login .form-control,
+    .modal-login .btn {
+        min-height: 40px;
+        border-radius: 30px;
+        font-size: 15px;
+        transition: all 0.5s;
+    }
+    
+    .modal-login .form-control {
+        font-size: 13px;
+    }
+    
+    .modal-login .form-control:focus {
+        border-color: #a177ff;
+    }
+    
+    .modal-login .hint-text {
+        text-align: center;
+        padding-top: 10px;
+    }
+    
+    .modal-login .close {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+    }
+    
+    .modal-login .btn,
+    .modal-login .btn:active {
+        border: none;
+        background: #a177ff !important;
+        line-height: normal;
+    }
+    
+    .modal-login .btn:hover,
+    .modal-login .btn:focus {
+        background: #8753ff !important;
+    }
+    
+    .modal-login .hint-text a {
+        color: #999;
+    }
+    
+    .trigger-btn {
+        display: inline-block;
+        margin: 5px auto;
+    }
+</style>
+
+{% endblock css %} {% block body %}
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="main-body">
+        <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img src="{{User.img_link}}" alt="user" class="rounded-circle" width="150">
+                            <div class="mt-3">
+                                <h4>{{ User.user_name }}</h4>
+                                <p class="text-secondary mb-1">About</p>
+                                <p class="text-muted font-size-sm">{{ User.about }}</p>
+                                <a href="#myinstructor" class="trigger-btn" data-toggle="modal">Want to Became instructor in
+									Metaeducator</a>
+                                <a href="#report-error" class="trigger-btn" data-toggle="modal">Report any correction in
+									Profile Info</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-3">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                            <h6>LinkedIn</h6>
+                            <a href="{{ User.linkedin }}" target='blank' class="linkedin"><i
+									class="fa fa-linkedin"></i></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                            <h6>Github</h6>
+                            <a href="{{ User.github }}" target='blank' class="linkedin"><i class="fa fa-github"></i></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                            <h6>Instagram</h6>
+                            <a href="{{ User.instagram }}" target='blank' class="linkedin"><i
+									class="fa fa-instagram"></i></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                            <h6>Twitter</h6>
+                            <a href="{{ User.twitter }}" target='blank' class="linkedin"><i
+									class="fa fa-twitter"></i></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                            <h6>Remark</h6>
+                            <p>{{ User.remark }}</p>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Full Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{ user.get_full_name }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Email</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{ user.email }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Higher Education</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{ User.edu_qul }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Phone</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{ User.phone }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">WhatsApp No </h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{ User.wmobile }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Address</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{ User.street }} {{User.city}} {{ User.state }} {{User.zip_code}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Issued Books -->
+                <div class="col-md-14">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h6 class="mb-0">Are you Working in Meta Educator ?</h6>
+                                </div>
+                                <div class="col-sm-6 text-secondary">
+                                    {{ User.are_of_working_in_metaeducator }}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h6 class="mb-0">Position</h6>
+                                </div>
+                                <div class="col-sm-6 text-secondary">
+                                    {{ User.position }}
+                                </div>
+                            </div>
+                            <hr>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h6 class="mb-0">Are we helping in Project ?</h6>
+                                </div>
+                                <div class="col-sm-6 text-secondary">
+                                    {{ User.are_we_helping_in_project }}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h6 class="mb-0">Project Name</h6>
+                                </div>
+                                <div class="col-sm-6 text-secondary">
+                                    {{ User.project_name }}
+                                </div>
+                            </div>
+                            <hr>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h6 class="mb-0">Are you doing intreship through Meta Educator ? </h6>
+                                </div>
+                                <div class="col-sm-6 text-secondary">
+                                    {{ User.are_you_doing_intrenship_through_metaeducator }}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h6 class="mb-0">Company Name </h6>
+                                </div>
+                                <div class="col-sm-6 text-secondary">
+                                    {{ User.company_name }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<br>
+<!-- Modal HTML -->
+<div id="myinstructor" class="modal fade">
+    <div class="modal-dialog modal-login">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Became Instructor</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form action="/instructor/" method="post" enctype="multipart/form-data">
+                    {%csrf_token %}
+                    <input type="text" class="form-control" id="course-name" name="course-name" aria-describedby="name" placeholder="Course Name" required>
+            </div>
+            <div class="form-group">
+                <textarea placeholder="Brief Intro about your course" class="form-control" id="content" name="content" cols="10" rows="5"></textarea>
+
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-block btn-lg" value="Submit">
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Modal HTML -->
+<div id="report-error" class="modal fade">
+    <div class="modal-dialog modal-login">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Correction Form </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form action="/correction_form/" method="post" enctype="multipart/form-data">
+                    {%csrf_token %}
+                    <input type="text" class="form-control" id="u_name" name="u_name" aria-describedby="name" placeholder="username" required>
+            </div>
+            <div class="form-group">
+                <textarea placeholder="tell me correction in your profile data" class="form-control" id="content" name="content" cols="10" rows="5"></textarea>
+
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-block btn-lg" value="Report Error">
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock body %} {% block js %} {% endblock js %}
