@@ -59,9 +59,9 @@
           <li class="{% block homeactive %} {% endblock homeactive %}"><a href="/">Home</a></li>
           <li class="{% block videoactive %} {% endblock videoactive %}"><a href="/playlist">Video</a></li>
           <li class="{% block blogactive %} {% endblock blogactive %}}"><a href="/bloghome">Blog</a></li>
-          <li class="{% block coursesactive %} {% endblock coursesactive %}"><a href="/courses">Courses</a></li>
+          <li class="{% block coursesactive %}  {% endblock coursesactive %}"><a href="/courses">Courses</a></li>
           <li class="{% block Servicesactive %} {% endblock Servicesactive %}"><a href="/service">Services</a></li>
-          <li class="{% block internshipactive %} {% endblock internshipactive %}"><a href="/internship">Internship</a></li>
+          {% comment %} <li class="{% block freelanceractive %} {% endblock freelanceractive %}"><a href="/freelancer">Freelancer</a></li>  {% endcomment %}
           <li class="drop-down {% block exploreactive %} {% endblock exploreactive %}"><a href="">Explore</a>
           <ul>
           <li><li class="{% block W&Cactive %} {% endblock W&Cactive %}"><a href="/W&C">W&C</a></li>
@@ -182,10 +182,10 @@
 
           </div>
 
-          <div class="col-lg-3 col-md-6 footer-newsletter">
+          <div class="col-lg-3 col-md-6 footer-newsletter" style="text-color:white;">
             <h4>Our Newsletter</h4>
             
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
+            <p style="text-color:white; " >Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
             
             <form action="/newsletter/" method="post" enctype="multipart/form-data">
             {%csrf_token %}

@@ -90,7 +90,6 @@ def newsletter(request):
     return render(request,'home/home.html')    
         
 def contact(request):
-    messages.success(request,"Can I help you Sir ? ")
     if(request.method=='POST'):
         name=request.POST['name']
         edu_qul = request.POST['edu_qul']

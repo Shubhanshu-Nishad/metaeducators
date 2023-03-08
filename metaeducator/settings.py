@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'blog.apps.BlogConfig',
     'youtube.apps.YoutubeConfig',
+    'internship.apps.InternshipConfig',
     'django.contrib.humanize',
 ]
                                                                         

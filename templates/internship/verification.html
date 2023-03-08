@@ -1,0 +1,71 @@
+{%  extends 'base.html' %}
+{% load static %}
+{% block title %}Certificate verification{% endblock title %}
+{% block verificationactive %} active {% endblock verificationactive %}
+
+
+{% block css %}
+<link href="/static/verification/css/templatemo-comparto.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />
+<link href="/static/verification/css/fontawesome/css/all.min.css" rel="stylesheet" />
+<link href="/static/verification/css/templatemo-comparto.css" rel="stylesheet" />
+{% endblock css %}
+
+{% block body %}
+<br>
+<br>
+<br>
+
+
+ <!-- TEAM -->
+     {% comment %} <section id="team">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-12 col-sm-12">
+                         <div class="section-title">
+                              <h2>verify <small>Meet Professional Trainers</small></h2>
+                         </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                         <div class="team-thumb">
+                              <div class="team-image">
+                                   <img src="{{verification.certificate_link}}" class="img-responsive" alt="">
+                              </div>
+                              <div class="team-info">
+                                   <h4>{{verification.name}}</h4>
+                                   <span>{{verification.course_name}}</span> <br>
+                                   <span>{{verification.instructor_name}}</span> <br>
+                                   <span>{{verification.credential_id}}</span> <br>
+                                   <span> <h6> Skills: </h6>  <span class="badge badge-secondary">{{verification.issued_date}}</span></span>
+                          
+                    </div>
+                    
+
+                   
+
+               </div>
+          </div>
+     </section> {% endcomment %}
+
+{% comment %} <div class="container"> {% endcomment %}
+
+ <section class="tm-mb-1" id="about">
+            <div class="tm-row tm-about-row">
+                <div class="tm-section-1-l">
+                    <img src="{{verification.certificate_link}}" alt="About image" class="tm-img-responsive">
+                </div>
+                <article class="tm-section-1-r tm-bg-color-8">
+                    <h1 class="tm-mb-2 tm-title-color">Varification</h1>
+                    <p><span> This certificate verifies that <b> {{verification.name}}</b> successfully completed the course<b> "{{verification.course_name}}" </b> on<b> {{verification.issued_date}} </b>as taught by<b> {{verification.instructor_name}} </b>on Meta Educator. The certificate indicates the entire course was completed as validated by the student. </span></p>
+                    <br>
+                    <a href="/courses/" class="btn btn-danger">Enroll Now</a>
+                </article>
+            </div>
+        </section>
+{% comment %} </div> {% endcomment %}
+
+{% endblock body %}
+<!-- Adding Additional JavaScript -->
+{% block js %}
+{% endblock js %}

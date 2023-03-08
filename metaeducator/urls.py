@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 from blog import views
+from internship import views
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -29,6 +30,7 @@ urlpatterns = [
     path('', include('home.urls')),
     path('', include('blog.urls')),
     path('', include('youtube.urls')),
+    path('', include('internship.urls')),
     # path('blogpost/',views.blogpost,name='blogpost')
 ] 
 # + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

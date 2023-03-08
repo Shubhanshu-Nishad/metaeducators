@@ -1,0 +1,424 @@
+{%  extends 'base.html' %}
+{% load static %}
+{% block title %} Meta Courses {% endblock title %}
+{% block coursesactive %} active {% endblock coursesactive %}
+
+
+{% block css %}
+
+     <link rel="stylesheet" href="/static/courses/css/bootstrap.min.css">
+     <link rel="stylesheet" href="/static/courses/css/font-awesome.min.css">
+     <link rel="stylesheet" href="/static/courses/css/owl.carousel.css">
+     <link rel="stylesheet" href="/static/courses/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="/static/courses/css/templatemo-style.css">
+
+<style>
+.pd-2{
+    padding:2%;
+}
+.pd-r-2{
+    padding-right:2%;
+}
+.pd-l-2{
+    padding-left:2%;
+}
+.pd-t-2{
+    padding-top:2%;
+}
+.pd-b-2{
+    padding-bottom:2%;
+}
+body{
+    font-family: 'PT Sans', sans-serif;
+}
+h1,h2,h3,h4,h5,.lead,div[data-toggle="collapse"]{
+    font-family: 'Oswald', sans-serif;
+}
+ul li{
+    list-style:one;
+}
+div[data-toggle="collapse"]{
+   border-bottom:1px solid #BBDEFB;
+   width:100%;
+   cursor:pointer;
+   padding:1%;
+}
+.collapse{
+    background:#F5F5F5;
+}
+</style>
+{% endblock css %}
+
+{% block body %}
+<!-- HOME -->
+     <section id="home">
+          <div class="row">
+
+                    <div class="owl-carousel owl-theme home-slider">
+                         <div class="item item-first">
+                              <div class="caption">
+                                   <div class="container">
+                                        <div class="col-md-6 col-sm-12">
+                                             <h1>Distance Learning Education Center</h1>
+                                             <h3>Our online courses are designed to fit in your industry supporting all-round with latest technologies.</h3>
+                                             <a href="#feature" class="section-btn btn btn-default smoothScroll">Discover more</a>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+
+                         <div class="item item-second">
+                              <div class="caption">
+                                   <div class="container">
+                                        <div class="col-md-6 col-sm-12">
+                                             <h1>Start your journey with our practical courses</h1>
+                                             <h3>Our online courses are built in partnership with technology leaders and are designed to meet industry demands.</h3>
+                                             <a href="#courses" class="section-btn btn btn-default smoothScroll">Take a course</a>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+
+                         <div class="item item-third">
+                              <div class="caption">
+                                   <div class="container">
+                                        <div class="col-md-6 col-sm-12">
+                                             <h1>Efficient Learning Methods</h1>
+                                             <h3>Nam eget sapien vel nibh euismod vulputate in vel nibh. Quisque eu ex eu urna venenatis sollicitudin ut at libero. Visit <a rel="nofollow" href="https://www.facebook.com/templatemo">templatemo</a> page.</h3>
+                                             <a href="#contact" class="section-btn btn btn-default smoothScroll">Let's chat</a>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+          </div>
+     </section>
+
+
+     <!-- FEATURE -->
+     <section id="feature">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-4 col-sm-4">
+                         <div class="feature-thumb">
+                              <span>01</span>
+                              <h3>Trending Courses</h3>
+                              <p>Known is free education HTML Bootstrap Template. You can download and use this for your website.</p>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4">
+                         <div class="feature-thumb">
+                              <span>02</span>
+                              <h3>Books & Library</h3>
+                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing eiusmod tempor incididunt ut labore et dolore magna.</p>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4">
+                         <div class="feature-thumb">
+                              <span>03</span>
+                              <h3>Certified Teachers</h3>
+                              <p>templatemo provides a wide variety of free Bootstrap Templates for you. Please tell your friends about us. Thank you.</p>
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+     </section>
+
+
+     <!-- ABOUT -->
+     <section id="about">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-6 col-sm-12">
+                         <div class="about-info">
+                              <h2>Start your journey to a better life with online practical courses</h2>
+
+                              <figure>
+                                   <span><i class="fa fa-users"></i></span>
+                                   <figcaption>
+                                        <h3>Professional Trainers</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint ipsa voluptatibus.</p>
+                                   </figcaption>
+                              </figure>
+
+                              <figure>
+                                   <span><i class="fa fa-certificate"></i></span>
+                                   <figcaption>
+                                        <h3>International Certifications</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint ipsa voluptatibus.</p>
+                                   </figcaption>
+                              </figure>
+
+                              <figure>
+                                   <span><i class="fa fa-bar-chart-o"></i></span>
+                                   <figcaption>
+                                        <h3>Free for 3 months</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint ipsa voluptatibus.</p>
+                                   </figcaption>
+                              </figure>
+                         </div>
+                    </div>
+
+                    <div class="col-md-offset-1 col-md-4 col-sm-12">
+                         <img src="/static/courses/images/bg.jfif" class="img-responsive" alt="">
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+     </section>
+
+<!-- Courses -->
+     <section id="courses">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-12 col-sm-12">
+                         <div class="section-title">
+                              <h2>Popular Courses <small>Upgrade your skills with newest courses</small></h2>
+                         </div>
+                         {% for course in allcourses %}
+                         <div class="">
+                              <div class="col-md-4 col-sm-4">
+                                   <div class="item">
+                                        <div class="courses-thumb">
+                                             <div class="courses-top">
+                                                  <div class="courses-image">
+                                                       <img src="{{course.img_link}}" class="img-responsive" alt="">
+                                                  </div>
+                                                  <div class="courses-date">
+                                                       <span><i class="fa fa-calendar"></i> {{course.timeStamp}}</span>
+                                                       <span><i class="fa fa-clock-o"></i> {{course.duration}}</span>
+                                                  </div>
+                                             </div>
+
+                                             <div class="courses-detail">
+                                                  <h3><a href="{{course.payment_link}}">{{course.title}}</a></h3>
+                                                  <p>{{course.content}}</p>
+                                             </div>
+
+                                             <div class="courses-info">
+                                                  <div class="courses-author">
+                                                       <span>{{course.teacher}}</span> <br>
+                                                       <span>Last Date : {{course.last_date}}</span>
+                                                       <br>
+                                                  </div>
+                                                  <div class="courses-price">
+                                                       <a href="#"><span>₹ {{course.cost}}/-</span></a>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+                              {%endfor%}
+                              
+
+                         </div>
+
+               </div>
+          </div>
+     </section>
+
+
+
+
+
+
+
+     <!-- TEAM -->
+     <section id="team">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-12 col-sm-12">
+                         <div class="section-title">
+                              <h2>Instructor <small>Meet Professional Trainers</small></h2>
+                         </div>
+                    </div>
+                     {% for instructor in alinstructor %}
+                    <div class="col-md-4 col-sm-6">
+                         <div class="team-thumb">
+                              <div class="team-image">
+                                   <img src="{{instructor.img_link}}" class="img-responsive" alt="">
+                              </div>
+                              <div class="team-info">
+                                   <h4>{{instructor.instructor_name}}</h4>
+                                   <span>{{instructor.about}}</span> <br>
+                                   <span> <h6> Skills: </h6>  <span class="badge badge-secondary">{{instructor.skills}}</span></span>
+                              </div>
+                              <ul class="social-icon">
+                                   <li><a href="{{instructor.linkedin_link}}" class="fa fa-linkedin" target='blank'></a></li>
+                                   <li><a href="{{instructor.instagram_link}}" class="fa fa-instagram" target='blank' ></a></li>
+                              </ul>
+                         </div>
+                    </div>
+                    {% endfor %}
+                    
+
+                   
+
+               </div>
+          </div>
+     </section>
+
+ <!--==========================
+      Clients Section
+    ============================-->
+    <section id="testimonials" class="section-bg">
+      <div class="container">
+
+        <header class="section-header">
+          <h3>Testimonials</h3>
+        </header>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+
+            <div class="owl-carousel testimonials-carousel wow fadeInUp">
+    
+
+               {% for student in alltestimonial %}
+              <div class="testimonial-item">
+                <img src="{{ student.img_link }}" class="testimonial-img" alt="">
+                <h3>{{ student.name }}</h3>
+                <h4>{{ student.work }}</h4>
+                <p>
+                    {{ student.testimonial }}
+                </p>
+              </div>
+              {% endfor %}
+
+            
+              
+     
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section><!-- #testimonials -->
+
+<div class="ml-20 mr-50">
+	<div class="row bg-info card mr-20 my-4 mb-3 pd-l-2">
+		<h3>
+		    <span class="fa fa-question-circle text-white"></span>
+		    Frequently asked questions
+		</h3>
+	</div>
+	<div class="container">
+	<div class="row">
+	    <p class="col-sm-6 col-md-10">
+	    Below, we answer some the most frequently asked Questions on our platform
+	    </p>
+  
+	    <ul id="accordion" class="col-sm-6 col-md-12">
+	        <!-- Question one -->
+	        <li>
+	            <div id="choose" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" >
+	                How often do you upgrade the system ?
+	                <span class="fa fa-chevron-up fa-1x text-info pull-right"></span>
+	            </div>
+	            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                  </div>
+                </div>
+	        </li>
+	        
+	        <!-- Question two -->
+	        <li>
+	            <div class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+	                Where do I go incase I have a complaint?
+	                <span class="fa fa-chevron-down fa-1x text-info pull-right"></span>
+	            </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                  <div class="card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                  </div>
+                </div>
+	        </li>
+	        
+	        <!-- Question three -->
+	        <li>
+	            <div class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+	                Do you have any outlets in the country ?
+	                <span class="fa fa-chevron-down fa-1x text-info pull-right"></span>
+	            </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                  <div class="card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                  </div>
+                </div>
+	        </li>
+	        
+	        <!-- Question Four -->
+	        <li>
+	            <div class="collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+	                How can I file a complaint?
+	                <span class="fa fa-chevron-down fa-1x text-info pull-right"></span>
+	            </div>
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                  <div class="card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                  </div>
+                </div>
+	        </li>
+	        
+	        <!-- Questiion Five -->
+	        <li>
+	            <div class="collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+	                How can I join the team?
+	                <span class="fa fa-chevron-down fa-1x text-info pull-right"></span>
+	            </div>
+                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                  <div class="card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                  </div>
+                </div>
+	        </li>
+	        
+	        <!-- Question Six-->
+	        <li>
+	            <div class="collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+	                In case I forgot my password, what do I do?
+	                <span class="fa fa-chevron-down fa-1x text-info pull-right"></span>
+	            </div>
+                <div id="collapseSix" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                  <div class="card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                  </div>
+                </div>
+	        </li>
+	    </ul>
+	</div>
+     </div>
+</div>
+
+
+
+    <br>
+
+{% endblock body %}
+<!-- Adding Additional JavaScript -->
+{% block js %}
+     <!-- SCRIPTS -->
+     <script>
+     $(function(){
+    //$(".chevron-down").
+    $("div[data-toggle=collapse]").click(function(){
+        $(this).children('span').toggleClass("fa-chevron-down fa-chevron-up");
+    });
+})
+</script>
+
+     <script src="/static/courses/js/jquery.js"></script>
+     <script src="/static/courses/js/bootstrap.min.js"></script>
+     <script src="/static/courses/js/owl.carousel.min.js"></script>
+     <script src="/static/courses/js/smoothscroll.js"></script>
+     <script src="/static/courses/js/custom.js"></script>
+{% endblock js %}
