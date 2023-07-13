@@ -18,19 +18,25 @@ The following technologies were used to develop this website:
 * CSS: Used for styling and customizing the appearance of the website.
 * JavaScript: Used for client-side interactivity and dynamic content.
 * Bootstrap: Used as a front-end framework for responsive design and pre-built components.
-* Django: A high-level Python web framework used for the back-end development.
+* Django: A high-level Python web framework used for back-end development.
 
 ## Installation
 
 To run the website locally, follow these steps:
 
 1. Clone the repository to your local machine.
-2. Navigate to the project directory.
-3. Create a virtual environment (optional but recommended).
-4. Install the required Python dependencies.
-5. Run the database migrations.
-6. Start the development server.
-7. Open your web browser and visit http://localhost:8000 to access the website.
+   `git clone https://github.com/your-repo-url.git`
+3. Navigate to the project directory.
+   `git clone https://github.com/Shubhanshu-Nishad/metaeducator.git`
+5. Create a virtual environment (optional but recommended).
+   `Shubhanshu-Nishad/metaeducator`
+7. Install the required Python dependencies.
+   `pip install -r requirements.txt`
+9. Run the database migrations.
+    `pip install -r requirements.txt`
+11. Start the development server.
+    `pip install -r requirements.txt`
+13. Open your web browser and visit http://localhost:8000 to access the website.
 
 ## Configuration
 
