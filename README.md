@@ -63,6 +63,8 @@ This project is licensed under the MIT License. You are free to use, modify, and
 ## Acknowledgements
 
 This project was developed using the Django web framework (https://www.djangoproject.com/).
+
 The Bootstrap framework (https://getbootstrap.com/) was used for the responsive design and pre-built components.
+
 Special thanks to the open-source community for their contributions and support.
 
