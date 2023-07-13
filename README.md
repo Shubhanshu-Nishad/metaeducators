@@ -25,16 +25,22 @@ The following technologies were used to develop this website:
 To run the website locally, follow these steps:
 
 1. Clone the repository to your local machine.
+   
    `git clone https://github.com/your-repo-url.git`
 3. Navigate to the project directory.
+   
    `git clone https://github.com/Shubhanshu-Nishad/metaeducator.git`
 5. Create a virtual environment (optional but recommended).
-   `Shubhanshu-Nishad/metaeducator`
+   
+   `pip install -r requirements.txt`
 7. Install the required Python dependencies.
+   
    `pip install -r requirements.txt`
 9. Run the database migrations.
+    
     `pip install -r requirements.txt`
 11. Start the development server.
+    
     `pip install -r requirements.txt`
 13. Open your web browser and visit http://localhost:8000 to access the website.
 
