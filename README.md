@@ -30,12 +30,12 @@ To run the website locally, follow these steps:
 
 1. Clone the repository to your local machine.
 ```
-git clone https://github.com/your-repo-url.git
+git clone https://github.com/Shubhanshu-Nishad/metaeducators.git
 ```
 
 2. Navigate to the project directory.
 ```
-cd blogging-educational-management
+cd metaeducators
 ```
 
 3. Create a virtual environment (optional but recommended).
